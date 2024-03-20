@@ -18,6 +18,10 @@
             pkgs.neovim
             pkgs.iina
             pkgs.lazydocker
+            pkgs.postman
+            pkgs.alacritty
+            pkgs.audacity
+            pkgs.dbeaver
             pkgs.ripgrep
             pkgs.neofetch
             pkgs.stow
