@@ -16,6 +16,7 @@
           [
             pkgs.transmission
             pkgs.neovim
+            pkgs.iina
             pkgs.lazydocker
             pkgs.ripgrep
             pkgs.neofetch
@@ -74,6 +75,9 @@
 
         # The platform the configuration will be used on.
         nixpkgs.hostPlatform = "aarch64-darwin";
+        nixpkgs.config.allowBroken = true;
+        nixpkgs.config.allowUnsupportedSystem = true;
+        nixpkgs.config.allowUnfree = true;
 
       };
     in
