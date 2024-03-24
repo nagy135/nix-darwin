@@ -17,10 +17,21 @@
             pkgs.transmission
             pkgs.neovim
             pkgs.iina
+            pkgs.qemu
             pkgs.lazydocker
+            pkgs.lazygit
             pkgs.postman
+            pkgs.gh
+            pkgs.lsd
+            pkgs.fx
+            pkgs.deno
+            pkgs.bun
+            pkgs.pqiv
+            pkgs.yq
             pkgs.alacritty
             pkgs.audacity
+            pkgs.go
+            pkgs.skhd
             pkgs.dbeaver
             pkgs.ripgrep
             pkgs.neofetch
