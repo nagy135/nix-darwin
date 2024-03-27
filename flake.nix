@@ -3,48 +3,109 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nixvim, ... }:
     let
+      home = "/Users/viktornagy";
+      nixvimPkg = import ./nixvim { inherit nixvim; lib = nixpkgs.lib; };
       configuration = { pkgs, ... }: {
         # List packages installed in system profile. To search by name, run:
         # $ nix-env -qaP | grep wget
         environment.systemPackages =
+          with pkgs;
           [
-            pkgs.transmission
-            pkgs.neovim
-            pkgs.iina
-            pkgs.qemu
-            pkgs.lazydocker
-            pkgs.lazygit
-            pkgs.postman
-            pkgs.gh
-            pkgs.lsd
-            pkgs.fx
-            pkgs.deno
-            pkgs.bun
-            pkgs.pqiv
-            pkgs.yq
-            pkgs.alacritty
-            pkgs.audacity
-            pkgs.go
-            pkgs.skhd
-            pkgs.dbeaver
-            pkgs.ripgrep
-            pkgs.neofetch
-            pkgs.stow
-            pkgs.gimp
-            pkgs.jq
-            pkgs.htop
-            pkgs.fzf
-            pkgs.git
+            transmission
+            nixvimPkg
+            iina
+            qemu
+            lazydocker
+            lazygit
+            postman
+            gh
+            lsd
+            fx
+            deno
+            nodejs_latest
+            bun
+            pqiv
+            yq
+            alacritty
+            audacity
+            go
+            skhd
+            dbeaver
+            ripgrep
+            tldr
+            neofetch
+            stow
+            gimp
+            jq
+            htop
+            fzf
+            git
+            # python
           ];
+
+        homebrew = {
+          enable = true;
+          onActivation.autoUpdate = true;
+          # updates homebrew packages on activation,
+          # can make darwin-rebuild much slower (otherwise i'd forget to do it ever though)
+          casks = [
+            "discord"
+            "bambu-studio"
+            "blender"
+            "vlc"
+            "kitty"
+            "karabiner-elements"
+            "nosql-workbench"
+            "soapui"
+            "stats"
+            "spaceid"
+            "ultimaker-cura"
+            "wezterm"
+          ];
+        };
+
+        system.keyboard.enableKeyMapping = true;
+        system.keyboard.nonUS.remapTilde = true;
+
+        system.keyboard.remapCapsLockToEscape = true;
+        system.startup.chime = false;
+
 
         # Auto upgrade nix package and the daemon service.
         services.nix-daemon.enable = true;
+
+        services.postgresql = {
+          package = pkgs.postgresql_15;
+          enable = true;
+          authentication = ''
+            local   all             all                                     trust
+            host    all             all             0.0.0.0/0               trust
+            host    all             all             ::1/128                 trust
+          '';
+
+          enableTCPIP = true;
+        };
+
+        # Direct log output to $XDG_DATA_HOME/postgresql for debugging.
+        launchd.user.agents.postgresql.serviceConfig = {
+          StandardErrorPath = "${home}/.local/share/postgresql/postgres.error.log";
+          StandardOutPath = "${home}/.local/share/postgresql/postgres.out.log";
+        };
 
         # nix.package = pkgs.nix;
 
@@ -93,7 +154,7 @@
         nixpkgs.config.allowBroken = true;
         nixpkgs.config.allowUnsupportedSystem = true;
         nixpkgs.config.allowUnfree = true;
-
+        nixpkgs.config.permittedInsecurePackages = true;
       };
     in
     {
