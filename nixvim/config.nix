@@ -99,54 +99,13 @@
   };
 
   plugins = {
-    telescope = {
-      enable = true;
-      keymaps = {
-	"<leader>ff" = {
-	  action = "git_files";
-	  desc = "Telescope Git Files";
-	};
-	"<leader>/" = "live_grep";
-      };
-    };
     treesitter.enable = true;
     lualine.enable = true;
-    neo-tree.enable = true;
     noice.enable = true;
     copilot-vim.enable = true;
-
-
-    lsp = {
-      enable = true;
-
-      servers = {
-	tsserver.enable = true;
-	rnix-lsp.enable = true;
-	nixd.enable = true;
-
-	lua-ls = {
-	  enable = true;
-	  settings.telemetry.enable = false;
-	};
-	rust-analyzer = {
-	  enable = true;
-	  installCargo = true;
-	  installRustc = false;
-	};
-      };
-    };
-
-    cmp = {
-      enable = true;
-    };
-    cmp-nvim-lsp.enable = true;
-    cmp-buffer.enable = true;
-    cmp-path.enable = true;
-
   };
 
   extraConfigLua = ''
-
 local cmp = require'cmp'
 
   cmp.setup({
