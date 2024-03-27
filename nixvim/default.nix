@@ -23,5 +23,6 @@ in nixvim.legacyPackages."aarch64-darwin".makeNixvim
       (import ./cmp.nix)
       (import ./lsp.nix)
       (import ./neotree.nix)
+      (import ./harpoon.nix)
     ]
   )
