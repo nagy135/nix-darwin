@@ -14,9 +14,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, nixvim, ... }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nixvim, ... }:
     let
       home = "/Users/viktornagy";
       nixvimPkg = import ./nixvim { inherit nixvim; lib = nixpkgs.lib; };
@@ -26,6 +32,7 @@
         environment.systemPackages =
           with pkgs;
           [
+						home-manager
             transmission
             nixvimPkg
             iina
@@ -61,8 +68,6 @@
         homebrew = {
           enable = true;
           onActivation.autoUpdate = true;
-          # updates homebrew packages on activation,
-          # can make darwin-rebuild much slower (otherwise i'd forget to do it ever though)
           casks = [
             "discord"
             "bambu-studio"
@@ -161,10 +166,19 @@
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#Viktors-MacBook-Pro
       darwinConfigurations."Viktors-MacBook-Pro" = nix-darwin.lib.darwinSystem {
-        modules = [ configuration ];
-      };
+				modules = [
+					configuration
+						home-manager.darwinModules.home-manager
+						{
+							home-manager = {
+								users.viktornagy = import ./home;
+							};
+							users.users.viktornagy.home = "/Users/viktornagy";
+						}
+				];
+			};
 
-      # Expose the package set, including overlays, for convenience.
-      darwinPackages = self.darwinConfigurations."macos".pkgs;
-    };
+# Expose the package set, including overlays, for convenience.
+			darwinPackages = self.darwinConfigurations."macos".pkgs;
+		};
 }
