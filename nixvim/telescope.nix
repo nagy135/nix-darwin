@@ -11,6 +11,7 @@
 	  desc = "Telescope Buffers";
 	};
 	"<leader>/" = "live_grep";
+	"<leader>gs" = "git_status";
       };
     };
 }
