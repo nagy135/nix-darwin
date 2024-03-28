@@ -21,7 +21,6 @@
 
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nixvim, ... }:
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nixvim, ... }:
     let
       home = "/Users/viktornagy";
@@ -64,6 +63,20 @@
             git
             # python
           ];
+	system.defaults = {
+	  dock = {
+	    autohide = true;
+	    orientation = "bottom";
+	    show-process-indicators = false;
+	    show-recents = false;
+	    static-only = true;
+	  };
+	  finder = {
+	    AppleShowAllExtensions = true;
+	    ShowPathbar = true;
+	    FXEnableExtensionChangeWarning = false;
+	  };
+	};
 
         homebrew = {
           enable = true;
