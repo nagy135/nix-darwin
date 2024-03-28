@@ -57,6 +57,14 @@ let
 	key = "<leader>bb";
 	action = "<cmd>b#<CR>";
       }
+      {
+	key = "H";
+	action = "<cmd>bprevious<CR>";
+      }
+      {
+	key = "L";
+	action = "<cmd>bnext<CR>";
+      }
     ];
 
 
