@@ -35,7 +35,15 @@
 	silent = true;
       };
     }
+    {
+      action = "<cmd>lua vim.lsp.buf.code_action()<CR>";
+      key = "<leader>ca";
+      options = {
+	silent = true;
+      };
+    }
   ];
+  plugins.lsp-format.enable = true;
   plugins.lsp = {
     enable = true;
 
