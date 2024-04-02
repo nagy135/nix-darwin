@@ -19,6 +19,8 @@ let
       comment.enable = true;
       undotree.enable = true;
       gitsigns.enable = true;
+      nix.enable = true;
+      surround.enable = true;
       emmet.enable = true;
       todo-comments.enable = true;
     };
