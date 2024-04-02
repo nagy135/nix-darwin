@@ -1,10 +1,10 @@
 { config, pkgs, ... }:
 
 {
-	imports = [
-		./lf.nix
-		./zsh.nix
-	];
+  imports = [
+    ./lf.nix
+    ./zsh.nix
+  ];
   home.username = "viktornagy";
   home.homeDirectory = "/Users/viktornagy";
 

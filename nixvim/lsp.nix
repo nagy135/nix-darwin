@@ -4,42 +4,42 @@
       action = "<cmd>lua vim.lsp.buf.definition()<CR>";
       key = "gd";
       options = {
-	silent = true;
+        silent = true;
       };
     }
     {
       action = "<cmd>lua vim.lsp.buf.hover()<CR>";
       key = "K";
       options = {
-	silent = true;
+        silent = true;
       };
     }
     {
       action = "<cmd>lua vim.lsp.buf.rename()<CR>";
       key = "<leader>rn";
       options = {
-	silent = true;
+        silent = true;
       };
     }
     {
       action = "<cmd>lua vim.diagnostic.goto_prev()<CR>";
       key = "[d";
       options = {
-	silent = true;
+        silent = true;
       };
     }
     {
       action = "<cmd>lua vim.diagnostic.goto_next()<CR>";
       key = "]d";
       options = {
-	silent = true;
+        silent = true;
       };
     }
     {
       action = "<cmd>lua vim.lsp.buf.code_action()<CR>";
       key = "<leader>ca";
       options = {
-	silent = true;
+        silent = true;
       };
     }
   ];
@@ -52,13 +52,13 @@
       nixd.enable = true;
 
       lua-ls = {
-	enable = true;
-	settings.telemetry.enable = false;
+        enable = true;
+        settings.telemetry.enable = false;
       };
       rust-analyzer = {
-	enable = true;
-	installCargo = true;
-	installRustc = false;
+        enable = true;
+        installCargo = true;
+        installRustc = false;
       };
     };
   };

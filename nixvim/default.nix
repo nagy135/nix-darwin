@@ -1,17 +1,19 @@
-{ nixvim, lib, ... }: 
-let 
+{ nixvim, lib, ... }:
+let
   recursiveMerge = with lib; attrList:
-    let f = attrPath:
-      zipAttrsWith (n: values:
-	if tail values == []
-	  then head values
-	else if all isList values
-	  then unique (concatLists values)
-	else if all isAttrs values
-	  then f (attrPath ++ [n]) values
-	else last values
-      );
-    in f [] attrList;
+    let
+      f = attrPath:
+        zipAttrsWith (n: values:
+          if tail values == [ ]
+          then head values
+          else if all isList values
+          then unique (concatLists values)
+          else if all isAttrs values
+          then f (attrPath ++ [ n ]) values
+          else last values
+        );
+    in
+    f [ ] attrList;
   nixvimConfiguration = {
     plugins = {
       treesitter.enable = true;
@@ -24,16 +26,16 @@ let
       emmet.enable = true;
       todo-comments.enable = true;
     };
-      # {
-      #
-      #   "<C-Space>" = "cmp.mapping.complete()";
-      # }
-      # {
-      #   "<C-j>" = "cmp.mapping.scroll_docs(4)";
-      # }
-      # {
-      #   "<C-k>" = "cmp.mapping.scroll_docs(-4)";
-      # }
+    # {
+    #
+    #   "<C-Space>" = "cmp.mapping.complete()";
+    # }
+    # {
+    #   "<C-j>" = "cmp.mapping.scroll_docs(4)";
+    # }
+    # {
+    #   "<C-k>" = "cmp.mapping.scroll_docs(-4)";
+    # }
     colorschemes.catppuccin.enable = true;
 
     globals = {
@@ -48,24 +50,24 @@ let
     };
     keymaps = [
       {
-	key = "<C-h>";
-	action = "<cmd>nohl<CR>";
+        key = "<C-h>";
+        action = "<cmd>nohl<CR>";
       }
       {
-	key = "<C-c>";
-	action = "<cmd>cclose<CR>";
+        key = "<C-c>";
+        action = "<cmd>cclose<CR>";
       }
       {
-	key = "<leader>bb";
-	action = "<cmd>b#<CR>";
+        key = "<leader>bb";
+        action = "<cmd>b#<CR>";
       }
       {
-	key = "H";
-	action = "<cmd>bprevious<CR>";
+        key = "H";
+        action = "<cmd>bprevious<CR>";
       }
       {
-	key = "L";
-	action = "<cmd>bnext<CR>";
+        key = "L";
+        action = "<cmd>bnext<CR>";
       }
     ];
 
@@ -138,20 +140,21 @@ let
       matching = { disallow_symbol_nonprefix_matching = false }
     })
     '';
-};
-in nixvim.legacyPackages."aarch64-darwin".makeNixvim 
+  };
+in
+nixvim.legacyPackages."aarch64-darwin".makeNixvim
   (
     recursiveMerge
-    [
-      nixvimConfiguration
-      (import ./bufferline.nix)
-      (import ./telescope.nix)
-      (import ./cmp.nix)
-      (import ./lsp.nix)
-      (import ./neotree.nix)
-      (import ./harpoon.nix)
-      (import ./copilot.nix)
-      (import ./lualine.nix)
-      (import ./flash.nix)
-    ]
+      [
+        nixvimConfiguration
+        (import ./bufferline.nix)
+        (import ./telescope.nix)
+        (import ./cmp.nix)
+        (import ./lsp.nix)
+        (import ./neotree.nix)
+        (import ./harpoon.nix)
+        (import ./copilot.nix)
+        (import ./lualine.nix)
+        (import ./flash.nix)
+      ]
   )
