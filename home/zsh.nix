@@ -110,6 +110,8 @@ in
       ":q" = "exit";
 
       vim = "nvim";
+      nvim-yabai = "nvim ~/.yabairc";
+      nvim-skhd = "nvim ~/.skhdrc";
     };
     envExtra = ''
       			export HISTFILE=$HOME/.zsh_history
@@ -117,6 +119,9 @@ in
     initExtra = ''
       			source ${functionsScripts}
 
+
+            export PATH=~/.npm-packages/bin:$PATH
+            export NODE_PATH=~/.npm-packages/lib/node_modules
 
       			bindkey '^R' history-incremental-search-backward
 
