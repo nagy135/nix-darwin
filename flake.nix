@@ -87,6 +87,7 @@
           onActivation.autoUpdate = true;
           casks = [
             "discord"
+            "raycast"
             "bambu-studio"
             "blender"
             "vlc"
