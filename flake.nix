@@ -91,6 +91,7 @@
             "bambu-studio"
             "blender"
             "vlc"
+            "folx"
             "kitty"
             "karabiner-elements"
             "nosql-workbench"
