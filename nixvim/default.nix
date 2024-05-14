@@ -26,16 +26,6 @@ let
       emmet.enable = true;
       todo-comments.enable = true;
     };
-    # {
-    #
-    #   "<C-Space>" = "cmp.mapping.complete()";
-    # }
-    # {
-    #   "<C-j>" = "cmp.mapping.scroll_docs(4)";
-    # }
-    # {
-    #   "<C-k>" = "cmp.mapping.scroll_docs(-4)";
-    # }
     colorschemes.catppuccin.enable = true;
 
     globals = {
@@ -51,7 +41,23 @@ let
     keymaps = [
       {
         key = "<C-h>";
-        action = "<cmd>nohl<CR>";
+        action = "<c-w>h";
+      }
+      {
+        key = "<C-l>";
+        action = "<c-w>l";
+      }
+      {
+        key = "<C-j>";
+        action = "<c-w>j";
+      }
+      {
+        key = "<C-k>";
+        action = "<c-w>k";
+      }
+      {
+        key = ";";
+        action = ":";
       }
       {
         key = "<C-c>";
