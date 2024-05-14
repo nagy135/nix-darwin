@@ -100,7 +100,8 @@ in
 
       lg = "lazygit";
 
-      cdn = "cd ~/Code/nix-darwin";
+      cdc = "cd ~/Code";
+      cdd = "cd ~/.dots";
 
       mv = "mv -v";
       cp = "cp -v";
@@ -112,6 +113,8 @@ in
       vim = "nvim";
       nvim-yabai = "nvim ~/.yabairc";
       nvim-skhd = "nvim ~/.skhdrc";
+
+      cd-nix = "cd ~/Code/nix-darwin";
     };
     envExtra = ''
       			export HISTFILE=$HOME/.zsh_history
