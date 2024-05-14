@@ -118,6 +118,7 @@ in
     };
     envExtra = ''
       			export HISTFILE=$HOME/.zsh_history
+      			export PATH=$PATH:$HOME/.scripts
       			'';
     initExtra = ''
       			source ${functionsScripts}
