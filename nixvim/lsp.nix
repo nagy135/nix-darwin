@@ -8,6 +8,13 @@
       };
     }
     {
+      action = "<cmd>lua vim.lsp.buf.references()<CR>";
+      key = "gr";
+      options = {
+        silent = true;
+      };
+    }
+    {
       action = "<cmd>lua vim.lsp.buf.hover()<CR>";
       key = "K";
       options = {
