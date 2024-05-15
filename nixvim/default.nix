@@ -27,6 +27,8 @@ let
       todo-comments.enable = true;
     };
     colorschemes.catppuccin.enable = true;
+    
+    clipboard.register = "unnamedplus";
 
     globals = {
       mapleader = " ";
