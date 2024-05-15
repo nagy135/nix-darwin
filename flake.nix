@@ -25,7 +25,11 @@
     let
       home = "/Users/viktornagy";
       platform = "aarch64-darwin";
-      nixvimPkg = import ./nixvim { inherit nixvim; lib = nixpkgs.lib; };
+      nixvimPkg = import ./nixvim { 
+        inherit nixvim;
+        lib = nixpkgs.lib;
+        pkgs = nixpkgs.legacyPackages.${platform};
+      };
       configuration = { pkgs, ... }: {
         # List packages installed in system profile. To search by name, run:
         # $ nix-env -qaP | grep wget

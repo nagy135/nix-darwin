@@ -1,4 +1,4 @@
-{ nixvim, lib, ... }:
+{ nixvim, lib, pkgs, ... }:
 let
   recursiveMerge = with lib; attrList:
     let
@@ -26,7 +26,9 @@ let
       emmet.enable = true;
       todo-comments.enable = true;
     };
-    colorschemes.catppuccin.enable = true;
+    extraPlugins = [ pkgs.vimPlugins.gruvbox-material ];
+    colorscheme = "gruvbox-material";
+    # colorschemes.catppuccin.enable = true;
     
     clipboard.register = "unnamedplus";
 
