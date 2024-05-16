@@ -1,5 +1,14 @@
 {
-  keymaps = [
+  keymaps = 
+  (builtins.map (key: {
+    inherit key;
+    action = "<cmd>lua vim.lsp.buf.rename()<CR>";
+    options = {
+      silent = true;
+    };
+  }) [ "<leader>rn" "<leader>gr" ])
+  ++
+  [
     {
       action = "<cmd>lua vim.lsp.buf.definition()<CR>";
       key = "gd";
@@ -17,13 +26,6 @@
     {
       action = "<cmd>lua vim.lsp.buf.hover()<CR>";
       key = "K";
-      options = {
-        silent = true;
-      };
-    }
-    {
-      action = "<cmd>lua vim.lsp.buf.rename()<CR>";
-      key = "<leader>rn";
       options = {
         silent = true;
       };
