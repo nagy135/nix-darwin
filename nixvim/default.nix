@@ -21,13 +21,15 @@ let
       noice.enable = true;
       comment.enable = true;
       undotree.enable = true;
-      gitsigns.enable = true;
       nix.enable = true;
       surround.enable = true;
       emmet.enable = true;
       todo-comments.enable = true;
     };
-    extraPlugins = [ pkgs.vimPlugins.gruvbox-material ];
+    extraPlugins = [ 
+      pkgs.vimPlugins.gruvbox-material
+      pkgs.vimPlugins.dressing-nvim
+    ];
     colorscheme = "gruvbox-material";
     # colorschemes.catppuccin.enable = true;
     
