@@ -45,6 +45,7 @@
             lazygit
             postman
             gh
+            tmux
             lsd
             fx
             deno
