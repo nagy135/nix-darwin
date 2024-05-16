@@ -2,9 +2,13 @@
   plugins.telescope = {
     enable = true;
     keymaps = {
-      "<leader>ff" = {
+      "<leader>gf" = {
         action = "git_files";
         desc = "Telescope Git Files";
+      };
+      "<leader>ff" = {
+        action = "find_files";
+        desc = "Telescope Find Files";
       };
       "<leader>fb" = {
         action = "buffers";
