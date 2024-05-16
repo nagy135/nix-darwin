@@ -16,6 +16,7 @@ let
     f [ ] attrList;
   nixvimConfiguration = {
     plugins = {
+      autoclose.enable = true;
       treesitter.enable = true;
       noice.enable = true;
       comment.enable = true;
