@@ -42,6 +42,8 @@ let
       shiftwidth = 2; # Tab width should be 2
       tabstop = 2; # Tab width should be 2
       laststatus = 3; # Single line status bar
+      splitright = true;
+      splitbelow = true;
     };
     keymaps = [
       {
@@ -161,11 +163,13 @@ in
       (import ./bufferline.nix)
       (import ./telescope.nix)
       (import ./cmp.nix)
+      (import ./oil.nix)
       (import ./lsp.nix)
       (import ./neotree.nix)
       (import ./harpoon.nix)
       (import ./copilot.nix)
       (import ./lualine.nix)
       (import ./flash.nix)
+      (import ./gitsigns.nix)
     ]
     )
