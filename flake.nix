@@ -88,6 +88,9 @@
         };
 
         homebrew = {
+          taps = [
+            "homebrew/cask-fonts"
+          ];
           enable = true;
           onActivation.autoUpdate = true;
           casks = [
@@ -105,6 +108,8 @@
             "spaceid"
             "ultimaker-cura"
             "wezterm"
+            "font-monaspace-nerd-font"
+            "font-noto-sans-symbols-2"
           ];
         };
 
@@ -169,7 +174,9 @@
         # services.yabai.extraConfig = builtins.readFile "${inputs.dotfiles}/yabai/yabairc";
         #
         # Create /etc/zshrc that loads the nix-darwin environment.
-        programs.zsh.enable = true; # default shell on catalina
+        programs.zsh = {
+          enable = true; # default shell on catalina
+        };
         # programs.fish.enable = true;
 
         # Set Git commit hash for darwin-version.
