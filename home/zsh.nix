@@ -90,6 +90,7 @@ in
 {
   programs.zsh = {
     enable = true;
+    syntaxHighlighting.enable = true;
     enableCompletion = true;
     autosuggestion.enable = true;
     defaultKeymap = "viins";
@@ -113,6 +114,7 @@ in
       vim = "nvim";
       nvim-yabai = "nvim ~/.yabairc";
       nvim-skhd = "nvim ~/.skhdrc";
+      nvim-tmux = "nvim ~/.tmux.conf";
 
       cd-nix = "cd ~/Code/nix-darwin";
     };
@@ -129,8 +131,11 @@ in
 
       			bindkey '^R' history-incremental-search-backward
 
+      			bindkey '^P' history-search-backward
+      			bindkey '^N' history-search-forward
+
       			setopt noincappendhistory
-      			setopt nosharehistory
+      			setopt sharehistory
       			setopt appendhistory
 
       			[ -f /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme ] && source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
@@ -142,6 +147,9 @@ in
       			fi
 
       			[[ ! -f ~/.dots/zsh/.p10k.zsh ]] || source ~/.dots/zsh/.p10k.zsh
+
+            zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+            zstyle ':completion:*' list-colors "$${(s.:.)LS_COLORS}"
       		'';
   };
 }
