@@ -86,7 +86,6 @@ let
       }
     ];
 
-
     extraConfigLua = ''
 
     vim.cmd("set undodir=~/.vim/undodir");
@@ -173,5 +172,7 @@ in
       (import ./lualine.nix)
       (import ./flash.nix)
       (import ./gitsigns.nix)
+
+      (import ./ftplugin.nix)
     ]
     )
