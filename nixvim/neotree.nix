@@ -9,7 +9,7 @@
   };
   keymaps = [
     {
-      action = "<cmd>Neotree toggle<CR>";
+      action = "<cmd>Neotree reveal toggle<CR>";
       key = "<leader>e";
     }
   ];
