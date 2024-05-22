@@ -92,6 +92,21 @@ let
     vim.cmd("set undodir=~/.vim/undodir");
     vim.cmd("set undofile");
 
+    vim.cmd([[ cnoreabbrev W w ]])
+    vim.cmd([[ cnoreabbrev Q q ]])
+
+    vim.cmd([[ cnoreabbrev Wq wq ]])
+    vim.cmd([[ cnoreabbrev wQ wq ]])
+
+    vim.cmd([[ cnoreabbrev Qa qa ]])
+
+    vim.cmd([[ cnoreabbrev wQa wqa ]])
+    vim.cmd([[ cnoreabbrev Wqa wqa ]])
+    vim.cmd([[ cnoreabbrev wqA wqa ]])
+    vim.cmd([[ cnoreabbrev WQa wqa ]])
+    vim.cmd([[ cnoreabbrev wQA wqa ]])
+    vim.cmd([[ cnoreabbrev WQA wqa ]])
+
     local cmp = require'cmp'
 
     cmp.setup({
@@ -168,6 +183,7 @@ in
       (import ./oil.nix)
       (import ./lsp.nix)
       (import ./neotree.nix)
+      (import ./neogit.nix)
       (import ./harpoon.nix)
       (import ./copilot.nix)
       (import ./lualine.nix)
