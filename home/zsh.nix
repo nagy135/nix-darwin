@@ -135,7 +135,7 @@ in
       			bindkey '^N' history-search-forward
 
       			setopt noincappendhistory
-      			setopt sharehistory
+      			setopt nosharehistory
       			setopt appendhistory
 
       			[ -f /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme ] && source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
