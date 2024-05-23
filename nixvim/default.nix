@@ -191,6 +191,7 @@ in
       (import ./flash.nix)
       (import ./undotree.nix)
       (import ./gitsigns.nix)
+      (import ./lspsaga.nix)
 
       (import ./ftplugin.nix)
     ]
