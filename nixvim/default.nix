@@ -25,6 +25,7 @@ let
       surround.enable = true;
       emmet.enable = true;
       todo-comments.enable = true;
+      which-key.enable = true;
     };
     extraPlugins = [ 
       pkgs.vimPlugins.gruvbox-material
