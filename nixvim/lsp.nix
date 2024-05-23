@@ -5,6 +5,7 @@
     action = "<cmd>lua vim.lsp.buf.rename()<CR>";
     options = {
       silent = true;
+      desc = "rename symbol";
     };
   }) [ "<leader>rn" "<leader>gr" ])
   ++
@@ -14,6 +15,7 @@
       key = "gd";
       options = {
         silent = true;
+        desc = "go to definition";
       };
     }
     {
@@ -21,6 +23,7 @@
       key = "gr";
       options = {
         silent = true;
+        desc = "find references";
       };
     }
     {
@@ -28,6 +31,7 @@
       key = "K";
       options = {
         silent = true;
+        desc = "show hover information";
       };
     }
     {
@@ -35,6 +39,7 @@
       key = "[d";
       options = {
         silent = true;
+        desc = "previous diagnostic";
       };
     }
     {
@@ -42,6 +47,7 @@
       key = "]d";
       options = {
         silent = true;
+        desc = "next diagnostic";
       };
     }
     {
@@ -49,6 +55,7 @@
       key = "<leader>ca";
       options = {
         silent = true;
+        desc = "code action";
       };
     }
   ];
