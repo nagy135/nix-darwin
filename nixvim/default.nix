@@ -20,7 +20,6 @@ let
       treesitter.enable = true;
       noice.enable = true;
       comment.enable = true;
-      undotree.enable = true;
       nix.enable = true;
       surround.enable = true;
       emmet.enable = true;
@@ -190,6 +189,7 @@ in
       (import ./copilot.nix)
       (import ./lualine.nix)
       (import ./flash.nix)
+      (import ./undotree.nix)
       (import ./gitsigns.nix)
 
       (import ./ftplugin.nix)
