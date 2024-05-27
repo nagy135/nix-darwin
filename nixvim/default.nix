@@ -52,19 +52,7 @@ let
     keymaps = [
       {
         key = "<C-h>";
-        action = "<c-w>h";
-      }
-      {
-        key = "<C-l>";
-        action = "<c-w>l";
-      }
-      {
-        key = "<C-j>";
-        action = "<c-w>j";
-      }
-      {
-        key = "<C-k>";
-        action = "<c-w>k";
+        action = "<CMD>nohlsearch<CR>";
       }
       {
         key = ";";
@@ -89,6 +77,7 @@ let
     ];
 
     extraConfigLua = ''
+    require('neogit').setup {};
 
     vim.cmd("set undodir=~/.vim/undodir");
     vim.cmd("set undofile");
