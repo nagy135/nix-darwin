@@ -7,7 +7,7 @@
       silent = true;
       desc = "rename symbol";
     };
-  }) [ "<leader>rn" "<leader>gr" ])
+  }) [ "<leader>rn" "<leader>gr" "<leader>cr" ])
   ++
   [
     {
