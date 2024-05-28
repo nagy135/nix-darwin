@@ -51,8 +51,24 @@ let
     };
     keymaps = [
       {
-        key = "<C-h>";
+        key = "<leader><C-h>";
         action = "<CMD>nohlsearch<CR>";
+      }
+      {
+        key = "<C-h>";
+        action = "<c-w>h";
+      }
+      {
+        key = "<C-l>";
+        action = "<c-w>l";
+      }
+      {
+        key = "<C-j>";
+        action = "<c-w>j";
+      }
+      {
+        key = "<C-k>";
+        action = "<c-w>k";
       }
       {
         key = ";";
