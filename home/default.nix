@@ -4,6 +4,7 @@
   imports = [
     ./lf.nix
     ./zsh.nix
+    ./z-lua.nix
   ];
   home.username = "viktornagy";
   home.homeDirectory = "/Users/viktornagy";
