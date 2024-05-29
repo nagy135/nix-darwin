@@ -5,6 +5,7 @@
     ./lf.nix
     ./zsh.nix
     ./z-lua.nix
+    ./alacritty.nix
   ];
   home.username = "viktornagy";
   home.homeDirectory = "/Users/viktornagy";
