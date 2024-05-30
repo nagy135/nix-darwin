@@ -2,6 +2,10 @@
   programs.alacritty = {
     enable = true;
     settings = {
+      window = {
+        decorations = "none";
+        opacity = 0.98;
+      };
       font = {
           size = 12;
         normal = {
