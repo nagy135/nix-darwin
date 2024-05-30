@@ -5,6 +5,10 @@
       window = {
         decorations = "none";
         opacity = 0.98;
+        padding = {
+          x = 2;
+          y = 2;
+        };
       };
       font = {
           size = 12;
