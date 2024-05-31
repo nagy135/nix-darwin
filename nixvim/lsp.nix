@@ -10,14 +10,14 @@
   }) [ "<leader>rn" "<leader>gr" "<leader>cr" ])
   ++
   [
-    {
-      action = "<cmd>lua vim.lsp.buf.definition()<CR>";
-      key = "gd";
-      options = {
-        silent = true;
-        desc = "go to definition";
-      };
-    }
+    # {
+    #   action = "<cmd>lua vim.lsp.buf.definition()<CR>";
+    #   key = "gd";
+    #   options = {
+    #     silent = true;
+    #     desc = "go to definition";
+    #   };
+    # }
     {
       action = "<cmd>lua vim.lsp.buf.references()<CR>";
       key = "gr";

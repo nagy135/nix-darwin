@@ -7,6 +7,10 @@ in {
   plugins.telescope = {
     enable = true;
     keymaps = {
+      "gd" = {
+        action = "lsp_definitions";
+        desc = "go to definition";
+      };
       "<leader>gf" = {
         action = "git_files";
         desc = "git files";
