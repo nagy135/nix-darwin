@@ -16,6 +16,7 @@
   ])
   ++
   [
+    # disabled, replaced by telescope
     # {
     #   action = "<cmd>lua vim.lsp.buf.definition()<CR>";
     #   key = "gd";
@@ -38,22 +39,6 @@
       options = {
         silent = true;
         desc = "show hover information";
-      };
-    }
-    {
-      action = "<cmd>lua vim.diagnostic.goto_prev()<CR>";
-      key = "[d";
-      options = {
-        silent = true;
-        desc = "previous diagnostic";
-      };
-    }
-    {
-      action = "<cmd>lua vim.diagnostic.goto_next()<CR>";
-      key = "]d";
-      options = {
-        silent = true;
-        desc = "next diagnostic";
       };
     }
     {
