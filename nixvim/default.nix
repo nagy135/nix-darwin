@@ -17,7 +17,6 @@ let
   nixvimConfiguration = {
     plugins = {
       autoclose.enable = true;
-      treesitter.enable = true;
       noice.enable = true;
       comment.enable = true;
       nix.enable = true;
@@ -25,7 +24,6 @@ let
       emmet.enable = true;
       todo-comments.enable = true;
       which-key.enable = true;
-      treesitter-context.enable = true;
     };
     extraPlugins = [ 
       pkgs.vimPlugins.gruvbox-material
@@ -197,6 +195,7 @@ in
       (import ./gitsigns.nix)
       (import ./lspsaga.nix)
       (import ./diffview.nix)
+      (import ./treesitter.nix)
 
       (import ./ftplugin.nix)
     ]
