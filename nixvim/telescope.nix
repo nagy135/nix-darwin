@@ -12,7 +12,13 @@ in {
       "gd" = {
         action = "lsp_definitions";
         options = {
-          desc = "go to definition";
+          desc = "go to definitios (telescope)";
+        };
+      };
+      "gr" = {
+        action = "lsp_references";
+        options = {
+          desc = "go to references (telescope)";
         };
       };
       "<leader>gf" = {
@@ -37,6 +43,12 @@ in {
         action = "live_grep";
         options = {
           desc = "live grep";
+        };
+      };
+      "<leader>sw" = {
+        action = "grep_string";
+        options = {
+          desc = "search word (under cursor)";
         };
       };
       "<leader>gs" = {
