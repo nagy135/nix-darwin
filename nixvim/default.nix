@@ -172,6 +172,12 @@ let
       }),
       matching = { disallow_symbol_nonprefix_matching = false }
     })
+
+
+
+    require('treesj').setup {
+      max_join_length = 500,
+    }
     '';
   };
 in
@@ -194,6 +200,7 @@ in
     (import ./lspsaga.nix)
     (import ./diffview.nix)
     (import ./treesitter.nix)
+    (import ./treesj.nix { inherit pkgs; })
 
     (import ./ftplugin.nix)
   ]
