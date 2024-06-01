@@ -3,7 +3,7 @@
     enable = true;
   };
   plugins.which-key.registrations = {
-      "<leader>u"= "Undotree";
+      "<leader>u" = "Undotree";
   };
   keymaps = [
     {

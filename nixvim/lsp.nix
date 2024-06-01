@@ -1,4 +1,7 @@
 {
+  plugins.which-key.registrations = {
+    "<leader>l" = "lsp";
+  };
   keymaps = 
   (builtins.map (key: {
     inherit key;
