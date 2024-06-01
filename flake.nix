@@ -57,7 +57,6 @@
             audacity
             go
             skhd
-            dbeaver
             ripgrep
             tldr
             neofetch
