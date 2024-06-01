@@ -196,6 +196,7 @@ in
       (import ./undotree.nix)
       (import ./gitsigns.nix)
       (import ./lspsaga.nix)
+      (import ./diffview.nix)
 
       (import ./ftplugin.nix)
     ]
