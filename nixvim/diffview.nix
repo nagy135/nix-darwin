@@ -3,7 +3,7 @@
   keymaps = [
     {
       key = "<leader>gh";
-      actions = "<cmd>DiffViewFileHistory %<cr>";
+      action = "<cmd>DiffViewFileHistory %<cr>";
       options = {
         desc = "file history (diffview)";
       };
