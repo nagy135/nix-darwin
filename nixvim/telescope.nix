@@ -24,37 +24,37 @@ in {
       "<leader>gf" = {
         action = "git_files";
         options = {
-          desc = "git files";
+          desc = "git files (telescope)";
         };
       };
       "<leader>ff" = {
         action = "find_files";
         options = {
-          desc = "files";
+          desc = "files (telescope)";
         };
       };
       "<leader>fb" = {
         action = "buffers";
         options = {
-          desc = "buffers";
+          desc = "buffers (telescope)";
         };
       };
       "<leader>/" = {
         action = "live_grep";
         options = {
-          desc = "live grep";
+          desc = "live grep (telescope)";
         };
       };
       "<leader>sw" = {
         action = "grep_string";
         options = {
-          desc = "search word (under cursor)";
+          desc = "search word (under cursor) (telescope)";
         };
       };
       "<leader>gs" = {
         action = "git_status";
         options = {
-          desc = "git status";
+          desc = "git status (telescope)";
         };
       };
       "<leader>fk" = keymaps_bind;
@@ -68,7 +68,7 @@ in {
       "<leader>fo" = {
         action = "oldfiles";
         options = {
-          desc = "old files";
+          desc = "old files (telescope)";
         };
       };
     };
