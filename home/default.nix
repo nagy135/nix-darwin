@@ -10,7 +10,9 @@
   home.username = "viktornagy";
   home.homeDirectory = "/Users/viktornagy";
 
-  home.packages = [ ];
+  home.packages = [
+    pkgs.zsh-powerlevel10k
+  ];
 
   home.stateVersion = "23.11";
 

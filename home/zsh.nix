@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   functionsScripts = pkgs.writeShellScript "zshfunctions" ''
     fzfvim(){
@@ -118,6 +118,19 @@ in
 
       cd-nix = "cd ~/Code/nix-darwin";
     };
+
+    plugins = [
+      {
+        name = "powerlevel10k";
+        src = pkgs.zsh-powerlevel10k;
+        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      }
+      {
+        name = "powerlevel10k-config";
+        src = lib.cleanSource ./config;
+        file = "p10k.zsh";
+      }
+    ];
     envExtra = ''
       			export HISTFILE=$HOME/.zsh_history
       			export PATH=$PATH:$HOME/.scripts
@@ -137,16 +150,6 @@ in
       			setopt noincappendhistory
       			setopt nosharehistory
       			setopt appendhistory
-
-      			[ -f /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme ] && source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-      			[ -f /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme ] && source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
-      			[ -f "$(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" ] && source "$(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme"
-
-      			if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-      				source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-      			fi
-
-      			[[ ! -f ~/.dots/zsh/.p10k.zsh ]] || source ~/.dots/zsh/.p10k.zsh
 
             zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
             zstyle ':completion:*' list-colors "$${(s.:.)LS_COLORS}"
