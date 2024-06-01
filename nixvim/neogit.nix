@@ -1,6 +1,8 @@
 {
+  plugins.diffview.enable = true;
   plugins.neogit = {
     enable = true;
+    settings.integrations.diffview = true;
   };
   keymaps = [
     {
