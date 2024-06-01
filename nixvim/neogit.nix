@@ -1,4 +1,7 @@
 {
+  plugins.neogit = {
+    enable = true;
+  };
   keymaps = [
     {
       key = "<leader>gg";

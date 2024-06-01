@@ -30,7 +30,6 @@ let
     extraPlugins = [ 
       pkgs.vimPlugins.gruvbox-material
       pkgs.vimPlugins.dressing-nvim
-      pkgs.vimPlugins.neogit
     ];
     colorscheme = "gruvbox-material";
     # colorschemes.catppuccin.enable = true;
