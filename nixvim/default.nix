@@ -175,28 +175,25 @@ let
     '';
   };
 in
-  nixvim.legacyPackages."aarch64-darwin".makeNixvim
-  (
-    recursiveMerge
-    [
-      nixvimConfiguration
-      (import ./bufferline.nix)
-      (import ./telescope.nix)
-      (import ./cmp.nix)
-      (import ./oil.nix)
-      (import ./lsp.nix)
-      (import ./neotree.nix)
-      (import ./neogit.nix)
-      (import ./harpoon.nix)
-      (import ./copilot.nix)
-      (import ./lualine.nix)
-      (import ./flash.nix)
-      (import ./undotree.nix)
-      (import ./gitsigns.nix)
-      (import ./lspsaga.nix)
-      (import ./diffview.nix)
-      (import ./treesitter.nix)
+  recursiveMerge
+  [
+    nixvimConfiguration
+    (import ./bufferline.nix)
+    (import ./telescope.nix)
+    (import ./cmp.nix)
+    (import ./oil.nix)
+    (import ./lsp.nix)
+    (import ./neotree.nix)
+    (import ./neogit.nix)
+    (import ./harpoon.nix)
+    (import ./copilot.nix)
+    (import ./lualine.nix)
+    (import ./flash.nix)
+    (import ./undotree.nix)
+    (import ./gitsigns.nix)
+    (import ./lspsaga.nix)
+    (import ./diffview.nix)
+    (import ./treesitter.nix)
 
-      (import ./ftplugin.nix)
-    ]
-    )
+    (import ./ftplugin.nix)
+  ]
