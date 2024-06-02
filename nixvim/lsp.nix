@@ -63,6 +63,12 @@
     enable = true;
 
     servers = {
+      pyright = {
+        enable = true;
+      };
+      phpactor = {
+        enable = true;
+      };
       tsserver = {
         enable = true;
         settings = 
