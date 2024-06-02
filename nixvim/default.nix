@@ -18,7 +18,6 @@ let
     plugins = {
       autoclose.enable = true;
       noice.enable = true;
-      comment.enable = true;
       nix.enable = true;
       surround.enable = true;
       emmet.enable = true;
