@@ -23,10 +23,10 @@ let
       emmet.enable = true;
       todo-comments.enable = true;
       which-key.enable = true;
+      dressing.enable = true;
     };
     extraPlugins = [ 
       pkgs.vimPlugins.gruvbox-material
-      pkgs.vimPlugins.dressing-nvim
     ];
     colorscheme = "gruvbox-material";
     # colorschemes.catppuccin.enable = true;
