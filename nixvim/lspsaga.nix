@@ -2,6 +2,7 @@
   plugins.lspsaga = {
     enable = true;
     lightbulb.enable = false;
+    symbolInWinbar.enable = false;
   };
   keymaps = [
     {
