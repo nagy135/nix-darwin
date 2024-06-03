@@ -5,10 +5,10 @@
       incrementalSelection = {
         enable = true;
         keymaps = {
-          initSelection = "gnn";
-          nodeIncremental = "gnn";
-          nodeDecremental = "gnp";
-          scopeIncremental = "gnc";
+          initSelection = "gn";
+          nodeIncremental = "gn";
+          nodeDecremental = "gp";
+          scopeIncremental = "gs";
         };
       };
     };
