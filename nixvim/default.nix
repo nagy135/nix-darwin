@@ -199,6 +199,7 @@ in
     (import ./lspsaga.nix)
     (import ./diffview.nix)
     (import ./treesitter.nix)
+    (import ./indent-blankline.nix)
     (import ./treesj.nix { inherit pkgs; })
 
     (import ./ftplugin.nix)
