@@ -25,8 +25,9 @@ let
       which-key.enable = true;
       dressing.enable = true;
     };
-    extraPlugins = [ 
-      pkgs.vimPlugins.gruvbox-material
+    extraPlugins = with pkgs; [ 
+      vimPlugins.gruvbox-material
+      vimPlugins.CopilotChat-nvim
     ];
     colorscheme = "gruvbox-material";
     # colorschemes.catppuccin.enable = true;
@@ -177,6 +178,8 @@ let
     require('treesj').setup {
       max_join_length = 500,
     }
+     
+    require('CopilotChat').setup()
     '';
   };
 in
