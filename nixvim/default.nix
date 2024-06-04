@@ -200,6 +200,7 @@ in
     (import ./diffview.nix)
     (import ./treesitter.nix)
     (import ./indent-blankline.nix)
+    (import ./mini.nix)
     (import ./treesj.nix { inherit pkgs; })
 
     (import ./ftplugin.nix)
