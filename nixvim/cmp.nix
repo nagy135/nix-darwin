@@ -13,7 +13,7 @@
   keymaps = [
     {
       key = "<C-n>";
-      action = ''
+      action.__raw = ''
               function(fallback)
               if cmp.visible() then
         	cmp.select_next_item()
@@ -28,7 +28,7 @@
     }
     {
       key = "<C-p>";
-      action = ''
+      action.__raw = ''
               function(fallback)
               if cmp.visible() then
         	cmp.select_prev_item()

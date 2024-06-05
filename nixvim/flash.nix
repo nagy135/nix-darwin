@@ -5,14 +5,14 @@
   keymaps = [
     {
       key = "s";
-      action = "<cmd>lua require('flash').jump()<CR>";
+      action.__raw = "function() require('flash').jump() end";
       options = {
         desc = "Flash jump";
       };
     }
     {
       key = "S";
-      action = "<cmd>lua require('flash').treesitter()<CR>";
+      action.__raw = "function() require('flash').treesitter() end";
       options = {
         desc = "Flash treesitter";
       };
