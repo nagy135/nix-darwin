@@ -27,6 +27,12 @@ in {
           desc = "git files (telescope)";
         };
       };
+      "fh" = {
+        action = "help_tags";
+        options = {
+          desc = "go to help (telescope)";
+        };
+      };
       "<leader>ff" = {
         action = "find_files";
         options = {
