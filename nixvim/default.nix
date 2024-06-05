@@ -80,6 +80,10 @@ let
         action = "<cmd>b#<CR>";
       }
       {
+        key = "<leader>bd";
+        action = "<cmd>bd<CR>";
+      }
+      {
         key = "H";
         action = "<cmd>bprevious<CR>";
       }
