@@ -39,6 +39,11 @@ in {
         options = {
           desc = suffix "files";
         };
+      };
+      "<leader>fr" = {
+        action = "resume";
+        options = {
+          desc = suffix "resume";
         };
       };
       "<leader>fb" = {
