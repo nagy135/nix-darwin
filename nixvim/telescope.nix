@@ -2,9 +2,10 @@ let
   keymaps_bind = {
     action = "keymaps";
     options = {
-      desc = "keymaps";
+      desc = suffix "keymaps";
     };
   };
+  suffix = var : var + " (telescope)";
 in {
   plugins.telescope = {
     enable = true;
@@ -12,55 +13,56 @@ in {
       "gd" = {
         action = "lsp_definitions";
         options = {
-          desc = "go to definitios (telescope)";
+          desc = suffix "go to definitios";
         };
       };
       "gr" = {
         action = "lsp_references";
         options = {
-          desc = "go to references (telescope)";
+          desc = suffix "go to references";
         };
       };
       "<leader>gf" = {
         action = "git_files";
         options = {
-          desc = "git files (telescope)";
+          desc = suffix "git files";
         };
       };
       "fh" = {
         action = "help_tags";
         options = {
-          desc = "go to help (telescope)";
+          desc = suffix "go to help";
         };
       };
       "<leader>ff" = {
         action = "find_files";
         options = {
-          desc = "files (telescope)";
+          desc = suffix "files";
+        };
         };
       };
       "<leader>fb" = {
         action = "buffers";
         options = {
-          desc = "buffers (telescope)";
+          desc = suffix "buffers";
         };
       };
       "<leader>/" = {
         action = "live_grep";
         options = {
-          desc = "live grep (telescope)";
+          desc = suffix "live grep";
         };
       };
       "<leader>sw" = {
         action = "grep_string";
         options = {
-          desc = "search word (under cursor) (telescope)";
+          desc = suffix "search word (under cursor)";
         };
       };
       "<leader>gs" = {
         action = "git_status";
         options = {
-          desc = "git status (telescope)";
+          desc = suffix "git status";
         };
       };
       "<leader>fk" = keymaps_bind;
@@ -74,7 +76,7 @@ in {
       "<leader>fo" = {
         action = "oldfiles";
         options = {
-          desc = "old files (telescope)";
+          desc = suffix "old files";
         };
       };
     };
