@@ -48,7 +48,6 @@
             postman
             gh
             tmux
-            lsd
             fx
             deno
             nodejs_latest
