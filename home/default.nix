@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports = [
@@ -7,6 +7,8 @@
     ./z-lua.nix
     ./alacritty.nix
     ./eza.nix
+    inputs.nixvim.homeManagerModules.nixvim
+    ../nixvim
   ];
   home.username = "viktornagy";
   home.homeDirectory = "/Users/viktornagy";
@@ -18,5 +20,7 @@
   home.stateVersion = "23.11";
 
   programs.home-manager.enable = true;
+  programs.nixvim.enable = true;
+  programs.nixvim.defaultEditor = true;
 
 }

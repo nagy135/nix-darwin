@@ -25,13 +25,6 @@
     let
       home = "/Users/viktornagy";
       platform = "aarch64-darwin";
-      nixvimPkg = nixvim.legacyPackages.${platform}.makeNixvim (
-        import ./nixvim { 
-          inherit nixvim;
-          lib = nixpkgs.lib;
-          pkgs = nixpkgs.legacyPackages.${platform};
-        }
-      );
       configuration = { pkgs, ... }: {
         # List packages installed in system profile. To search by name, run:
         # $ nix-env -qaP | grep wget
@@ -40,7 +33,6 @@
           [
             home-manager
             transmission
-            nixvimPkg
             iina
             qemu
             lazydocker
@@ -206,6 +198,10 @@
           home-manager.darwinModules.home-manager
           {
             home-manager = {
+              backupFileExtension = "save";
+              extraSpecialArgs = {
+                inherit inputs;
+              };
               users.viktornagy = import ./home;
             };
             users.users.viktornagy.home = "/Users/viktornagy";

@@ -15,6 +15,7 @@ let
     in
     f [ ] attrList;
   nixvimConfiguration = {
+    enable = true;
     plugins = {
       autoclose.enable = true;
       noice.enable = true;
@@ -187,28 +188,29 @@ let
     '';
   };
 in
-  recursiveMerge
-  [
-    nixvimConfiguration
-    (import ./bufferline.nix)
-    (import ./telescope.nix)
-    (import ./cmp.nix)
-    (import ./oil.nix)
-    (import ./lsp.nix)
-    (import ./neotree.nix)
-    (import ./neogit.nix)
-    (import ./harpoon.nix)
-    (import ./copilot.nix)
-    (import ./lualine.nix)
-    (import ./flash.nix)
-    (import ./undotree.nix)
-    (import ./gitsigns.nix)
-    (import ./lspsaga.nix)
-    (import ./diffview.nix)
-    (import ./treesitter.nix)
-    (import ./indent-blankline.nix)
-    (import ./mini.nix)
-    (import ./treesj.nix { inherit pkgs; })
+  { 
+    programs.nixvim = recursiveMerge [
+      nixvimConfiguration
+      (import ./bufferline.nix)
+      (import ./telescope.nix)
+      (import ./cmp.nix)
+      (import ./oil.nix)
+      (import ./lsp.nix)
+      (import ./neotree.nix)
+      (import ./neogit.nix)
+      (import ./harpoon.nix)
+      (import ./copilot.nix)
+      (import ./lualine.nix)
+      (import ./flash.nix)
+      (import ./undotree.nix)
+      (import ./gitsigns.nix)
+      (import ./lspsaga.nix)
+      (import ./diffview.nix)
+      (import ./treesitter.nix)
+      (import ./indent-blankline.nix)
+      (import ./mini.nix)
+      (import ./treesj.nix { inherit pkgs; })
 
-    (import ./ftplugin.nix)
-  ]
+      (import ./ftplugin.nix)
+    ];
+  }
