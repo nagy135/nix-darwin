@@ -95,10 +95,6 @@ in
     autosuggestion.enable = true;
     defaultKeymap = "viins";
     shellAliases = {
-      ls = "lsd";
-      la = "lsd -a";
-      ll = "lsd -l";
-
       lg = "lazygit";
 
       cdc = "cd ~/Code";
