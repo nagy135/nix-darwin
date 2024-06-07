@@ -128,6 +128,7 @@ in
       }
     ];
     envExtra = ''
+      			export EDITOR=nvim
       			export HISTFILE=$HOME/.zsh_history
       			export PATH=$PATH:$HOME/.scripts
       			'';
