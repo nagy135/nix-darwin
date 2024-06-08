@@ -16,6 +16,7 @@ let
     f [ ] attrList;
   nixvimConfiguration = {
     enable = true;
+    defaultEditor = true;
     plugins = {
       autoclose.enable = true;
       noice.enable = true;

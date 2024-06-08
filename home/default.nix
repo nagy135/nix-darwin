@@ -17,7 +17,5 @@
   home.stateVersion = "23.11";
 
   programs.home-manager.enable = true;
-  programs.nixvim.enable = true;
-  programs.nixvim.defaultEditor = true;
 
 }
