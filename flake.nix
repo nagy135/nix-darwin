@@ -59,6 +59,7 @@
             htop
             fzf
             git
+            arduino-cli
             # python
           ];
 
