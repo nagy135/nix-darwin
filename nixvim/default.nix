@@ -186,7 +186,14 @@ let
     }
      
     require('CopilotChat').setup()
+
+
+    require('thief')
+
     '';
+    extraFiles = {
+      "lua/thief.lua" = builtins.readFile ./lua/thief.lua;
+    };
   };
 in
   { 
