@@ -60,6 +60,7 @@
             fzf
             git
             arduino-cli
+            nmap
             # python
           ];
 
