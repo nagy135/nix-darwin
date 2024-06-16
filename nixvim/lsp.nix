@@ -80,6 +80,9 @@
       pyright = {
         enable = true;
       };
+      gopls = {
+        enable = true;
+      };
       phpactor = {
         enable = true;
       };
