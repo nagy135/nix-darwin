@@ -29,6 +29,7 @@ let
     };
     extraPlugins = with pkgs; [ 
       vimPlugins.gruvbox-material
+      vimPlugins.nvim-window-picker
       vimPlugins.CopilotChat-nvim
     ];
     colorscheme = "gruvbox-material";
