@@ -108,6 +108,8 @@
       };
       nixd.enable = true;
 
+      tailwindcss.enable = true;
+
       lua-ls = {
         enable = true;
         settings.telemetry.enable = false;
