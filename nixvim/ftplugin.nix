@@ -19,9 +19,30 @@ let
       }
     ];
   };
+  python_ftplugin = {
+    keymaps = [
+      {
+        key = "<leader>;p";
+        action = ''oprint()<ESC>'';
+      }
+      {
+        key = "<leader>;P";
+        action = ''Oprint()<ESC>'';
+      }
+      {
+        key = "<leader>;;p";
+        action = "yiwoprint('', )<ESC>PF'P^";
+      }
+      {
+        key = "<leader>;;P";
+        action = "yiwOprint('', )<ESC>PF'P^";
+      }
+    ];
+  };
 in
   {
     files."ftplugin/typescript.lua" = js_ts_ftplugin;
     files."ftplugin/javascript.lua" = js_ts_ftplugin;
     files."ftplugin/typescriptreact.lua" = js_ts_ftplugin;
+    files."ftplugin/python.lua" = python_ftplugin;
   }
