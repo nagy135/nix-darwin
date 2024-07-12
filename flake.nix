@@ -160,7 +160,6 @@
           space_icon_color_secondary = "0xff78c4d4";
           space_icon_color_tertiary  = "0xfffff9b0";
           clock_icon                 = "📅";
-          dnd_icon                   = "";
           clock_format               = ''"%d/%m/%y  %R"'';
         };
 
