@@ -27,7 +27,6 @@
       platform = "aarch64-darwin";
       configuration = { pkgs, ... }: {
         imports = [
-          ./darwin/skhd.nix
         ];
         # List packages installed in system profile. To search by name, run:
         # $ nix-env -qaP | grep wget
@@ -197,6 +196,7 @@
 
         services.yabai.enable = true;
         services.yabai.package = pkgs.yabai;
+        services.skhd.enable = true;
         # services.yabai.extraConfig = builtins.readFile "${inputs.dotfiles}/yabai/yabairc";
         #
         # Create /etc/zshrc that loads the nix-darwin environment.
@@ -246,4 +246,4 @@
       # Expose the package set, including overlays, for convenience.
       darwinPackages = self.darwinConfigurations."macos".pkgs;
     };
-}
+  }
