@@ -147,7 +147,7 @@
           spacing_left               = 25;
           spacing_right              = 15;
           text_font                  = ''"Mononoki Nerd Font:Regular:12.0"'';
-          icon_font                  = ''"Mononoki Nerd Font:Regular:12.0"'';
+          icon_font                  = ''"Mononoki Nerd Font:Regular:14.0"'';
           background_color           = "0xff0b0b0b";
           foreground_color           = "0xffa8a8a8";
           power_icon_color           = "0xffcd950c";
@@ -158,7 +158,7 @@
           space_icon_color           = "0xffe78a4e";
           space_icon_color_secondary = "0xff78c4d4";
           space_icon_color_tertiary  = "0xfffff9b0";
-          clock_icon                 = "📅";
+          clock_icon                 = "";
           clock_format               = ''"%d/%m/%y  %R"'';
         };
 
