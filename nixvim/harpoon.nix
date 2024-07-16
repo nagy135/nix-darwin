@@ -39,9 +39,7 @@
     let strKey = builtins.toString key;
     in {
     key = "<leader>${strKey}";
-    action.__raw = ''function()
-      require('harpoon.ui').nav_file(${strKey})
-    end'';
+    action.__raw = ''function() require('harpoon.ui').nav_file(${strKey}) end'';
     options = {
       silent = true;
       desc = "Harpoon: ${strKey}";
