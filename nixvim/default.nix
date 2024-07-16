@@ -219,6 +219,7 @@ in
       (import ./indent-blankline.nix)
       (import ./mini.nix)
       (import ./zen-mode.nix)
+      (import ./trouble.nix)
       (import ./treesj.nix { inherit pkgs; })
 
       (import ./ftplugin.nix)
