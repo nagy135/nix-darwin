@@ -13,6 +13,16 @@
     {
       action = "<cmd>Neotree reveal toggle<CR>";
       key = "<leader>e";
+      options = {
+        desc = "Neotree filetree";
+      };
+    }
+    {
+      action = "<cmd>Neotree reveal buffers<CR>";
+      key = "<leader>be";
+      options = {
+        desc = "Neotree buffers";
+      };
     }
   ];
 }
