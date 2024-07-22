@@ -77,6 +77,9 @@
     enable = true;
 
     servers = {
+      eslint = {
+        enable = true;
+      };
       pyright = {
         enable = true;
       };
