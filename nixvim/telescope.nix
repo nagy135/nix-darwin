@@ -29,7 +29,7 @@ in {
           desc = suffix "git files";
         };
       };
-      "fh" = {
+      "<leader>fh" = {
         action = "help_tags";
         options = {
           desc = suffix "go to help";
