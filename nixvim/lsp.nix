@@ -68,7 +68,7 @@
       key = "<leader>lh";
       options = {
         silent = true;
-        desc = "toggle inlay hints";
+        desc = "Toggle inlay hints";
       };
     }
   ];
@@ -77,6 +77,9 @@
     enable = true;
 
     servers = {
+      zls = {
+        enable = true;
+      };
       eslint = {
         enable = true;
       };
