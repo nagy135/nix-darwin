@@ -51,6 +51,7 @@
             alacritty
             audacity
             go
+            zig
             skhd
             ripgrep
             tldr
