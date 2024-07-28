@@ -23,6 +23,12 @@ in {
           desc = suffix "go to references";
         };
       };
+      "<leader>x" = {
+        action = "diagnostics";
+        options = {
+          desc = suffix "diagnostics";
+        };
+      };
       "<leader>gf" = {
         action = "git_files";
         options = {

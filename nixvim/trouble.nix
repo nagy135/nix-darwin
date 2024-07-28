@@ -5,7 +5,7 @@
   keymaps = [
     {
       action = "<cmd>TroubleToggle workspace_diagnostics<CR>";
-      key = "<leader>x";
+      key = "<leader>X";
       options = {
         desc = "Trouble diagnostics";
       };
