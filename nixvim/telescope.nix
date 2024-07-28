@@ -47,6 +47,12 @@ in {
           desc = suffix "resume";
         };
       };
+      "<leader>f/" = {
+        action = "search_history";
+        options = {
+          desc = suffix "search history";
+        };
+      };
       "<leader>fb" = {
         action = "buffers";
         options = {
