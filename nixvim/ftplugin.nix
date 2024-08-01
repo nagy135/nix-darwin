@@ -39,10 +39,23 @@ let
       }
     ];
   };
+  go_ftplugin = {
+    keymaps = [
+      {
+        key = "<leader>;;p";
+        action = "yiwolog.Printf(\" %T\", )<ESC>PF\"F\"p^";
+      }
+      {
+        key = "<leader>;;P";
+        action = "yiwOlog.Printf(\" %T\", )<ESC>PF\"F\"p^";
+      }
+    ];
+  };
 in
   {
     files."ftplugin/typescript.lua" = js_ts_ftplugin;
     files."ftplugin/javascript.lua" = js_ts_ftplugin;
     files."ftplugin/typescriptreact.lua" = js_ts_ftplugin;
     files."ftplugin/python.lua" = python_ftplugin;
+    files."ftplugin/go.lua" = go_ftplugin;
   }
