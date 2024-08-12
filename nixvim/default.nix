@@ -191,6 +191,10 @@ let
 
     require('thief')
 
+    require('window-picker').setup({
+      hint = 'floating-big-letter'
+    })
+
     '';
     extraFiles = {
       "lua/thief.lua" = builtins.readFile ./lua/thief.lua;
