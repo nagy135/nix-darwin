@@ -48,6 +48,7 @@ let
       laststatus = 3; # Single line status bar
       splitright = true;
       splitbelow = true;
+      foldmethod = "marker";
     };
     keymaps = [
       {
