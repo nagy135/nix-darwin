@@ -7,6 +7,7 @@
     window.mappings = {
       v = "open_vsplit";
       s = "open_split";
+      "/" = "noop";
     };
   };
   keymaps = [
