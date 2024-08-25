@@ -102,6 +102,14 @@ let
         key = "L";
         action = "<cmd>bnext<CR>";
       }
+      {
+        key = "<leader>j";
+        action = "<cmd>cn<CR>";
+      }
+      {
+        key = "<leader>k";
+        action = "<cmd>cp<CR>";
+      }
     ];
 
     extraConfigLua = ''
