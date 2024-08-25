@@ -18,6 +18,13 @@ let
     enable = true;
     defaultEditor = true;
     plugins = {
+      none-ls = {
+        enable = true;
+        sources.formatting.prettier = {
+          disableTsServerFormatter = true;
+          enable = true;
+        };
+      };
       autoclose.enable = true;
       noice.enable = true;
       nix.enable = true;
