@@ -14,6 +14,13 @@ for _, bind in ipairs(binds) do
 		hs.eventtap.keyStroke(bind.to_mod, bind.to_key, 0)
 	end)
 end
+
+
+hs.hotkey.bind({ "cmd", "ctrl" }, "a", function()
+	hs.osascript.applescriptFromFile('arcswitcher.applescript')
+end)
+
+
 hs.hotkey.bind({ "cmd", "ctrl" }, "l", function()
 	local chooser = hs.chooser.new(function(choice)
 		if not choice then
