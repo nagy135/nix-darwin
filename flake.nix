@@ -65,6 +65,7 @@
             spacebar
             arduino-cli
             nmap
+            mods
             # python
           ];
 
@@ -108,6 +109,7 @@
             "wezterm"
             "font-monaspace-nerd-font"
             "font-noto-sans-symbols-2"
+            "hammerspoon"
           ];
         };
 

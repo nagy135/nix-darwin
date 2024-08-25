@@ -13,6 +13,12 @@
   home.username = "viktornagy";
   home.homeDirectory = "/Users/viktornagy";
 
+  home.file."hammerspoon" = {
+    source = ./config/hammerspoon;
+    target = ".hammerspoon";
+    recursive = true;
+  };
+
 
   home.stateVersion = "23.11";
 
