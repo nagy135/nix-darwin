@@ -16,8 +16,14 @@ for _, bind in ipairs(binds) do
 end
 
 
+-- open Arc
 hs.hotkey.bind({ "cmd", "ctrl" }, "a", function()
 	hs.osascript.applescriptFromFile('arcswitcher.applescript')
+end)
+
+--- open Spotify
+hs.hotkey.bind({ "alt" }, "m", function()
+	hs.osascript.applescriptFromFile('spotifyswitcher.applescript')
 end)
 
 
