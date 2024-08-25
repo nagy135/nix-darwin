@@ -27,7 +27,7 @@ hs.hotkey.bind({ "alt" }, "m", function()
 end)
 
 
-hs.hotkey.bind({ "cmd", "ctrl" }, "l", function()
+hs.hotkey.bind({ "ctrl" }, "space", function()
 	local chooser = hs.chooser.new(function(choice)
 		if not choice then
 			local current = hs.keycodes.currentSourceID()
