@@ -71,6 +71,14 @@
         desc = "Toggle inlay hints";
       };
     }
+    {
+      action = "<cmd>LspRestart<CR>";
+      key = "<leader>lr";
+      options = {
+        silent = true;
+        desc = "Lsp restart";
+      };
+    }
   ];
   plugins.lsp-format.enable = true;
   plugins.lsp = {
@@ -119,6 +127,9 @@
       lua-ls = {
         enable = true;
         settings.telemetry.enable = false;
+        settings.diagnostics.globals = [
+          "hs"
+        ];
       };
       rust-analyzer = {
         enable = true;
