@@ -14,3 +14,32 @@ for _, bind in ipairs(binds) do
 		hs.eventtap.keyStroke(bind.to_mod, bind.to_key, 0)
 	end)
 end
+hs.hotkey.bind({ "cmd", "ctrl" }, "l", function()
+	local chooser = hs.chooser.new(function(choice)
+		if not choice then
+			local current = hs.keycodes.currentSourceID()
+			hs.alert.show("keeping " .. current:match("([^%.]+)$"))
+			return
+		end
+		hs.keycodes.setLayout(choice.text)
+		hs.alert.show(choice.text)
+	end)
+
+	local layouts = hs.keycodes.layouts()
+	local choices = {}
+	for i, layout in ipairs(layouts) do
+		choices[i] = {
+			text = layout,
+			subText = layout:gsub("%.", ""),
+		}
+	end
+
+	chooser:choices(choices)
+
+	chooser:searchSubText(true)
+	chooser:placeholderText("select layout")
+	chooser:rows(#choices)
+	chooser:width(20)
+
+	chooser:show()
+end)
