@@ -21,12 +21,6 @@ hs.hotkey.bind({ "cmd", "ctrl" }, "a", function()
 	hs.osascript.applescriptFromFile('arcswitcher.applescript')
 end)
 
---- open Spotify
-hs.hotkey.bind({ "alt" }, "m", function()
-	hs.osascript.applescriptFromFile('spotifyswitcher.applescript')
-end)
-
-
 hs.hotkey.bind({ "ctrl" }, "space", function()
 	local chooser = hs.chooser.new(function(choice)
 		if not choice then
