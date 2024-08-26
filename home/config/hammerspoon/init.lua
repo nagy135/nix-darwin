@@ -1,3 +1,5 @@
+require("hs.ipc")
+
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "W", function()
 	hs.alert.show("Hello World!")
 end)
@@ -21,7 +23,7 @@ hs.hotkey.bind({ "cmd", "ctrl" }, "a", function()
 	hs.osascript.applescriptFromFile('arcswitcher.applescript')
 end)
 
-hs.hotkey.bind({ "ctrl" }, "space", function()
+local layoutSwitcher = function()
 	local chooser = hs.chooser.new(function(choice)
 		if not choice then
 			local current = hs.keycodes.currentSourceID()
@@ -49,4 +51,6 @@ hs.hotkey.bind({ "ctrl" }, "space", function()
 	chooser:width(20)
 
 	chooser:show()
-end)
+end
+
+hs.hotkey.bind({ "ctrl" }, "space", layoutSwitcher)
