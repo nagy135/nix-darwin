@@ -112,8 +112,6 @@ in
       ":q" = "exit";
 
       vim = "nvim";
-      nvim-yabai = "nvim ~/.yabairc";
-      nvim-skhd = "nvim ~/.skhdrc";
       nvim-tmux = "nvim ~/.tmux.conf";
 
       cd-nix = "cd ~/Code/nix-darwin";
