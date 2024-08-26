@@ -203,3 +203,7 @@ alt-shift-l = ['join-with right', 'mode main']
 if.app-id = 'com.spotify.client'
 run = "move-node-to-workspace M"
 
+[[on-window-detected]]
+if.app-id = 'org.blenderfoundation.blender'
+run = "move-node-to-workspace B"
+
