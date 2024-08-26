@@ -207,3 +207,6 @@ run = "move-node-to-workspace M"
 if.app-id = 'org.blenderfoundation.blender'
 run = "move-node-to-workspace B"
 
+[[on-window-detected]]
+if.app-id = 'com.bambulab.bambu-studio'
+run = "move-node-to-workspace 5"
