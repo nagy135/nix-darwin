@@ -19,6 +19,12 @@
     recursive = true;
   };
 
+  home.file."aerospace" = {
+    source = ./config/aerospace;
+    target = ".config/aerospace";
+    recursive = true;
+  };
+
 
   home.stateVersion = "23.11";
 

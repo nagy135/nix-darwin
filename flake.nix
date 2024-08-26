@@ -109,6 +109,7 @@
             "font-monaspace-nerd-font"
             "font-noto-sans-symbols-2"
             "hammerspoon"
+            "nikitabobko/tap/aerospace"
           ];
         };
 
