@@ -133,6 +133,7 @@ in
       			export EDITOR=nvim
       			export HISTFILE=$HOME/.zsh_history
       			export PATH=$PATH:$HOME/.scripts
+            export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
       			'';
     initExtra = ''
       			source ${functionsScripts}
