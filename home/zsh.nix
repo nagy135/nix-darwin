@@ -99,7 +99,8 @@ in
     autosuggestion.enable = true;
     defaultKeymap = "viins";
     shellAliases = {
-      lg = "lazygit";
+      lg = "lazygit --ucf ~/.config/lazygit/config.yml";
+      lgs = "lazygit --ucf ~/.config/lazygit/config_side-by-side.yml";
 
       cdc = "cd ~/Code";
       cdd = "cd ~/.dots";
