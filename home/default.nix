@@ -7,8 +7,8 @@
     ./z-lua.nix
     ./alacritty.nix
     ./eza.nix
-    inputs.nixvim.homeManagerModules.nixvim
-    ../nixvim
+    # inputs.nixvim.homeManagerModules.nixvim
+    # ../nixvim
   ];
   home.username = "viktornagy";
   home.homeDirectory = "/Users/viktornagy";

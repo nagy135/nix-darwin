@@ -65,6 +65,7 @@
             arduino-cli
             nmap
             mods
+            neovim
             # python
           ];
 
@@ -247,4 +248,4 @@
       # Expose the package set, including overlays, for convenience.
       darwinPackages = self.darwinConfigurations."macos".pkgs;
     };
-  }
+}
