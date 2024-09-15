@@ -66,6 +66,7 @@
             nmap
             mods
             neovim
+            delta
             # python
           ];
 
