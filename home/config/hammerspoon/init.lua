@@ -4,7 +4,6 @@ hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "W", function()
 	hs.alert.show("Hello World!")
 end)
 
-
 local binds = {
 	{ from_mod = { "cmd", "alt" }, from_key = "h", to_mod = nil, to_key = "left" },
 	{ from_mod = { "cmd", "alt" }, from_key = "j", to_mod = nil, to_key = "down" },
@@ -12,15 +11,15 @@ local binds = {
 	{ from_mod = { "cmd", "alt" }, from_key = "l", to_mod = nil, to_key = "right" },
 }
 for _, bind in ipairs(binds) do
-	hs.hotkey.bind(bind.from_mod, bind.from_key, function()
+	local functionRun = function()
 		hs.eventtap.keyStroke(bind.to_mod, bind.to_key, 0)
-	end)
+	end
+	hs.hotkey.bind(bind.from_mod, bind.from_key, functionRun, nil, functionRun)
 end
-
 
 -- open Arc
 hs.hotkey.bind({ "cmd", "ctrl" }, "a", function()
-	hs.osascript.applescriptFromFile('arcswitcher.applescript')
+	hs.osascript.applescriptFromFile("arcswitcher.applescript")
 end)
 
 local layoutSwitcher = function()
