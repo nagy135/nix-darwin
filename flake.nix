@@ -93,6 +93,7 @@
           ];
           enable = true;
           onActivation.autoUpdate = true;
+          onActivation.upgrade = true;
           casks = [
             "discord"
             "raycast"
