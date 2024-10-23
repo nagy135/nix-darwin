@@ -119,7 +119,7 @@
         };
 
         system.keyboard.enableKeyMapping = true;
-        system.keyboard.nonUS.remapTilde = true;
+        system.keyboard.nonUS.remapTilde = false;
         system.defaults.NSGlobalDomain.KeyRepeat = 2;
 
         system.keyboard.remapCapsLockToEscape = true;
