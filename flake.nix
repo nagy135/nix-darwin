@@ -34,7 +34,7 @@
           with pkgs;
           [
             home-manager
-            transmission
+            transmission_4
             iina
             qemu
             lazydocker
