@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   imports = [
@@ -23,6 +23,14 @@
     source = ./config/aerospace;
     target = ".config/aerospace";
     recursive = true;
+  };
+
+
+
+  home.file.".npmrc".text = lib.generators.toINIWithGlobalSection {} {
+    globalSection = {
+      prefix = "~/.npm-packages";
+    };
   };
 
 
