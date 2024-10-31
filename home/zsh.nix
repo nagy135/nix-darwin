@@ -164,8 +164,8 @@ in
             zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
             zstyle ':completion:*' list-colors "$${(s.:.)LS_COLORS}"
 
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
+            # export NVM_DIR="$HOME/.nvm"
+            # [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
       		'';
   };
 }
