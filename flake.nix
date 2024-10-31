@@ -124,6 +124,8 @@
         system.keyboard.nonUS.remapTilde = true;
         system.defaults.NSGlobalDomain.KeyRepeat = 2;
 
+        system.defaults.NSGlobalDomain.NSWindowShouldDragOnGesture = true;
+
         system.keyboard.remapCapsLockToEscape = true;
         system.startup.chime = false;
 
