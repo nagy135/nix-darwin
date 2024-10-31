@@ -88,9 +88,18 @@ let
   '';
 in
 {
-  home.packages = [
-    pkgs.zsh-powerlevel10k
+  home.packages = with pkgs; [
+    zsh-powerlevel10k
+    atuin
   ];
+
+  programs.atuin = {
+    enable = true;
+    enableZshIntegration = true;
+    flags = [
+      "--disable-up-arrow"
+    ];
+  };
 
   programs.zsh = {
     enable = true;
