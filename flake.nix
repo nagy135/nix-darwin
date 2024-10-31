@@ -68,6 +68,7 @@
             neovim
             delta
             rustup
+            yarn
             # python
           ];
 
