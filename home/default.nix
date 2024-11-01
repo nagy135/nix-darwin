@@ -19,6 +19,11 @@
     recursive = true;
   };
 
+  home.file."wezterm" = {
+    source = ./config/wezterm/.wezterm.lua;
+    target = ".wezterm.lua";
+  };
+
   home.file."aerospace" = {
     source = ./config/aerospace;
     target = ".config/aerospace";
