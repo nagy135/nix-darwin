@@ -219,6 +219,9 @@ run = "move-node-to-workspace 5"
 if.app-id = 'org.alacritty'
 run = "move-node-to-workspace 2"
 
+[[on-window-detected]]
+if.app-id = 'com.github.wez.wezterm'
+run = "move-node-to-workspace 2"
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.teams2'
