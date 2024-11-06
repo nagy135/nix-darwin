@@ -115,7 +115,7 @@
             "font-noto-sans-symbols-2"
             "hammerspoon"
             "nikitabobko/tap/aerospace"
-            # "watchman"
+            "obs"
             # "zulu@17"
           ];
         };
