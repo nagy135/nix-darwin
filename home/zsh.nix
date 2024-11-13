@@ -148,6 +148,7 @@ in
     initExtra = ''
       			source ${functionsScripts}
 
+            [ -f ~/.zshenv_secret ] && source ~/.zshenv_secret
 
             export PATH=~/.npm-packages/bin:$PATH
             export NODE_PATH=~/.npm-packages/lib/node_modules
