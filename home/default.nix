@@ -30,6 +30,17 @@
     recursive = true;
   };
 
+  home.file."sketchybarrc" = {
+    source = ./config/sketchybar/sketchybarrc;
+    target = ".config/sketchybar/sketchybarrc";
+  };
+
+  home.file."sketchybar-plugins" = {
+    source = ./config/sketchybar/plugins;
+    target = ".config/sketchybar/plugins";
+    recursive = true;
+    executable = true;
+  };
 
 
   home.file.".npmrc".text = lib.generators.toINIWithGlobalSection {} {
