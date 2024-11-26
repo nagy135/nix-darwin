@@ -92,10 +92,14 @@
         homebrew = {
           taps = [
             "homebrew/cask-fonts"
+            "FelixKratz/formulae"
           ];
           enable = true;
           onActivation.autoUpdate = true;
           onActivation.upgrade = true;
+          brews = [
+            "sketchybar"
+          ];
           casks = [
             "discord"
             "raycast"
