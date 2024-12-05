@@ -120,6 +120,7 @@
             "hammerspoon"
             "nikitabobko/tap/aerospace"
             "obs"
+            "oso-cloud"
             # "zulu@17"
           ];
         };
