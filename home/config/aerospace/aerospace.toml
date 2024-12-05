@@ -244,3 +244,7 @@ run = "move-node-to-workspace 4"
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
 run = "move-node-to-workspace 1"
+
+[[on-window-detected]]
+if.app-id = 'org.chromium.Chromium'
+run = "move-node-to-workspace 8"
