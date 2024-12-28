@@ -63,6 +63,7 @@
             git
             spacebar
             arduino-cli
+            silicon
             nmap
             mods
             neovim
@@ -115,6 +116,7 @@
             "spaceid"
             "ultimaker-cura"
             "wezterm"
+            "ghostty"
             "font-monaspace-nerd-font"
             "font-noto-sans-symbols-2"
             "hammerspoon"
