@@ -24,6 +24,11 @@
     target = ".wezterm.lua";
   };
 
+  home.file."ghostty" = {
+    source = ./config/ghostty/config;
+    target = ".config/ghostty/config";
+  };
+
   home.file."aerospace" = {
     source = ./config/aerospace;
     target = ".config/aerospace";
