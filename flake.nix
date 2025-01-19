@@ -70,6 +70,7 @@
             delta
             rustup
             yarn
+            sketchybar
             # python
           ];
 
@@ -98,9 +99,6 @@
           enable = true;
           onActivation.autoUpdate = true;
           onActivation.upgrade = true;
-          brews = [
-            "sketchybar"
-          ];
           casks = [
             "discord"
             "raycast"
@@ -122,6 +120,7 @@
             "hammerspoon"
             "nikitabobko/tap/aerospace"
             "obs"
+            "orbstack"
             "oso-cloud"
             # "zulu@17"
           ];
