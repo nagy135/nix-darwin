@@ -35,14 +35,9 @@
     recursive = true;
   };
 
-  home.file."sketchybarrc" = {
-    source = ./config/sketchybar/sketchybarrc;
-    target = ".config/sketchybar/sketchybarrc";
-  };
-
-  home.file."sketchybar-plugins" = {
-    source = ./config/sketchybar/plugins;
-    target = ".config/sketchybar/plugins";
+  home.file."sketchybar" = {
+    source = ./config/sketchybar;
+    target = ".config/sketchybar";
     recursive = true;
     executable = true;
   };
