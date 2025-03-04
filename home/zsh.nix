@@ -110,6 +110,7 @@ in
     shellAliases = {
       lg = "lazygit --ucf ~/.config/lazygit/config.yml";
       lgs = "lazygit --ucf ~/.config/lazygit/config_side-by-side.yml";
+      lzd = "lazydocker";
 
       cdc = "cd ~/Code";
       cdd = "cd ~/.dots";
