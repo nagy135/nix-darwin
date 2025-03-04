@@ -53,3 +53,9 @@ local layoutSwitcher = function()
 end
 
 hs.hotkey.bind({ "ctrl" }, "space", layoutSwitcher)
+
+-- Run clipboard image resizer script
+hs.hotkey.bind({ "alt", "shift" }, "i", function()
+	local output = hs.execute("~/.scripts/macos_clipboard_image_smaller.sh")
+	hs.alert.show(output)
+end)
