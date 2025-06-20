@@ -67,7 +67,6 @@
             silicon
             nmap
             mods
-            neovim
             delta
             rustup
             yarn
@@ -99,10 +98,11 @@
             "homebrew/cask-fonts"
             "FelixKratz/formulae"
           ];
-          enable = true;
+          enable = false;
           onActivation.autoUpdate = true;
           onActivation.upgrade = true;
           casks = [
+            "homerow"
             "discord"
             "raycast"
             "bambu-studio"
@@ -123,9 +123,9 @@
             "hammerspoon"
             "nikitabobko/tap/aerospace"
             "obs"
+            "neovim"
             "orbstack"
             "oso-cloud"
-            # "zulu@17"
           ];
         };
 
@@ -137,10 +137,6 @@
 
         system.keyboard.remapCapsLockToEscape = true;
         system.startup.chime = false;
-
-
-        # Auto upgrade nix package and the daemon service.
-        services.nix-daemon.enable = true;
 
         services.postgresql = {
           package = pkgs.postgresql_15;
@@ -191,7 +187,8 @@
 
         # nix.package = pkgs.nix;
 
-        security.pam.enableSudoTouchIdAuth = true;
+        security.pam.services.sudo_local.touchIdAuth = true;
+        system.primaryUser = "viktornagy";
 
         # Necessary for using flakes on this system.
         nix = {
@@ -221,6 +218,8 @@
           enable = true; # default shell on catalina
         };
         # programs.fish.enable = true;
+        #
+        services.sketchybar.enable = true;
 
         # Set Git commit hash for darwin-version.
         system.configurationRevision = self.rev or self.dirtyRev or null;
