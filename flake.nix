@@ -34,6 +34,7 @@
           with pkgs;
           [
             home-manager
+            git-crypt
             transmission_4
             iina
             qemu
@@ -71,6 +72,8 @@
             rustup
             yarn
             sketchybar
+            yazi
+            spotify-player
             # python
           ];
 
