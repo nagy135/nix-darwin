@@ -90,7 +90,7 @@
             ShowPathbar = true;
             FXEnableExtensionChangeWarning = false;
             _FXShowPosixPathInTitle = true;
-            FXPreferredViewStyle = "clmv";
+            FXPreferredViewStyle = "Nlsv";
           };
         };
 
