@@ -154,17 +154,21 @@ in
             export PATH=~/.npm-packages/bin:$PATH
             export NODE_PATH=~/.npm-packages/lib/node_modules
 
-      			bindkey '^R' history-incremental-search-backward
+                bindkey '^R' history-incremental-search-backward
 
-      			bindkey '^P' history-search-backward
-      			bindkey '^N' history-search-forward
+                bindkey '^P' history-search-backward
+                bindkey '^N' history-search-forward
 
-      			setopt noincappendhistory
-      			setopt nosharehistory
-      			setopt appendhistory
+                setopt noincappendhistory
+                setopt nosharehistory
+                setopt appendhistory
 
             zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
             zstyle ':completion:*' list-colors "$${(s.:.)LS_COLORS}"
+
+                autoload -z edit-command-line
+                zle -N edit-command-line
+                bindkey "^E" edit-command-line
 
             # export NVM_DIR="$HOME/.nvm"
             # [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
