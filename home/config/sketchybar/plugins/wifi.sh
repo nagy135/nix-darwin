@@ -2,8 +2,8 @@
 
 SSID="$(ipconfig getsummary en0 | awk -F ' SSID : ' '/ SSID : / {print $2}')"
 
-if [ "$SSID" = "" ]; then
-	exit 0
+if [ "$SSID" = "<redacted>" ]; then
+	SSID=""
 fi
 
 ICON="ᯤ"
