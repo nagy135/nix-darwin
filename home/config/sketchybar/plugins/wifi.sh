@@ -6,6 +6,6 @@ if [ "$SSID" = "<redacted>" ]; then
 	SSID=""
 fi
 
-ICON="ᯤ"
+ICON="📶"
 
-sketchybar --set "$NAME" label="$SSID" icon="$ICON" icon.font.size=20 icon.y_offset=3
+sketchybar --set "$NAME" label="$SSID" icon="$ICON" icon.y_offset=0

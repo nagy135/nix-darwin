@@ -23,7 +23,7 @@ sketchybar --bar display=all position=top height=32 blur_radius=26 color=0x40000
 default=(
 	padding_left=5
 	padding_right=5
-	icon.font="Mononoki Nerd Font:Bold:17.0"
+	icon.font="Mononoki Nerd Font:Bold:13.0"
 	label.font="Mononoki Nerd Font:Bold:14.0"
 	icon.color=0xffffffff
 	label.color=0xffffffff
@@ -64,12 +64,14 @@ front_app=(
 	label.padding_right=10
 	label.font="Mononoki Nerd Font:Bold:14.0"
 	icon.background.drawing=on
-	display=active
 	script="$PLUGIN_DIR/front_app.sh"
 	click_script="open -a 'Mission Control'"
 )
 
-sketchybar --add item front_app left \
+sketchybar --add item display left \
+	--set display script="$PLUGIN_DIR/display.sh" \
+	--subscribe display display_change mouse.clicked \
+	--add item front_app left \
 	--set front_app "${front_app[@]}" \
 	--subscribe front_app front_app_switched
 
@@ -91,16 +93,20 @@ sketchybar --add item front_app left \
 # https://felixkratz.github.io/SketchyBar/config/events
 
 sketchybar --add item clock right \
-	--set clock update_freq=10 icon= script="$PLUGIN_DIR/clock.sh" \
+	--set clock update_freq=10 icon=🕒 script="$PLUGIN_DIR/clock.sh" \
+	\
 	--add item volume right \
 	--set volume script="$PLUGIN_DIR/volume.sh" \
 	--subscribe volume volume_change \
+	\
 	--add item brightness right \
 	--set brightness script="$PLUGIN_DIR/brightness.sh" \
 	--subscribe brightness brightness_change \
+	\
 	--add item battery right \
 	--set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
 	--subscribe battery system_woke power_source_change \
+	\
 	--add item wifi right \
 	--set wifi update_freq=5 script="$PLUGIN_DIR/wifi.sh" \
 	--subscribe wifi wifi_change mouse.clicked
