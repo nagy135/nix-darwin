@@ -59,3 +59,13 @@ hs.hotkey.bind({ "alt", "shift" }, "i", function()
 	local output = hs.execute("~/.scripts/macos_clipboard_image_smaller.sh")
 	hs.alert.show(output)
 end)
+
+-- Run clipboard tabber grab
+hs.hotkey.bind({ "alt", "shift" }, "g", function()
+	hs.execute("~/.scripts/tabber")
+end)
+
+-- Run clipboard tabber process
+hs.hotkey.bind({ "alt", "shift" }, "p", function()
+	hs.execute("~/.scripts/tabber process")
+end)
