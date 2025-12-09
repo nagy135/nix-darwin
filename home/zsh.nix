@@ -141,13 +141,13 @@ in
       }
     ];
     envExtra = ''
-      			export EDITOR=nvim
-      			export HISTFILE=$HOME/.zsh_history
-      			export PATH=$PATH:$HOME/.scripts
+            export EDITOR=nvim
+            export HISTFILE=$HOME/.zsh_history
+            export PATH=$PATH:$HOME/.scripts
             export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
-      			'';
-    initExtra = ''
-      			source ${functionsScripts}
+                '';
+    initContent = ''
+            source ${functionsScripts}
 
             [ -f ~/.zshenv_secret ] && source ~/.zshenv_secret
 
@@ -172,6 +172,6 @@ in
 
             # export NVM_DIR="$HOME/.nvm"
             # [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
-      		'';
+                '';
   };
 }
