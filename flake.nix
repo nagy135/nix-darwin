@@ -48,6 +48,7 @@
             nodejs_latest
             bun
             pqiv
+            portal
             yq
             alacritty
             audacity
@@ -102,6 +103,7 @@
           onActivation.autoUpdate = true;
           onActivation.upgrade = true;
           casks = [
+            "snappy"
             "homerow"
             "discord"
             "raycast"
