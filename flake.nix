@@ -35,7 +35,7 @@
           [
             home-manager
             git-crypt
-            transmission_4
+            # transmission_4
             iina
             qemu
             lazydocker
@@ -56,9 +56,9 @@
             zig
             ripgrep
             tldr
-            neofetch
+            fastfetch
             stow
-            gimp
+            # gimp
             jq
             htop
             fzf
