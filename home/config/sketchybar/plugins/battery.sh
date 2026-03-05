@@ -14,9 +14,14 @@ case "${PERCENTAGE}" in
   ;;
   [2-4][0-9]) ICON="🔋🟧"
   ;;
-  1[0-9]) ICON="🔋🟥"
+  1[1-9]) ICON="🔋🟧🟧"
   ;;
-  [0-9]) ICON="🔋🟥🟥"
+  10|[0-9]) 
+    RED_SQUARES=$((10 - PERCENTAGE + 1))
+    ICON="🔋"
+    for i in $(seq 1 "$RED_SQUARES"); do
+      ICON="${ICON}🟥"
+    done
   ;;
   *) ICON="🔋"
 esac
