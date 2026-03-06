@@ -6,4 +6,3 @@ font-size = 14
 window-decoration = none
 shell-integration-features = no-cursor
 background-opacity = 0.97
-macos-titlebar-style = native
