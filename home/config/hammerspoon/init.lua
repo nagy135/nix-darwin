@@ -1,23 +1,6 @@
 require("hs.ipc")
 local hs = hs
 
-hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "W", function()
-	hs.alert.show("Hello World!")
-end)
-
-local binds = {
-	{ from_mod = { "cmd", "alt" }, from_key = "h", to_mod = nil, to_key = "left" },
-	{ from_mod = { "cmd", "alt" }, from_key = "j", to_mod = nil, to_key = "down" },
-	{ from_mod = { "cmd", "alt" }, from_key = "k", to_mod = nil, to_key = "up" },
-	{ from_mod = { "cmd", "alt" }, from_key = "l", to_mod = nil, to_key = "right" },
-}
-for _, bind in ipairs(binds) do
-	local functionRun = function()
-		hs.eventtap.keyStroke(bind.to_mod, bind.to_key, 0)
-	end
-	hs.hotkey.bind(bind.from_mod, bind.from_key, functionRun, nil, functionRun)
-end
-
 -- -- open Arc
 -- hs.hotkey.bind({ "cmd", "ctrl" }, "a", function()
 -- 	hs.osascript.applescriptFromFile("arcswitcher.applescript")
@@ -54,29 +37,40 @@ local layoutSwitcher = function()
 	chooser:show()
 end
 
-hs.hotkey.bind({ "ctrl" }, "space", layoutSwitcher)
--- }}}
+local function helloWorld()
+	hs.alert.show("Hello World!")
+end
 
--- Run clipboard image resizer script
-hs.hotkey.bind({ "alt", "shift" }, "i", function()
+local function leftArrow()
+	hs.eventtap.keyStroke(nil, "left", 0)
+end
+
+local function downArrow()
+	hs.eventtap.keyStroke(nil, "down", 0)
+end
+
+local function upArrow()
+	hs.eventtap.keyStroke(nil, "up", 0)
+end
+
+local function rightArrow()
+	hs.eventtap.keyStroke(nil, "right", 0)
+end
+
+local function resizeClipboardImage()
 	local output = hs.execute("~/.scripts/macos_clipboard_image_smaller.sh")
 	hs.alert.show(output)
-end)
+end
 
--- tabber {{{
--- Run clipboard tabber grab
-hs.hotkey.bind({ "alt", "shift" }, "g", function()
+local function runTabberGrab()
 	hs.execute("~/.scripts/tabber")
-end)
+end
 
--- Run clipboard tabber process
-hs.hotkey.bind({ "alt", "shift" }, "p", function()
+local function runTabberProcess()
 	hs.execute("~/.scripts/tabber process")
-end)
--- }}}
+end
 
--- Bang search hotkey
-hs.hotkey.bind({ "alt", "shift" }, "s", function()
+local function bangSearch()
 	local btn, input = hs.dialog.textPrompt("Bang Search", "Enter command", "", "Search", "Cancel")
 
 	if btn ~= "Search" or not input or input == "" then
@@ -113,7 +107,7 @@ hs.hotkey.bind({ "alt", "shift" }, "s", function()
 	-- Fallback → open ChatGPT with full text
 	local escaped = hs.http.encodeForQuery(input)
 	hs.urlevent.openURL("https://chatgpt.com?q=" .. escaped)
-end)
+end
 
 -- -- Prompt → search in browser
 -- hs.hotkey.bind({ "alt", "shift" }, "a", function()
@@ -127,13 +121,13 @@ end)
 -- end)
 
 -- just open chatgpt
-hs.hotkey.bind({ "alt", "ctrl" }, "a", function()
-	local url = "https://chatgpt.com"
-	hs.urlevent.openURL(url)
-end)
+-- hs.hotkey.bind({ "alt", "ctrl" }, "a", function()
+-- 	local url = "https://chatgpt.com"
+-- 	hs.urlevent.openURL(url)
+-- end)
 
 -- Translate DE => EN
-hs.hotkey.bind({ "alt", "shift" }, "t", function()
+local function translateDeToEn()
 	local btn, query = hs.dialog.textPrompt("DE => EN", "German", "", "Translate", "Cancel")
 
 	if btn == "Translate" and query and query ~= "" then
@@ -141,10 +135,10 @@ hs.hotkey.bind({ "alt", "shift" }, "t", function()
 		local url = "https://translate.google.com/?sl=de&tl=en&text=" .. escaped .. "&op=translate"
 		hs.urlevent.openURL(url)
 	end
-end)
+end
 
 -- Translate EN => DE
-hs.hotkey.bind({ "alt", "ctrl" }, "t", function()
+local function translateEnToDe()
 	local btn, query = hs.dialog.textPrompt("EN => DE", "English", "", "Translate", "Cancel")
 
 	if btn == "Translate" and query and query ~= "" then
@@ -152,9 +146,9 @@ hs.hotkey.bind({ "alt", "ctrl" }, "t", function()
 		local url = "https://translate.google.com/?sl=en&tl=de&text=" .. escaped .. "&op=translate"
 		hs.urlevent.openURL(url)
 	end
-end)
+end
 
-hs.hotkey.bind({ "alt", "shift", "ctrl" }, "t", function()
+local function findGermanArticle()
 	local btn, query = hs.dialog.textPrompt("Artikel finder", "der/die/das", "", "Find", "Cancel")
 
 	if btn == "Find" and query and query ~= "" then
@@ -162,9 +156,9 @@ hs.hotkey.bind({ "alt", "shift", "ctrl" }, "t", function()
 		local url = "https://www.verbformen.de/deklination/substantive/" .. escaped .. ".htm"
 		hs.urlevent.openURL(url)
 	end
-end)
+end
 
-hs.hotkey.bind({ "alt" }, "t", function()
+local function openGermanConjugationLookup()
 	local btn, query = hs.dialog.textPrompt("Translate (konjugation)", "dictionary", "", "Translate", "Cancel")
 
 	if btn == "Translate" and query and query ~= "" then
@@ -172,7 +166,118 @@ hs.hotkey.bind({ "alt" }, "t", function()
 		local url = "https://www.verbformen.de/konjugation/?w=" .. escaped
 		hs.urlevent.openURL(url)
 	end
-end)
+end
+
+local function formatMods(mods)
+	local labels = {
+		cmd = "cmd",
+		ctrl = "ctrl",
+		alt = "alt",
+		shift = "shift",
+	}
+	local parts = {}
+	for _, mod in ipairs(mods) do
+		table.insert(parts, labels[mod] or mod)
+	end
+	return table.concat(parts, "+")
+end
+
+local function formatBind(mods, key)
+	local prefix = #mods > 0 and (formatMods(mods) .. "+") or ""
+	return prefix .. key
+end
+
+local chooserTextStyle = {
+	font = {
+		name = "SF Pro Text",
+		size = 16,
+	},
+}
+
+local chooserSubTextStyle = {
+	font = {
+		name = "SF Pro Text",
+		size = 11,
+	},
+}
+
+local hotkeys = {
+	{ mods = { "cmd", "alt", "ctrl" }, key = "W", description = "Show Hello World alert", fn = helloWorld },
+	{ mods = { "cmd", "alt" }, key = "h", description = "Send left arrow", fn = leftArrow, repeatFn = leftArrow },
+	{ mods = { "cmd", "alt" }, key = "j", description = "Send down arrow", fn = downArrow, repeatFn = downArrow },
+	{ mods = { "cmd", "alt" }, key = "k", description = "Send up arrow", fn = upArrow, repeatFn = upArrow },
+	{ mods = { "cmd", "alt" }, key = "l", description = "Send right arrow", fn = rightArrow, repeatFn = rightArrow },
+	{ mods = { "ctrl" }, key = "space", description = "Open keyboard layout picker", fn = layoutSwitcher },
+	{ mods = { "alt", "shift" }, key = "i", description = "Resize clipboard image", fn = resizeClipboardImage },
+	{ mods = { "alt", "shift" }, key = "g", description = "Run tabber grab", fn = runTabberGrab },
+	{ mods = { "alt", "shift" }, key = "p", description = "Run tabber process", fn = runTabberProcess },
+	{ mods = { "alt", "shift" }, key = "s", description = "Open bang search prompt", fn = bangSearch },
+	{ mods = { "alt", "shift" }, key = "t", description = "Translate German to English", fn = translateDeToEn },
+	{ mods = { "alt", "ctrl" }, key = "t", description = "Translate English to German", fn = translateEnToDe },
+	{ mods = { "alt", "shift", "ctrl" }, key = "t", description = "Find German article", fn = findGermanArticle },
+	{ mods = { "alt" }, key = "t", description = "Open German conjugation lookup", fn = openGermanConjugationLookup },
+}
+
+local hotkeyChoiceMap = {}
+
+local function buildHotkeyChoices(query)
+	local normalizedQuery = query and query:lower() or ""
+	local choices = {}
+	hotkeyChoiceMap = {}
+
+	for index, hotkey in ipairs(hotkeys) do
+		local bind = formatBind(hotkey.mods, hotkey.key)
+		local haystack = (bind .. " " .. hotkey.description):lower()
+
+		if normalizedQuery == "" or haystack:find(normalizedQuery, 1, true) then
+			local uuid = tostring(index)
+			hotkeyChoiceMap[uuid] = hotkey
+			table.insert(choices, {
+				text = hs.styledtext.new(hotkey.description, chooserTextStyle),
+				subText = hs.styledtext.new(bind, chooserSubTextStyle),
+				uuid = uuid,
+			})
+		end
+	end
+
+	return choices
+end
+
+local function showHotkeyPicker()
+	local chooser
+	chooser = hs.chooser.new(function(choice)
+		if not choice then
+			return
+		end
+		local hotkey = hotkeyChoiceMap[choice.uuid]
+		if hotkey then
+			chooser:hide()
+			hs.timer.doAfter(0.1, hotkey.fn)
+		end
+	end)
+
+	chooser:choices(buildHotkeyChoices(""))
+	chooser:queryChangedCallback(function(query)
+		chooser:choices(buildHotkeyChoices(query))
+	end)
+	chooser:searchSubText(false)
+	chooser:placeholderText("search hotkeys by bind or description")
+	chooser:rows(math.min(#hotkeys, 8))
+	chooser:width(30)
+	chooser:show()
+end
+
+table.insert(hotkeys, {
+	mods = { "alt", "shift" },
+	key = "k",
+	description = "Open hotkey picker",
+	fn = showHotkeyPicker,
+})
+
+for _, hotkey in ipairs(hotkeys) do
+	hs.hotkey.bind(hotkey.mods, hotkey.key, hotkey.fn, nil, hotkey.repeatFn)
+end
+-- }}}
 
 -- -- Create a simple webview
 -- local myView = hs.webview.newBrowser(hs.geometry.rect(300, 300, 400, 400))
