@@ -182,6 +182,104 @@ local function copyTextToClipboard()
 	end
 end
 
+local function readSecretsFile()
+	local path = os.getenv("HOME") .. "/.secrets.json"
+	local file, err = io.open(path, "r")
+	if not file then
+		return nil, "Could not open " .. path .. ": " .. tostring(err)
+	end
+
+	local contents = file:read("*a")
+	file:close()
+
+	local decoded, decodeErr = hs.json.decode(contents)
+	if type(decoded) ~= "table" then
+		return nil, decodeErr or "Secrets file must contain a JSON object"
+	end
+
+	return decoded
+end
+
+local function buildSecretChoices(entries)
+	local choices = {}
+
+	for key, value in pairs(entries) do
+		local valueType = type(value)
+		if valueType == "string" or valueType == "table" then
+			table.insert(choices, {
+				text = key,
+				subText = valueType == "table" and "Open nested credentials" or "Copy credential to clipboard",
+				valueType = valueType,
+				value = value,
+			})
+		end
+	end
+
+	table.sort(choices, function(left, right)
+		return left.text:lower() < right.text:lower()
+	end)
+
+	return choices
+end
+
+local function showSecretChooser(entries, title, focusedWindow)
+	local chooser
+	chooser = hs.chooser.new(function(choice)
+		if not choice then
+			if focusedWindow then
+				focusedWindow:focus()
+			end
+			return
+		end
+
+		if choice.valueType == "table" then
+			chooser:hide()
+			hs.timer.doAfter(0.1, function()
+				showSecretChooser(choice.value, title .. " / " .. choice.text, focusedWindow)
+			end)
+			return
+		end
+
+		hs.pasteboard.setContents(choice.value)
+		hs.alert.show("Copied " .. choice.text)
+
+		if focusedWindow then
+			focusedWindow:focus()
+		end
+	end)
+
+	local choices = buildSecretChoices(entries)
+	if #choices == 0 then
+		hs.alert.show("No credentials found")
+		if focusedWindow then
+			focusedWindow:focus()
+		end
+		return
+	end
+
+	chooser:choices(choices)
+	chooser:searchSubText(true)
+	chooser:placeholderText(title)
+	chooser:rows(math.min(#choices, 10))
+	chooser:width(30)
+	chooser:show()
+end
+
+local function copySecretToClipboard()
+	local focusedWindow = hs.window.frontmostWindow()
+	local secrets, err = readSecretsFile()
+
+	if not secrets then
+		hs.alert.show(err)
+		if focusedWindow then
+			focusedWindow:focus()
+		end
+		return
+	end
+
+	showSecretChooser(secrets, "search credentials", focusedWindow)
+end
+
 local function formatMods(mods)
 	local labels = {
 		cmd = "cmd",
@@ -227,6 +325,7 @@ local hotkeys = {
 	{ mods = { "alt", "shift" }, key = "p", description = "Run tabber process", fn = runTabberProcess },
 	{ mods = { "alt", "shift" }, key = "s", description = "Open bang search prompt", fn = bangSearch },
 	{ mods = { "alt" }, key = "g", description = "Copy typed text to clipboard", fn = copyTextToClipboard },
+	{ mods = { "cmd", "alt" }, key = "p", description = "Copy credential from secrets file", fn = copySecretToClipboard },
 	{ mods = { "alt", "shift" }, key = "t", description = "Translate German to English", fn = translateDeToEn },
 	{ mods = { "alt", "ctrl" }, key = "t", description = "Translate English to German", fn = translateEnToDe },
 	{ mods = { "alt", "shift", "ctrl" }, key = "t", description = "Find German article", fn = findGermanArticle },
