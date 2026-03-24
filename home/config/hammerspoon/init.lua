@@ -168,6 +168,20 @@ local function openGermanConjugationLookup()
 	end
 end
 
+local function copyTextToClipboard()
+	local focusedWindow = hs.window.frontmostWindow()
+	local btn, input = hs.dialog.textPrompt("Clipboard", "Text to copy", "", "Copy", "Cancel")
+
+	if btn == "Copy" and input ~= nil then
+		hs.pasteboard.setContents(input)
+		hs.alert.show("Copied to clipboard")
+	end
+
+	if focusedWindow then
+		focusedWindow:focus()
+	end
+end
+
 local function formatMods(mods)
 	local labels = {
 		cmd = "cmd",
@@ -212,6 +226,7 @@ local hotkeys = {
 	{ mods = { "alt", "shift" }, key = "g", description = "Run tabber grab", fn = runTabberGrab },
 	{ mods = { "alt", "shift" }, key = "p", description = "Run tabber process", fn = runTabberProcess },
 	{ mods = { "alt", "shift" }, key = "s", description = "Open bang search prompt", fn = bangSearch },
+	{ mods = { "alt" }, key = "g", description = "Copy typed text to clipboard", fn = copyTextToClipboard },
 	{ mods = { "alt", "shift" }, key = "t", description = "Translate German to English", fn = translateDeToEn },
 	{ mods = { "alt", "ctrl" }, key = "t", description = "Translate English to German", fn = translateEnToDe },
 	{ mods = { "alt", "shift", "ctrl" }, key = "t", description = "Find German article", fn = findGermanArticle },
