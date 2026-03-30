@@ -7,6 +7,7 @@
     ./z-lua.nix
     ./alacritty.nix
     ./eza.nix
+    ./tmux.nix
     # inputs.nixvim.homeManagerModules.nixvim
     # ../nixvim
   ];
