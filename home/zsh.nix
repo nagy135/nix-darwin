@@ -124,8 +124,6 @@ in
       ":q" = "exit";
 
       vim = "nvim";
-      nvim-tmux = "nvim ~/.tmux.conf";
-
       cd-nix = "cd ~/Code/nix-darwin";
     };
 
