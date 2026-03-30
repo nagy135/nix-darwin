@@ -1,4 +1,7 @@
 { pkgs, ... }:
+let
+  neovimPackage = import ./neovim.nix { inherit pkgs; };
+in
 {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
@@ -44,7 +47,7 @@
       silicon
       mpv
       ncdu
-      neovim
+      neovimPackage
       nmap
       mods
       delta
