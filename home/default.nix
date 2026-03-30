@@ -4,7 +4,8 @@
   imports = [
     ./lf.nix
     ./zsh.nix
-    ./z-lua.nix
+    # ./z-lua.nix # sesh (tmux) requires zoxide
+    ./zoxide.nix
     ./alacritty.nix
     ./eza.nix
     ./tmux.nix
