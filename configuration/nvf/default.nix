@@ -4,5 +4,12 @@ let
 in
 nvf.lib.neovimConfiguration {
   inherit pkgs;
-  modules = [ configModule ];
+  modules = [
+    configModule
+    ./keymaps/core.nix
+    ./keymaps/navigation.nix
+    ./keymaps/search.nix
+    ./keymaps/git.nix
+    ./keymaps/tools.nix
+  ];
 }

@@ -1,9 +1,12 @@
-{ pkgs, lib, ... }:
-let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   typebreakPlugin = pkgs.vimUtils.buildVimPlugin {
     pname = "typebreak.nvim";
     version = "unstable-2026-03-31";
-    dependencies = [ pkgs.vimPlugins.plenary-nvim ];
+    dependencies = [pkgs.vimPlugins.plenary-nvim];
     src = pkgs.fetchFromGitHub {
       owner = "nagy135";
       repo = "typebreak.nvim";
@@ -22,8 +25,7 @@ let
       sha256 = "18fbphj8nhvp9m7i6lbciwqprvx1c4z6rmlg4bm07k1b8brjsdyz";
     };
   };
-in
-{
+in {
   config.vim = {
     viAlias = true;
     vimAlias = true;
@@ -103,7 +105,24 @@ in
 
     notes = {
       todo-comments.enable = true;
-      neorg.enable = false;
+      neorg = {
+        enable = true;
+        treesitter.enable = true;
+        setupOpts = {
+          load = {
+            "core.defaults".enable = true;
+            "core.concealer" = { };
+            "core.dirman" = {
+              config = {
+                workspaces = {
+                  wiki = "~/wiki";
+                };
+                default_workspace = "wiki";
+              };
+            };
+          };
+        };
+      };
     };
 
     visuals = {
@@ -126,7 +145,7 @@ in
       python.enable = true;
       ts = {
         enable = true;
-        lsp.servers = [ "tsgo" ];
+        lsp.servers = ["tsgo"];
       };
       yaml.enable = true;
     };
@@ -151,12 +170,12 @@ in
         package = pkgs.vimPlugins.flash-nvim;
         lazy = false;
         setupModule = "flash";
-        setupOpts = { };
+        setupOpts = {};
       };
 
       "lazydev.nvim" = {
         package = pkgs.vimPlugins.lazydev-nvim;
-        ft = [ "lua" ];
+        ft = ["lua"];
         after = ''
           require("lazydev").setup({
             library = {
@@ -174,43 +193,87 @@ in
         package = pkgs.vimPlugins.snacks-nvim;
         lazy = false;
         setupModule = "snacks";
-        setupOpts = { };
+        setupOpts = {
+          picker.sources.lazy = false;
+        };
+      };
+
+      "noice.nvim" = {
+        package = pkgs.vimPlugins.noice-nvim;
+        lazy = false;
+        setupModule = "noice";
+        setupOpts = {
+          lsp = {
+            progress.enabled = true;
+            hover.enabled = true;
+            signature.enabled = true;
+          };
+
+          presets = {
+            bottom_search = false;
+            command_palette = true;
+            long_message_to_split = true;
+            inc_rename = false;
+            lsp_doc_border = true;
+          };
+
+          cmdline = {
+            enabled = true;
+            view = "cmdline_popup";
+          };
+
+          messages = {
+            enabled = true;
+            view = "notify";
+            view_error = "notify";
+            view_warn = "notify";
+          };
+
+          popupmenu.enabled = true;
+
+          notify.enabled = true;
+        };
       };
 
       "nvim-navic" = {
         package = pkgs.vimPlugins.nvim-navic;
         lazy = false;
         setupModule = "nvim-navic";
-        setupOpts = { };
+        setupOpts = {};
       };
 
       "nvim-surround" = {
         package = pkgs.vimPlugins.nvim-surround;
         lazy = false;
         setupModule = "nvim-surround";
-        setupOpts = { };
+        setupOpts = {};
       };
 
       "align.nvim" = {
         package = pkgs.vimPlugins.align-nvim;
-        keys = [ { key = "aw"; mode = [ "x" ]; } ];
+        keys = [
+          {
+            key = "aw";
+            mode = ["x"];
+          }
+        ];
       };
 
       "quicker.nvim" = {
         package = pkgs.vimPlugins.quicker-nvim;
-        ft = [ "qf" ];
+        ft = ["qf"];
         setupModule = "quicker";
-        setupOpts = { };
+        setupOpts = {};
       };
 
       "vim-qf" = {
         package = pkgs.vimPlugins.vim-qf;
-        ft = [ "qf" ];
+        ft = ["qf"];
       };
 
       "nvim-bqf" = {
         package = pkgs.vimPlugins.nvim-bqf;
-        ft = [ "qf" ];
+        ft = ["qf"];
         setupModule = "bqf";
         setupOpts = {
           func_map = {
@@ -222,24 +285,24 @@ in
 
       "trouble.nvim" = {
         package = pkgs.vimPlugins.trouble-nvim;
-        cmd = [ "Trouble" ];
+        cmd = ["Trouble"];
         setupModule = "trouble";
-        setupOpts = { };
+        setupOpts = {};
       };
 
       "diffview.nvim" = {
         package = pkgs.vimPlugins.diffview-nvim;
-        cmd = [ "DiffviewOpen" "DiffviewFileHistory" ];
+        cmd = ["DiffviewOpen" "DiffviewFileHistory"];
       };
 
       "neogit" = {
         package = pkgs.vimPlugins.neogit;
-        cmd = [ "Neogit" ];
+        cmd = ["Neogit"];
       };
 
       "undotree" = {
         package = pkgs.vimPlugins.undotree;
-        cmd = [ "UndotreeToggle" "UndotreeFocus" ];
+        cmd = ["UndotreeToggle" "UndotreeFocus"];
       };
 
       "nvim-window-picker" = {
@@ -251,7 +314,12 @@ in
 
       "snipe.nvim" = {
         package = pkgs.vimPlugins.snipe-nvim;
-        keys = [ { key = "<leader>S"; mode = [ "n" ]; } ];
+        keys = [
+          {
+            key = "<leader>S";
+            mode = ["n"];
+          }
+        ];
         setupModule = "snipe";
         setupOpts = {
           ui = {
@@ -265,7 +333,7 @@ in
 
       "kulala.nvim" = {
         package = pkgs.vimPlugins.kulala-nvim;
-        ft = [ "http" "rest" ];
+        ft = ["http" "rest"];
         after = ''
           require("kulala").setup({
             global_keymaps = {
@@ -307,27 +375,6 @@ in
                 },
                 quote_json_variables = true,
                 indent = 2,
-              },
-            },
-          })
-        '';
-      };
-
-      "neorg" = {
-        package = pkgs.vimPlugins.neorg;
-        ft = [ "norg" ];
-        after = ''
-          require("neorg").setup({
-            load = {
-              ["core.defaults"] = {},
-              ["core.concealer"] = {},
-              ["core.dirman"] = {
-                config = {
-                  workspaces = {
-                    wiki = "~/wiki",
-                  },
-                  default_workspace = "wiki",
-                },
               },
             },
           })
