@@ -9,6 +9,7 @@
     ./alacritty.nix
     ./eza.nix
     ./tmux.nix
+    ./sesh.nix
     # inputs.nixvim.homeManagerModules.nixvim
     # ../nixvim
   ];
