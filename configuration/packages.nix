@@ -1,6 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, nvf, ... }:
 let
-  neovimPackage = import ./neovim.nix { inherit pkgs; };
+  nvfOverride = true;
+  neovimPackage = if nvfOverride then (import ./nvf { inherit pkgs nvf; }).neovim else import ./neovim.nix { inherit pkgs; };
 in
 {
   # List packages installed in system profile. To search by name, run:

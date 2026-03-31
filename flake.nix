@@ -14,6 +14,8 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
+    nvf.url = "github:notashelf/nvf";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,6 +39,7 @@
       darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
         specialArgs = {
           inherit home self username;
+          nvf = inputs.nvf;
         };
         modules = [
           ./configuration
