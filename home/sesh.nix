@@ -8,7 +8,7 @@
         {
           name = "stuff";
           path = "$HOME";
-          startup_command = "ll";
+          startup_command = "fastfetch && ls";
         }
       ];
     };
