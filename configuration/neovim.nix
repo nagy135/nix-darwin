@@ -1,6 +1,6 @@
 { pkgs }:
 let
-  useGitHubRelease = true;
+  useGitHubRelease = false;
   version = "0.12.0";
   customUnwrapped = pkgs.neovim-unwrapped.overrideAttrs (_: {
     inherit version;
