@@ -114,6 +114,11 @@ in {
       enableTreesitter = true;
       enableExtraDiagnostics = true;
 
+      ts = {
+        enable = true;
+        format.enable = true;
+      };
+
       bash.enable = true;
       html.enable = true;
       json.enable = true;

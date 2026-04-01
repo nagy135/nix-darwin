@@ -7,6 +7,7 @@
     # ./z-lua.nix # sesh (tmux) requires zoxide
     ./zoxide.nix
     ./alacritty.nix
+    ./kitty.nix
     ./eza.nix
     ./tmux.nix
     ./sesh.nix
