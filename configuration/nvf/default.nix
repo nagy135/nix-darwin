@@ -6,10 +6,14 @@ nvf.lib.neovimConfiguration {
   inherit pkgs;
   modules = [
     configModule
-    ./keymaps/core.nix
-    ./keymaps/navigation.nix
-    ./keymaps/search.nix
-    ./keymaps/git.nix
-    ./keymaps/tools.nix
+    ./modules/core.nix
+    ./modules/navigation.nix
+    ./modules/search.nix
+    ./modules/git.nix
+    ./modules/tools.nix
+    ./modules/debugger.nix
+    ./modules/typescript.nix
+    ./modules/notes.nix
+    ./modules/preview.nix
   ];
 }

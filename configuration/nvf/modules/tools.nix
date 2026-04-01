@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   config.vim.keymaps = [
     {
       key = "<leader><leader>e";

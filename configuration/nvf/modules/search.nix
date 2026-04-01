@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   config.vim.keymaps = [
     {
       key = "<leader><space>";
@@ -29,11 +29,18 @@
       action = "<cmd>lua Snacks.picker.command_history()<CR>";
     }
     {
-      key = "<leader>n";
+      key = "<leader>nn";
       mode = "n";
       silent = true;
       desc = "Notification History";
       action = "<cmd>lua Snacks.notifier.show_history()<CR>";
+    }
+    {
+      key = "<leader>na";
+      mode = "n";
+      silent = true;
+      desc = "Noice All";
+      action = "<cmd>NoiceAll<CR>";
     }
     {
       key = "<leader>fb";
