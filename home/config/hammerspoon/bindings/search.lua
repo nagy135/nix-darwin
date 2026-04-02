@@ -28,7 +28,7 @@ local function bangSearch()
 				return
 			end
 
-			hs.urlevent.openURL("https://chatgpt.com?q=" .. hs.http.encodeForQuery(input))
+			hs.urlevent.openURL("https://www.google.com/search?q=" .. hs.http.encodeForQuery(input))
 		end,
 	})
 end
