@@ -10,8 +10,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "nagy135";
       repo = "typebreak.nvim";
-      rev = "3b5d8844cfb562cccfb685cc48bfadf99560b6db";
-      sha256 = "11zwsx6zxkpcr8dyrjhlx0wr4a9mqhzzncqqwadrz26vlb8k8b37";
+      rev = "51f4e4410272df8a9b31eda06be2e81bc4260aa6";
+      sha256 = "sha256-TJbhl9CsbCwma3w+IzY0a0nwMw826U04AKXd0nW2lvo=";
     };
   };
 
@@ -97,7 +97,17 @@ in {
         "<C-h>" = ["snippet_backward" "fallback"];
       };
     };
-    autopairs.nvim-autopairs.enable = true;
+    autopairs.nvim-autopairs = {
+      enable = true;
+      setupOpts = {
+        disable_filetype = [
+          "TelescopePrompt"
+          "spectre_panel"
+          "snacks_picker_input"
+          "typebreak"
+        ];
+      };
+    };
     snippets.luasnip.enable = true;
 
     binds.whichKey = {
