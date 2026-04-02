@@ -1,28 +1,4 @@
-{ pkgs, ... }:
-let
-  # neolazygit = pkgs.tmuxPlugins.mkTmuxPlugin {
-  #   pluginName = "neolazygit";
-  #   version = "unstable-2026-03-30";
-  #   rtpFilePath = "neolazygit.tmux";
-  #   src = pkgs.fetchFromGitHub {
-  #     owner = "AngryMorrocoy";
-  #     repo = "tmux-neolazygit";
-  #     rev = "9798bf731b8f5d0af980074b23a532c2542adc12";
-  #     hash = "sha256-yXSlfH0/rshRMGwzQuOsYX/Xi/3ZHaKlAmObN2w9/Mk=";
-  #   };
-  # };
-  #
-  # opencode = pkgs.tmuxPlugins.mkTmuxPlugin {
-  #   pluginName = "opencode";
-  #   version = "0.0.1";
-  #   rtpFilePath = "tmux-opencode.tmux";
-  #   src = pkgs.fetchFromGitHub {
-  #     owner = "nagy135";
-  #     repo = "tmux-opencode";
-  #     rev = "d162005070f7145ffe8f84ca85b07dd8e64b4671";
-  #     hash = "sha256-+UpN9KREQpoiqc1Q4GoDnfWFvy+wJPX6NuveS+sdcaY=";
-  #   };
-  # };
+{pkgs, ...}: let
   tmux-launcher = pkgs.tmuxPlugins.mkTmuxPlugin {
     pluginName = "tmux-launcher";
     version = "0.0.1";
@@ -30,12 +6,11 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "nagy135";
       repo = "tmux-launcher";
-      rev = "1d3bb9a3306870ef7d93070de3319c981f5d4e9c";
-      hash = "sha256-sd2HZyF8S4eDNrDTWSYtIO6hwQ4iK21GNcHG5Dj7Ibc=";
+      rev = "924dec73f56e0ecd105473799d3ee9e9251fe805";
+      hash = "sha256-KWE+3He71piHd81a55a3wbn1l2DsMaUhEiuKlqDJRAI=";
     };
   };
-in
-{
+in {
   programs.tmux = {
     enable = true;
     sensibleOnTop = true;
@@ -82,11 +57,11 @@ in
       {
         plugin = tmux-launcher;
         extraConfig = ''
-          set -g @tmux-launchers "
-          key=a window=6 command=opencode
-          key=g window=3 command=lazygit
-          key=t window=- command=npm run test
-        "
+            set -g @tmux-launchers "
+            key=a window=6 command=opencode name=OpenCode
+            key=g window=3 command=lazygit --ucf ~/.config/lazygit/config.yml name=LazyGit
+            key=t window=- command=npm run test
+          "
         '';
       }
       # {
