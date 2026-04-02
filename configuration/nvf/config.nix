@@ -81,7 +81,22 @@ in {
 
     lsp.servers.lua_ls.settings.Lua.completion.callSnippet = "Replace";
 
-    autocomplete.nvim-cmp.enable = true;
+    autocomplete.blink-cmp = {
+      enable = true;
+      mappings = {
+        next = "<C-n>";
+        previous = "<C-p>";
+        scrollDocsUp = "<C-b>";
+        scrollDocsDown = "<C-f>";
+        confirm = "<C-y>";
+        complete = "<C-Space>";
+      };
+      setupOpts.keymap = {
+        preset = "none";
+        "<C-l>" = ["snippet_forward" "fallback"];
+        "<C-h>" = ["snippet_backward" "fallback"];
+      };
+    };
     autopairs.nvim-autopairs.enable = true;
     snippets.luasnip.enable = true;
 
