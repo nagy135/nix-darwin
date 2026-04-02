@@ -4,45 +4,46 @@
     enableTelescope = true;
   };
   plugins.which-key.registrations = {
-      "<leader>h"= "Harpoon";
+    "<leader>h" = "Harpoon";
   };
-  keymaps = [
-    {
-      action.__raw = ''function() require('harpoon.mark').add_file() end'';
-      key = "<leader>ha";
-      options = {
-        desc = "Add file";
-      };
-    }
-    {
-      action.__raw = ''function() require('harpoon.ui').toggle_quick_menu() end'';
-      key = "<leader>hh";
-      options = {
-        desc = "Toggle quick menu";
-      };
-    }
-    {
-      action.__raw = ''function()
-        local index = vim.fn.input("Harpoon: ")
-        if index == nil or index == "" then
-            return
-        end
-        require('harpoon.ui').nav_file(tonumber(index))
-      end'';
-      key = "<leader>hi";
-      options = {
-        desc = "Select with input";
-      };
-    }
-  ] ++
-  (builtins.map (key:
-    let strKey = builtins.toString key;
+  keymaps =
+    [
+      {
+        action.__raw = ''function() require('harpoon.mark').add_file() end'';
+        key = "<leader>ha";
+        options = {
+          desc = "Add file";
+        };
+      }
+      {
+        action.__raw = ''function() require('harpoon.ui').toggle_quick_menu() end'';
+        key = "<leader>hh";
+        options = {
+          desc = "Toggle quick menu";
+        };
+      }
+      {
+        action.__raw = ''          function()
+                  local index = vim.fn.input("Harpoon: ")
+                  if index == nil or index == "" then
+                      return
+                  end
+                  require('harpoon.ui').nav_file(tonumber(index))
+                end'';
+        key = "<leader>hi";
+        options = {
+          desc = "Select with input";
+        };
+      }
+    ]
+    ++ (builtins.map (key: let
+      strKey = builtins.toString key;
     in {
-    key = "<leader>${strKey}";
-    action.__raw = ''function() require('harpoon.ui').nav_file(${strKey}) end'';
-    options = {
-      silent = true;
-      desc = "Harpoon: ${strKey}";
-    };
-  }) [ 1 2 3 4 ]);
+      key = "<leader>${strKey}";
+      action.__raw = ''function() require('harpoon.ui').nav_file(${strKey}) end'';
+      options = {
+        silent = true;
+        desc = "Harpoon: ${strKey}";
+      };
+    }) [1 2 3 4]);
 }

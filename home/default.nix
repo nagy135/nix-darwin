@@ -1,6 +1,10 @@
-{ config, pkgs, inputs, lib, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}: {
   imports = [
     ./lf.nix
     ./zsh.nix
@@ -46,16 +50,13 @@
     executable = true;
   };
 
-
   home.file.".npmrc".text = lib.generators.toINIWithGlobalSection {} {
     globalSection = {
       prefix = "~/.npm-packages";
     };
   };
 
-
   home.stateVersion = "23.11";
 
   programs.home-manager.enable = true;
-
 }

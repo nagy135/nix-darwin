@@ -1,11 +1,11 @@
-let 
+let
   keymaps_bind = {
     action = "keymaps";
     options = {
       desc = suffix "keymaps";
     };
   };
-  suffix = var : var + " (telescope)";
+  suffix = var: var + " (telescope)";
 in {
   plugins.telescope = {
     extensions.file-browser.enable = true;
@@ -116,15 +116,15 @@ in {
   keymaps = [
     {
       key = "<leader>fn";
-      action.__raw = ''function() 
-        require("telescope").extensions.file_browser.file_browser({ cwd = "%:h" })
-      end'';
+      action.__raw = ''        function() 
+                require("telescope").extensions.file_browser.file_browser({ cwd = "%:h" })
+              end'';
       options = {
         desc = suffix "find neighbors";
       };
     }
   ];
   plugins.which-key.registrations = {
-      "<leader>f"= "Find";
+    "<leader>f" = "Find";
   };
 }

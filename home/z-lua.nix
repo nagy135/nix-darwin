@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.z-lua = {
     enable = true;
     enableAliases = true;

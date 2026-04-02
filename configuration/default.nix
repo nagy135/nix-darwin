@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   imports = [
     ./packages.nix
     ./defaults.nix

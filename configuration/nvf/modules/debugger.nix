@@ -1,6 +1,6 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   config.vim = {
-    extraPackages = [ pkgs.vscode-js-debug ];
+    extraPackages = [pkgs.vscode-js-debug];
 
     debugger.nvim-dap = {
       enable = true;

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.fzf.tmux.enableShellIntegration = true;
   programs.sesh = {
     enable = true;
@@ -9,25 +9,25 @@
           name = "stuff";
           path = "~";
           startup_command = "fastfetch && ls";
-          windows = [ "neovim" ];
+          windows = ["neovim"];
         }
         {
           name = "warehouse";
           path = "~/Code/warehouse";
           startup_command = "ls";
-          windows = [ "neovim" "lazygit" ];
+          windows = ["neovim" "lazygit"];
         }
         {
           name = "shift-disributor";
           path = "~/Code/shift-distributor";
           startup_command = "ls";
-          windows = [ "neovim" "lazygit" ];
+          windows = ["neovim" "lazygit"];
         }
         {
           name = "addy-art";
           path = "~/Code/addy-art-payload";
           startup_command = "ls";
-          windows = [ "neovim" "lazygit" ];
+          windows = ["neovim" "lazygit"];
         }
         {
           name = "nix-darwin";

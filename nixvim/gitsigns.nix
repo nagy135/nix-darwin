@@ -16,6 +16,6 @@
         vim.api.nvim_buf_set_keymap(bufnr, 'n', 'ghS', '<cmd>lua require"gitsigns".stage_buffer()<CR>', {})
         vim.api.nvim_buf_set_keymap(bufnr, 'n', 'ghR', '<cmd>lua require"gitsigns".reset_buffer()<CR>', {})
       end
-  '';
+    '';
   };
 }

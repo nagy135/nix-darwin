@@ -1,5 +1,8 @@
-{ pkgs, home, ... }:
 {
+  pkgs,
+  home,
+  ...
+}: {
   services.postgresql = {
     package = pkgs.postgresql_15;
     enable = true;

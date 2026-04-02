@@ -1,5 +1,8 @@
-{ pkgs, lib, ... }:
-let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   functionsScripts = pkgs.writeShellScript "zshfunctions" ''
     fzfvim(){
     # find file in $1, open it with vim and put it into clipboard
@@ -86,8 +89,7 @@ let
     	fi
     }
   '';
-in
-{
+in {
   home.packages = with pkgs; [
     zsh-powerlevel10k
     atuin
@@ -140,63 +142,63 @@ in
       }
     ];
     envExtra = ''
-            export EDITOR=nvim
-            export HISTFILE=$HOME/.zsh_history
-            export PATH=$PATH:$HOME/.scripts
-            export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
-                '';
+      export EDITOR=nvim
+      export HISTFILE=$HOME/.zsh_history
+      export PATH=$PATH:$HOME/.scripts
+      export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
+    '';
     initContent = ''
-            source ${functionsScripts}
+      source ${functionsScripts}
 
-            [ -f ~/.zshenv_secret ] && source ~/.zshenv_secret
+      [ -f ~/.zshenv_secret ] && source ~/.zshenv_secret
 
-            export PATH=~/.npm-packages/bin:$PATH
-            export NODE_PATH=~/.npm-packages/lib/node_modules
+      export PATH=~/.npm-packages/bin:$PATH
+      export NODE_PATH=~/.npm-packages/lib/node_modules
 
-            bindkey '^R' history-incremental-search-backward
+      bindkey '^R' history-incremental-search-backward
 
-            bindkey '^P' history-search-backward
-            bindkey '^N' history-search-forward
+      bindkey '^P' history-search-backward
+      bindkey '^N' history-search-forward
 
-            setopt noincappendhistory
-            setopt nosharehistory
-            setopt appendhistory
+      setopt noincappendhistory
+      setopt nosharehistory
+      setopt appendhistory
 
-            zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-            zstyle ':completion:*' list-colors "$${(s.:.)LS_COLORS}"
+      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+      zstyle ':completion:*' list-colors "$${(s.:.)LS_COLORS}"
 
-            autoload -z edit-command-line
-            zle -N edit-command-line
-            bindkey "^E" edit-command-line
+      autoload -z edit-command-line
+      zle -N edit-command-line
+      bindkey "^E" edit-command-line
 
-            # Expands history expressions like !! or !$ when you press space
-            bindkey ' ' magic-space
+      # Expands history expressions like !! or !$ when you press space
+      bindkey ' ' magic-space
 
-            # -------------------------------------------
-            # 9. Custom Widgets
-            # -------------------------------------------
-            # Clear screen but keep current command buffer
-            function clear-screen-and-scrollback() {
-              echoti civis >"$TTY"
-              printf '%b' '\e[H\e[2J\e[3J' >"$TTY"
-              echoti cnorm >"$TTY"
-              zle redisplay
-            }
-            zle -N clear-screen-and-scrollback
-            bindkey '^X^L' clear-screen-and-scrollback
+      # -------------------------------------------
+      # 9. Custom Widgets
+      # -------------------------------------------
+      # Clear screen but keep current command buffer
+      function clear-screen-and-scrollback() {
+        echoti civis >"$TTY"
+        printf '%b' '\e[H\e[2J\e[3J' >"$TTY"
+        echoti cnorm >"$TTY"
+        zle redisplay
+      }
+      zle -N clear-screen-and-scrollback
+      bindkey '^X^L' clear-screen-and-scrollback
 
-            # Copy current command buffer to clipboard (macOS)
-            function copy-buffer-to-clipboard() {
-              echo -n "$BUFFER" | pbcopy
-              zle -M "Copied to clipboard"
-            }
-            zle -N copy-buffer-to-clipboard
-            bindkey '^X^Y' copy-buffer-to-clipboard
+      # Copy current command buffer to clipboard (macOS)
+      function copy-buffer-to-clipboard() {
+        echo -n "$BUFFER" | pbcopy
+        zle -M "Copied to clipboard"
+      }
+      zle -N copy-buffer-to-clipboard
+      bindkey '^X^Y' copy-buffer-to-clipboard
 
-            # export NVM_DIR="$HOME/.nvm"
-            # [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
+      # export NVM_DIR="$HOME/.nvm"
+      # [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
 
-            source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
-        '';
+      source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
+    '';
   };
 }

@@ -51,11 +51,10 @@ let
       }
     ];
   };
-in
-  {
-    files."ftplugin/typescript.lua" = js_ts_ftplugin;
-    files."ftplugin/javascript.lua" = js_ts_ftplugin;
-    files."ftplugin/typescriptreact.lua" = js_ts_ftplugin;
-    files."ftplugin/python.lua" = python_ftplugin;
-    files."ftplugin/go.lua" = go_ftplugin;
-  }
+in {
+  files."ftplugin/typescript.lua" = js_ts_ftplugin;
+  files."ftplugin/javascript.lua" = js_ts_ftplugin;
+  files."ftplugin/typescriptreact.lua" = js_ts_ftplugin;
+  files."ftplugin/python.lua" = python_ftplugin;
+  files."ftplugin/go.lua" = go_ftplugin;
+}

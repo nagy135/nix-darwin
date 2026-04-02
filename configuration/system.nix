@@ -1,5 +1,8 @@
-{ self, username, ... }:
 {
+  self,
+  username,
+  ...
+}: {
   system.keyboard.enableKeyMapping = true;
   system.keyboard.nonUS.remapTilde = true;
   system.keyboard.remapCapsLockToEscape = true;

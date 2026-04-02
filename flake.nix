@@ -20,44 +20,53 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ... }:
-    let
-      home = "/Users/viktornagy";
-      platform = "aarch64-darwin";
-      username = "viktornagy";
-      hostname = "Viktors-MacBook-Pro";
-    in
-    {
-
-      formatter.${platform} = nixpkgs.legacyPackages.${platform}.nixpkgs-fmt;
-
-      # Build darwin flake using:
-      # $ darwin-rebuild build --flake .#Viktors-MacBook-Pro
-      darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
-        specialArgs = {
-          inherit home self username;
-          nvf = inputs.nvf;
-        };
-        modules = [
-          ./configuration
-          home-manager.darwinModules.home-manager
-          {
-            home-manager = {
-              backupFileExtension = "save";
-              extraSpecialArgs = {
-                inherit inputs;
-              };
-              users.${username} = import ./home;
-            };
-            users.users.${username}.home = home;
-          }
-        ];
-      };
-
-      # Expose the package set, including overlays, for convenience.
-      darwinPackages = self.darwinConfigurations.${hostname}.pkgs;
+  outputs = inputs @ {
+    self,
+    nix-darwin,
+    nixpkgs,
+    home-manager,
+    ...
+  }: let
+    home = "/Users/viktornagy";
+    platform = "aarch64-darwin";
+    username = "viktornagy";
+    hostname = "Viktors-MacBook-Pro";
+    pkgs = nixpkgs.legacyPackages.${platform};
+  in {
+    formatter.${platform} = pkgs.writeShellApplication {
+      name = "nix-fmt";
+      runtimeInputs = [pkgs.alejandra];
+      text = ''
+        exec alejandra .
+      '';
     };
+
+    # Build darwin flake using:
+    # $ darwin-rebuild build --flake .#Viktors-MacBook-Pro
+    darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
+      specialArgs = {
+        inherit home self username;
+        nvf = inputs.nvf;
+      };
+      modules = [
+        ./configuration
+        home-manager.darwinModules.home-manager
+        {
+          home-manager = {
+            backupFileExtension = "save";
+            extraSpecialArgs = {
+              inherit inputs;
+            };
+            users.${username} = import ./home;
+          };
+          users.users.${username}.home = home;
+        }
+      ];
+    };
+
+    # Expose the package set, including overlays, for convenience.
+    darwinPackages = self.darwinConfigurations.${hostname}.pkgs;
+  };
 }

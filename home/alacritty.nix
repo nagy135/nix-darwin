@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.alacritty = {
     enable = true;
     settings = {
@@ -11,7 +11,7 @@
         };
       };
       font = {
-          size = 14;
+        size = 14;
         normal = {
           family = "Mononoki Nerd Font";
           style = "Regular";

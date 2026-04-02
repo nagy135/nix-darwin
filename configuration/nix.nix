@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   # Necessary for using flakes on this system.
   nix = {
     linux-builder = {
@@ -17,7 +16,7 @@
       };
     };
     settings = {
-      trusted-users = [ "@admin" ];
+      trusted-users = ["@admin"];
       experimental-features = "nix-command flakes";
     };
   };

@@ -14,32 +14,32 @@
     {
       key = "<C-n>";
       action.__raw = ''
-              function(fallback)
-              if cmp.visible() then
-        	cmp.select_next_item()
-        	  elseif require("luasnip").expand_or_jumpable() then
-        	  require("luasnip").expand_or_jump()
-              else
-        	fallback()
-        	  end
-        	  end
-        	  '';
-      mode = [ "i" "s" ];
+             function(fallback)
+             if cmp.visible() then
+        cmp.select_next_item()
+          elseif require("luasnip").expand_or_jumpable() then
+          require("luasnip").expand_or_jump()
+             else
+        fallback()
+          end
+          end
+      '';
+      mode = ["i" "s"];
     }
     {
       key = "<C-p>";
       action.__raw = ''
-              function(fallback)
-              if cmp.visible() then
-        	cmp.select_prev_item()
-        	  elseif require("luasnip").expand_or_jumpable() then
-        	  require("luasnip").expand_or_jump()
-              else
-        	fallback()
-        	  end
-        	  end
-        	  '';
-      mode = [ "i" "s" ];
+             function(fallback)
+             if cmp.visible() then
+        cmp.select_prev_item()
+          elseif require("luasnip").expand_or_jumpable() then
+          require("luasnip").expand_or_jump()
+             else
+        fallback()
+          end
+          end
+      '';
+      mode = ["i" "s"];
     }
   ];
 }

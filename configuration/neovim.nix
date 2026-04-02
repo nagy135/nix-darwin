@@ -1,5 +1,4 @@
-{ pkgs }:
-let
+{pkgs}: let
   useGitHubRelease = false;
   version = "0.12.0";
   customUnwrapped = pkgs.neovim-unwrapped.overrideAttrs (_: {
@@ -12,7 +11,6 @@ let
     };
   });
 in
-if useGitHubRelease then
-  pkgs.wrapNeovim customUnwrapped { }
-else
-  pkgs.neovim
+  if useGitHubRelease
+  then pkgs.wrapNeovim customUnwrapped {}
+  else pkgs.neovim

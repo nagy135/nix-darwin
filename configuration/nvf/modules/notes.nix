@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   config.vim.notes = {
     todo-comments.enable = true;
     neorg = {
@@ -7,7 +7,7 @@
       setupOpts = {
         load = {
           "core.defaults".enable = true;
-          "core.concealer" = { };
+          "core.concealer" = {};
           "core.dirman" = {
             config = {
               workspaces = {

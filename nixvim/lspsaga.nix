@@ -5,11 +5,10 @@
     symbolInWinbar.enable = false;
 
     callhierarchy.keys = {
-      edit =["o" "<cr>"];
+      edit = ["o" "<cr>"];
       split = "s";
       vsplit = "v";
       tabe = "t";
-
     };
   };
   keymaps = [
