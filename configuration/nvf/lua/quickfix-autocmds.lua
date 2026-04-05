@@ -1,9 +1,24 @@
+local function is_env_file(buf)
+  local name = vim.api.nvim_buf_get_name(buf)
+  local basename = vim.fn.fnamemodify(name, ":t")
+
+  return basename == ".env" or vim.startswith(basename, ".env.")
+end
+
 local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
   group = lint_augroup,
-  callback = function()
-    if vim.opt_local.modifiable:get() then
+  callback = function(args)
+    if vim.opt_local.modifiable:get() and not is_env_file(args.buf) then
       require("lint").try_lint()
+    end
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+  callback = function(args)
+    if is_env_file(args.buf) then
+      vim.diagnostic.disable(args.buf)
     end
   end,
 })
