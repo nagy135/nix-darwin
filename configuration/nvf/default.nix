@@ -2,13 +2,25 @@
   pkgs,
   nvf,
 }: let
+  neovimVersion = "0.11.6";
+  nvfPkgs = pkgs.extend (_: prev: {
+    neovim-unwrapped = prev.neovim-unwrapped.overrideAttrs (_: {
+      version = neovimVersion;
+      src = prev.fetchFromGitHub {
+        owner = "neovim";
+        repo = "neovim";
+        rev = "v${neovimVersion}";
+        hash = "sha256-GdfCaKNe/qPaUV2NJPXY+ATnQNWnyFTFnkOYDyLhTNg=";
+      };
+    });
+  });
   configModule = import ./config.nix {
-    inherit pkgs;
-    lib = pkgs.lib;
+    pkgs = nvfPkgs;
+    lib = nvfPkgs.lib;
   };
 in
   nvf.lib.neovimConfiguration {
-    inherit pkgs;
+    pkgs = nvfPkgs;
     modules = [
       configModule
       ./modules/core.nix
