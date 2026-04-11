@@ -10,7 +10,7 @@
 
     settings = {
       cursor_blink_interval = 0;
-      cursor_trail = 1;
+      cursor_trail = 3;
       enable_audio_bell = false;
       window_padding_width = 5;
       hide_window_decorations = "titlebar-only";
