@@ -5,7 +5,7 @@
 
     font = {
       name = "Mononoki Nerd Font";
-      size = 18;
+      size = 12;
     };
 
     settings = {
