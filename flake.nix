@@ -66,6 +66,16 @@
       ];
     };
 
+    homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      extraSpecialArgs = {
+        inherit inputs;
+      };
+      modules = [./home];
+    };
+
+    homeConfigurations."${username}@${hostname}" = self.homeConfigurations.${username};
+
     # Expose the package set, including overlays, for convenience.
     darwinPackages = self.darwinConfigurations.${hostname}.pkgs;
   };
