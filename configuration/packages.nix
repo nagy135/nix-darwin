@@ -16,6 +16,7 @@ in {
     git-crypt
     # transmission_4
     iina
+    nh
     qemu
     lazydocker
     lazygit
