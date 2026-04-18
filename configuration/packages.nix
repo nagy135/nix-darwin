@@ -16,6 +16,7 @@ in {
     git-crypt
     # transmission_4
     iina
+    pi-coding-agent
     nh
     qemu
     lazydocker
