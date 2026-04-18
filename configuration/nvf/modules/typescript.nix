@@ -1,7 +1,7 @@
 {...}: {
   config.vim.languages.ts = {
     enable = true;
-    lsp.servers = ["tsgo"];
+    lsp.servers = ["typescript-go"];
     extensions = {
       # "ts-error-translator" = {
       #   enable = true;
