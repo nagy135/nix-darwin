@@ -118,7 +118,7 @@ in {
     git = {
       enable = true;
       gitsigns.enable = true;
-      neogit.enable = false;
+      # neogit.enable = false;
     };
 
     telescope.enable = true;
@@ -299,10 +299,10 @@ in {
         cmd = ["DiffviewOpen" "DiffviewFileHistory"];
       };
 
-      "neogit" = {
-        package = pkgs.vimPlugins.neogit;
-        cmd = ["Neogit"];
-      };
+      # "neogit" = {
+      #   package = pkgs.vimPlugins.neogit;
+      #   cmd = ["Neogit"];
+      # };
 
       "undotree" = {
         package = pkgs.vimPlugins.undotree;

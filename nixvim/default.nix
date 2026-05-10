@@ -4,20 +4,21 @@
   pkgs,
   ...
 }: let
-  recursiveMerge = with lib; attrList: let
-    f = attrPath:
-      zipAttrsWith (
-        n: values:
-          if tail values == []
-          then head values
-          else if all isList values
-          then unique (concatLists values)
-          else if all isAttrs values
-          then f (attrPath ++ [n]) values
-          else last values
-      );
-  in
-    f [] attrList;
+  recursiveMerge = with lib;
+    attrList: let
+      f = attrPath:
+        zipAttrsWith (
+          n: values:
+            if tail values == []
+            then head values
+            else if all isList values
+            then unique (concatLists values)
+            else if all isAttrs values
+            then f (attrPath ++ [n]) values
+            else last values
+        );
+    in
+      f [] attrList;
   nixvimConfiguration = {
     enable = true;
     defaultEditor = true;
@@ -117,7 +118,7 @@
     ];
 
     extraConfigLua = ''
-      require('neogit').setup {};
+      -- require('neogit').setup {};
 
       vim.cmd("set undodir=~/.vim/undodir");
       vim.cmd("set undofile");
@@ -225,7 +226,7 @@ in {
     (import ./oil.nix)
     (import ./lsp.nix)
     (import ./neotree.nix)
-    (import ./neogit.nix)
+    # (import ./neogit.nix)
     (import ./harpoon.nix)
     (import ./copilot.nix)
     (import ./lualine.nix)

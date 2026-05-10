@@ -2,18 +2,7 @@
   pkgs,
   nvf,
 }: let
-  neovimVersion = "0.11.6";
-  nvfPkgs = pkgs.extend (_: prev: {
-    neovim-unwrapped = prev.neovim-unwrapped.overrideAttrs (_: {
-      version = neovimVersion;
-      src = prev.fetchFromGitHub {
-        owner = "neovim";
-        repo = "neovim";
-        rev = "v${neovimVersion}";
-        hash = "sha256-GdfCaKNe/qPaUV2NJPXY+ATnQNWnyFTFnkOYDyLhTNg=";
-      };
-    });
-  });
+  nvfPkgs = pkgs;
   configModule = import ./config.nix {
     pkgs = nvfPkgs;
     lib = nvfPkgs.lib;
@@ -31,6 +20,5 @@ in
       ./modules/debugger.nix
       ./modules/typescript.nix
       ./modules/notes.nix
-      ./modules/preview.nix
     ];
   }
