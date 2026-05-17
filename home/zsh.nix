@@ -29,6 +29,9 @@
     # change directory and list its files
     	cd "$@" && ls;
     }
+    p(){
+        pi -p "$@"
+    }
 
     gop() { # go project
     	choice=$(find ~ -maxdepth 6 -type d -o -type l | fzf)
