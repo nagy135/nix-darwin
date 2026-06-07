@@ -187,7 +187,7 @@
       mode = "n";
       silent = true;
       desc = "LSP restart";
-      action = "<cmd>LspRestart<CR>";
+      action = "<cmd>lua for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do client:stop() end; vim.defer_fn(function() vim.cmd.edit() end, 100)<CR>";
     }
     {
       key = "<leader><leader>j";
