@@ -1,5 +1,5 @@
 {
-  description = "Example Darwin system flake";
+  description = "viktor's nix-darwin";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -29,10 +29,10 @@
     home-manager,
     ...
   }: let
-    home = "/Users/viktornagy";
+    home = "/Users/Viktor";
     platform = "aarch64-darwin";
-    username = "viktornagy";
-    hostname = "Viktors-MacBook-Pro";
+    username = "Viktor";
+    hostname = "Viktor-Mac";
     pkgs = nixpkgs.legacyPackages.${platform};
   in {
     formatter.${platform} = pkgs.writeShellApplication {

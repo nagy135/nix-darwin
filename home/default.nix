@@ -18,8 +18,8 @@
     # inputs.nixvim.homeManagerModules.nixvim
     # ../nixvim
   ];
-  home.username = "viktornagy";
-  home.homeDirectory = "/Users/viktornagy";
+  home.username = "Viktor";
+  home.homeDirectory = "/Users/Viktor";
 
   home.file."hammerspoon" = {
     source = ./config/hammerspoon;
