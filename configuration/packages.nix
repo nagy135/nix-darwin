@@ -66,6 +66,7 @@ in {
     spotify-player
     zx
     keycastr
+    ffmpeg
     # python
   ];
 }
