@@ -91,5 +91,12 @@
       desc = "Toggle Diff View";
       action = "<cmd>lua NvfDiffviewToggle()<CR>";
     }
+    {
+      key = "<leader>gD";
+      mode = "n";
+      silent = true;
+      desc = "Toggle Diff View";
+      action = "<cmd>lua NvfDiffviewToggle()<CR>";
+    }
   ];
 }

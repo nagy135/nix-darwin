@@ -139,7 +139,7 @@ in {
       enableTreesitter = true;
       enableExtraDiagnostics = true;
 
-      ts = {
+      typescript = {
         enable = true;
         format.enable = true;
       };
@@ -297,6 +297,11 @@ in {
       "diffview.nvim" = {
         package = pkgs.vimPlugins.diffview-nvim;
         cmd = ["DiffviewOpen" "DiffviewFileHistory"];
+        setupModule = "diffview";
+        setupOpts.view = {
+          default.disable_diagnostics = true;
+          file_history.disable_diagnostics = true;
+        };
       };
 
       # "neogit" = {

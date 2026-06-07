@@ -30,7 +30,7 @@
     	cd "$@" && ls;
     }
     p(){
-        pi -p "$@"
+        pi --thinking "low" -p "$@"
     }
 
     gop() { # go project
@@ -118,6 +118,8 @@ in {
       lzd = "lazydocker";
       nix-shell = "nix-shell --run \"$SHELL\"";
 
+      claude = "claude --permission-mode auto --model claude-opus-4-8";
+
       cdc = "cd ~/Code";
       cdd = "cd ~/.dots";
 
@@ -172,7 +174,7 @@ in {
 
       autoload -z edit-command-line
       zle -N edit-command-line
-      bindkey "^E" edit-command-line
+      bindkey "^G" edit-command-line
 
       # Expands history expressions like !! or !$ when you press space
       bindkey ' ' magic-space

@@ -1,11 +1,11 @@
 {
   pkgs,
-  home,
+  userHome,
   ...
 }: {
   services.postgresql = {
     package = pkgs.postgresql_15;
-    enable = true;
+    enable = false;
     authentication = ''
       local   all             all                                     trust
       host    all             all             0.0.0.0/0               trust
@@ -48,7 +48,7 @@
 
   # Direct log output to $XDG_DATA_HOME/postgresql for debugging.
   launchd.user.agents.postgresql.serviceConfig = {
-    StandardErrorPath = "${home}/.local/share/postgresql/postgres.error.log";
-    StandardOutPath = "${home}/.local/share/postgresql/postgres.out.log";
+    StandardErrorPath = "${userHome}/.local/share/postgresql/postgres.error.log";
+    StandardOutPath = "${userHome}/.local/share/postgresql/postgres.out.log";
   };
 }

@@ -3,6 +3,8 @@
   pkgs,
   inputs,
   lib,
+  username,
+  userHome,
   ...
 }: {
   imports = [
@@ -18,8 +20,8 @@
     # inputs.nixvim.homeManagerModules.nixvim
     # ../nixvim
   ];
-  home.username = "viktornagy";
-  home.homeDirectory = "/Users/viktornagy";
+  home.username = username;
+  home.homeDirectory = userHome;
 
   home.file."hammerspoon" = {
     source = ./config/hammerspoon;
@@ -53,10 +55,15 @@
   home.file.".npmrc".text = lib.generators.toINIWithGlobalSection {} {
     globalSection = {
       prefix = "~/.npm-packages";
+      "@sensory:registry" = "https://git.sensory-minds.com/api/v4/projects/428/packages/npm/";
+      "//git.sensory-minds.com/api/v4/projects/428/packages/npm/:_authToken" = "\${NPM_TOKEN_SENSORY}";
+      "@hdpbe:registry" = "https://git.sensory-minds.com/api/v4/projects/426/packages/npm/";
+      "//git.sensory-minds.com/api/v4/projects/426/packages/npm/:_authToken" = "\${NPM_TOKEN_HDPBE}";
     };
   };
 
   home.stateVersion = "23.11";
+  home.enableNixpkgsReleaseCheck = false;
 
   programs.home-manager.enable = true;
 }
