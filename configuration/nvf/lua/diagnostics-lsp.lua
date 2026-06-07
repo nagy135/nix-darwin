@@ -61,9 +61,64 @@ do
   end
 end
 
+local lsp_keymaps = {
+  { "gd", "n" },
+  { "gr", "n" },
+  { "gI", "n" },
+  { "<leader>D", "n" },
+  { "<leader>ds", "n" },
+  { "<leader>ws", "n" },
+  { "<leader>rn", "n" },
+  { "<leader>cr", "n" },
+  { "<leader>ca", "n" },
+  { "<leader>ca", "x" },
+  { "gD", "n" },
+  { "<leader>th", "n" },
+}
+
+local function is_diffview_active()
+  local ok, lib = pcall(require, "diffview.lib")
+  return ok and lib.get_current_view and lib.get_current_view() ~= nil
+end
+
+local function remove_lsp_keymaps(bufnr)
+  for _, keymap in ipairs(lsp_keymaps) do
+    for _, existing in ipairs(vim.api.nvim_buf_get_keymap(bufnr, keymap[2])) do
+      if existing.lhs == keymap[1] and existing.desc and vim.startswith(existing.desc, "LSP: ") then
+        pcall(vim.keymap.del, keymap[2], keymap[1], { buffer = bufnr })
+        break
+      end
+    end
+  end
+end
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "DiffviewViewOpened",
+  callback = function()
+    vim.schedule(function()
+      for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+        remove_lsp_keymaps(vim.api.nvim_win_get_buf(win))
+      end
+    end)
+  end,
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function(event)
+    if is_diffview_active() then
+      remove_lsp_keymaps(event.buf)
+    end
+  end,
+})
+
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
   callback = function(event)
+    if is_diffview_active() then
+      remove_lsp_keymaps(event.buf)
+      return
+    end
+
     local map = function(keys, func, desc, mode)
       vim.keymap.set(mode or "n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
     end
