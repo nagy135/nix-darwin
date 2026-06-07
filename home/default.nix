@@ -17,8 +17,6 @@
     ./eza.nix
     ./tmux.nix
     ./sesh.nix
-    # inputs.nixvim.homeManagerModules.nixvim
-    # ../nixvim
   ];
   home.username = username;
   home.homeDirectory = userHome;
