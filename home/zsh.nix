@@ -118,6 +118,8 @@ in {
       lzd = "lazydocker";
       nix-shell = "nix-shell --run \"$SHELL\"";
 
+      claude = "claude --permission-mode auto --model claude-opus-4-8";
+
       cdc = "cd ~/Code";
       cdd = "cd ~/.dots";
 
