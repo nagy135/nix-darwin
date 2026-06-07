@@ -68,7 +68,7 @@
       mode = "n";
       silent = true;
       desc = "Find Files (Ignored)";
-      action = "<cmd>lua Snacks.picker.files({ ignored = true })<CR>";
+      action = "<cmd>lua Snacks.picker.files({ ignored = true; hidden = true })<CR>";
     }
     {
       key = "<leader>fg";
