@@ -33,14 +33,14 @@
       #   };
       # }
       {
-        action = "<cmd>lua vim.diagnostic.goto_prev()<CR>";
+        action = "<cmd>lua vim.diagnostic.jump({ count = -1 })<CR>";
         key = "[d";
         options = {
           silent = true;
         };
       }
       {
-        action = "<cmd>lua vim.diagnostic.goto_next()<CR>";
+        action = "<cmd>lua vim.diagnostic.jump({ count = 1 })<CR>";
         key = "]d";
         options = {
           silent = true;
