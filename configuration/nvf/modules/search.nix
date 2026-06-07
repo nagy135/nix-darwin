@@ -64,6 +64,13 @@
       action = "<cmd>lua Snacks.picker.files()<CR>";
     }
     {
+      key = "<leader>fF";
+      mode = "n";
+      silent = true;
+      desc = "Find Files (Ignored)";
+      action = "<cmd>lua Snacks.picker.files({ ignored = true })<CR>";
+    }
+    {
       key = "<leader>fg";
       mode = "n";
       silent = true;
