@@ -16,5 +16,8 @@
     };
     NSGlobalDomain.KeyRepeat = 2;
     NSGlobalDomain.NSWindowShouldDragOnGesture = true;
+
+
   };
+  ids.gids.nixbld = 350;
 }
