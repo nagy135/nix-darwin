@@ -30,7 +30,7 @@
     	cd "$@" && ls;
     }
     p(){
-        pi -p "$@"
+        pi --thinking "low" -p "$@"
     }
 
     gop() { # go project
