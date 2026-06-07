@@ -54,6 +54,8 @@
       # "oso-cloud"
       "zulu@17"
       "jackielii/tap/skhd-zig"
+      "insomnia"
+      "slack"
     ];
   };
 }
