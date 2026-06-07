@@ -139,7 +139,7 @@ in {
       enableTreesitter = true;
       enableExtraDiagnostics = true;
 
-      ts = {
+      typescript = {
         enable = true;
         format.enable = true;
       };
