@@ -1,5 +1,5 @@
 {...}: {
-  config.vim.languages.ts = {
+  config.vim.languages.typescript = {
     enable = true;
     lsp.servers = ["typescript-go"];
     extensions = {
