@@ -43,6 +43,7 @@
       # "font-monaspace-nerd-font"
       "font-monaspice-nerd-font"
       "font-noto-sans-symbols-2"
+      "font-mononoki-nerd-font"
       "hammerspoon"
       # "obs"
       "orbstack"
