@@ -172,7 +172,7 @@ in {
 
       autoload -z edit-command-line
       zle -N edit-command-line
-      bindkey "^E" edit-command-line
+      bindkey "^G" edit-command-line
 
       # Expands history expressions like !! or !$ when you press space
       bindkey ' ' magic-space
