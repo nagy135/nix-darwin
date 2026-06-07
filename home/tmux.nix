@@ -59,6 +59,7 @@ in {
         extraConfig = ''
             set -g @tmux-launchers "
             key=a window=6 command=opencode name=OpenCode
+            key=A window=4 command=claude name=ClaudeCode
             key=g window=3 command=lazygit --ucf ~/.config/lazygit/config.yml name=LazyGit
             key=t window=- command=npm run test
           "
