@@ -18,7 +18,11 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
   callback = function(args)
     if is_env_file(args.buf) then
-      vim.diagnostic.disable(args.buf)
+      if vim.diagnostic.disable then
+        vim.diagnostic.disable(args.buf)
+      else
+        vim.diagnostic.enable(false, { bufnr = args.buf })
+      end
     end
   end,
 })
