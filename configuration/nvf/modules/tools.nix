@@ -211,17 +211,17 @@
       action = "<cmd>lua require('typebreak').start(true)<CR>";
     }
     {
-      key = "<leader>csr";
+      key = "<leader>ccr";
       mode = "n";
       silent = true;
-      desc = "Restart SuperMaven";
+      desc = "Restart SuperMaven (Code Completion Restart)";
       action = "<cmd>SupermavenRestart<CR>";
     }
     {
-      key = "<leader>cst";
+      key = "<leader>cct";
       mode = "n";
       silent = true;
-      desc = "Toggle SuperMaven";
+      desc = "Toggle SuperMaven (Code Completion Toggle)";
       action = "<cmd>lua NvfToggleSupermaven()<CR>";
     }
     {
