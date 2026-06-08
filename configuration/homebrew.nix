@@ -15,7 +15,7 @@
       "codex"
       "discord"
       "raycast"
-      # "bambu-studio"
+      "bambu-studio"
       # "blender"
       # "vlc"
       # "folx"
