@@ -60,6 +60,13 @@
       action = "<cmd>silent !bash -n % | pbcopy<CR>";
     }
     {
+      key = "<leader>A";
+      mode = "n";
+      silent = true;
+      desc = "Copy file:line reference";
+      action = "<cmd>lua vim.fn.setreg('+', string.format('%s:%d %s', vim.fn.expand('%'), vim.fn.line('.'), vim.fn.getline('.')))<CR>";
+    }
+    {
       key = ",j";
       mode = "n";
       silent = true;
