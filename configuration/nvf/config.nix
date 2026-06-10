@@ -42,6 +42,7 @@ in {
       winborder = "rounded";
       mouse = "a";
       showmode = false;
+      termguicolors = true;
       wrap = true;
       cursorline = true;
       scrolloff = 10;
@@ -199,6 +200,24 @@ in {
         setupModule = "snacks";
         setupOpts = {
           picker.sources.lazy = false;
+        };
+      };
+
+      "nvim-colorizer.lua" = {
+        package = pkgs.vimPlugins.nvim-colorizer-lua;
+        event = ["BufReadPre" "BufNewFile"];
+        setupModule = "colorizer";
+        setupOpts = {
+          filetypes = ["*"];
+          buftypes = ["terminal"];
+          user_commands = true;
+          options = {
+            parsers = {
+              hex.default = true;
+              css = true;
+            };
+            display.mode = "background";
+          };
         };
       };
 
