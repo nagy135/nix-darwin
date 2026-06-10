@@ -2,6 +2,10 @@ local hs = hs
 local chooser = require("utils.chooser")
 local prompt = require("utils.prompt")
 
+local function shellQuote(value)
+	return "'" .. tostring(value):gsub("'", "'\\''") .. "'"
+end
+
 local function readSecretsFile()
 	local path = os.getenv("HOME") .. "/.secrets.json"
 	local file, err = io.open(path, "r")
@@ -97,7 +101,18 @@ local function copyTextToClipboard()
 	prompt.copyPrompt("Clipboard", "Text to copy", "Copy")
 end
 
+local function openKittyDndFromClipboard()
+	local contents = hs.pasteboard.getContents()
+	if not contents or contents == "" then
+		hs.alert.show("Clipboard is empty")
+		return
+	end
+
+	hs.execute("open -na kitty --args --override remember_window_size=no --override initial_window_width=80c --override initial_window_height=18c kitten dnd " .. shellQuote(contents))
+end
+
 return {
 	{ mods = { "alt" }, key = "g", description = "Copy typed text to clipboard", fn = copyTextToClipboard },
+	{ mods = { "alt", "ctrl" }, key = "d", description = "Open kitty dnd with clipboard", fn = openKittyDndFromClipboard },
 	{ mods = { "cmd", "alt" }, key = "p", description = "Copy credential from secrets file", fn = copySecretToClipboard },
 }
