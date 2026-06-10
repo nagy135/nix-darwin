@@ -33,6 +33,15 @@
         pi --thinking "low" -p "$@"
     }
 
+    pbpath(){
+    	if [[ -z "$1" ]]; then
+    		echo "usage: pbpath <path>" >&2
+    		return 1
+    	fi
+
+    	print -rn -- "''${1:A}" | pbcopy
+    }
+
     gop() { # go project
     	choice=$(find ~ -maxdepth 6 -type d -o -type l | fzf)
     		[[ ! -z $choice ]] \
