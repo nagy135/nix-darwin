@@ -4,12 +4,7 @@
   hostname,
   ...
 }: let
-  nvfOverride = true;
-  neovimPackage =
-    if nvfOverride
-    then (import ./nvf {inherit pkgs nvf;}).neovim
-    else import ./neovim.nix {inherit pkgs;};
-
+  neovimPackage = (import ./nvf {inherit pkgs nvf;}).neovim;
   sharedPackages = with pkgs; [
     home-manager
     git-crypt
