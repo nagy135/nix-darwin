@@ -40,6 +40,7 @@
       nix-darwin.lib.darwinSystem {
         specialArgs = {
           inherit self;
+          inherit hostname;
           inherit (host) username;
           userHome = host.home;
           nvf = inputs.nvf;
