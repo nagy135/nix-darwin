@@ -67,6 +67,7 @@ in {
     zx
     keycastr
     ffmpeg
+    azure-cli
     # python
   ];
 }
