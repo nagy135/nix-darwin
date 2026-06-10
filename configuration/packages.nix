@@ -68,6 +68,7 @@ in {
     keycastr
     ffmpeg
     azure-cli
+    kubelogin
     # python
   ];
 }
