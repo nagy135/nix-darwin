@@ -69,6 +69,7 @@ in {
     ffmpeg
     azure-cli
     kubelogin
+    yt-dlp
     # python
   ];
 }
