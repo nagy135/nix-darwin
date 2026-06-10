@@ -62,7 +62,7 @@
     keycastr
     ffmpeg
     yt-dlp
-    # python
+    python3
   ];
 
   sensoryPackages = with pkgs; [
