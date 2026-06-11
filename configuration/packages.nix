@@ -63,6 +63,7 @@
     ffmpeg
     yt-dlp
     python3
+    vi-mongo
   ];
 
   sensoryPackages = with pkgs; [
