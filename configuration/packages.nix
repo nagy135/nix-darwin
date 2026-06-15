@@ -71,6 +71,7 @@
     azure-cli
     kubectl
     kubelogin
+    lens
   ];
 
   personalPackages = with pkgs; [];
