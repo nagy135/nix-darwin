@@ -405,6 +405,13 @@ in {
                 indent = 2,
               },
             },
+            ui = {
+              win_opts = {
+                wo = {
+                  foldenable = false,
+                },
+              },
+            },
           })
         '';
       };
