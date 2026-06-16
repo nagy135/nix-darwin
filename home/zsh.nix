@@ -119,6 +119,26 @@ in {
     enable = true;
     syntaxHighlighting.enable = true;
     enableCompletion = true;
+    # Only run the full audit+dump once a day; otherwise reuse the cached
+    # dump with `compinit -C` (skips the security audit and re-dump).
+    # Cuts shell startup ~0.85s -> ~0.12s.
+    #
+    # The dump self-refreshes when it's >24h old. To pick up newly-installed
+    # completions sooner, force a rebuild: `rm ~/.zcompdump` then open a shell.
+    #
+    # extendedglob is needed for the (#q...) age qualifier; enable it
+    # locally so the option doesn't leak into the interactive shell.
+    completionInit = ''
+      autoload -Uz compinit
+      () {
+        setopt localoptions extendedglob
+        if [[ -n $HOME/.zcompdump(#qN.mh+24) ]]; then
+          compinit
+        else
+          compinit -C
+        fi
+      }
+    '';
     autosuggestion.enable = true;
     defaultKeymap = "viins";
     shellAliases = {
