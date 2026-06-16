@@ -98,7 +98,7 @@ local function copySecretToClipboard()
 end
 
 local function copyTextToClipboard()
-	prompt.copyPrompt("Clipboard", "Text to copy", "Copy")
+	prompt.copyPrompt("Clipboard", "Text to paste", "Paste", { paste = true })
 end
 
 local function openKittyDndFromClipboard()
@@ -112,7 +112,7 @@ local function openKittyDndFromClipboard()
 end
 
 return {
-	{ mods = { "alt" }, key = "g", description = "Copy typed text to clipboard", fn = copyTextToClipboard },
+	{ mods = { "alt" }, key = "g", description = "Paste typed text", fn = copyTextToClipboard },
 	{ mods = { "alt", "ctrl" }, key = "d", description = "Open kitty dnd with clipboard", fn = openKittyDndFromClipboard },
 	{ mods = { "cmd", "alt" }, key = "p", description = "Copy credential from secrets file", fn = copySecretToClipboard },
 }

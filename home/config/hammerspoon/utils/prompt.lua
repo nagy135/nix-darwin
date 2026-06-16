@@ -24,16 +24,26 @@ local function restoreWindowIfHammerspoonFrontmost(window)
 	end)
 end
 
-function M.copyPrompt(title, message, button)
+function M.copyPrompt(title, message, button, opts)
+	opts = opts or {}
 	M.withFocusedWindow(function(focusedWindow)
 		local btn, input = hs.dialog.textPrompt(title, message, "", button, "Cancel")
+		local shouldPaste = btn == button and input ~= nil and opts.paste
 
 		if btn == button and input ~= nil then
 			hs.pasteboard.setContents(input)
-			hs.alert.show("Copied to clipboard")
+			if not shouldPaste then
+				hs.alert.show("Copied to clipboard")
+			end
 		end
 
 		M.focusWindow(focusedWindow)
+
+		if shouldPaste then
+			hs.timer.doAfter(0.1, function()
+				hs.eventtap.keyStroke({ "cmd" }, "v")
+			end)
+		end
 	end)
 end
 
