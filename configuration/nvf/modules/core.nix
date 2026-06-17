@@ -49,6 +49,13 @@
       action = "<cmd>lua vim.diagnostic.setloclist()<CR>";
     }
     {
+      key = "<leader>clf";
+      mode = "n";
+      silent = true;
+      desc = "Open diagnostic float";
+      action = "<cmd>lua vim.diagnostic.open_float()<CR>";
+    }
+    {
       key = ";";
       mode = "n";
       action = ":";
