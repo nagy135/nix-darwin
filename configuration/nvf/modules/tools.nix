@@ -50,6 +50,13 @@
       action = "<cmd>NavicNotify<CR>";
     }
     {
+      key = "<leader>cs";
+      mode = "x";
+      silent = true;
+      desc = "[C]ode [S]creenshot";
+      action = ":'<,'>CodeSnap<CR>";
+    }
+    {
       key = "<leader>uu";
       mode = "n";
       silent = true;

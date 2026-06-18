@@ -313,6 +313,19 @@ in {
         setupOpts = {};
       };
 
+      "codesnap.nvim" = {
+        package = pkgs.vimPlugins.codesnap-nvim;
+        cmd = ["CodeSnap" "CodeSnapHighlight" "CodeSnapSave" "CodeSnapSaveHighlight" "CodeSnapASCII"];
+        setupModule = "codesnap";
+        setupOpts.snapshot_config = {
+          watermark.content = "";
+          window.margin = {
+            x = 41;
+            y = 41;
+          };
+        };
+      };
+
       "diffview.nvim" = {
         package = pkgs.vimPlugins.diffview-nvim;
         cmd = ["DiffviewOpen" "DiffviewFileHistory"];
