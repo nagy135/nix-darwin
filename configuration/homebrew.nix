@@ -53,7 +53,7 @@
       "orbstack"
       # "oso-cloud"
       "zulu@17"
-      "jackielii/tap/skhd-zig"
+      "modem-dev/tap/hunk"
       "fcoury/tap/tsql"
       "graphviz"
       "insomnia"
