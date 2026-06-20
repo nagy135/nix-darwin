@@ -17,6 +17,7 @@
     ./eza.nix
     ./tmux.nix
     ./sesh.nix
+    ./karabiner.nix
   ];
   home.username = username;
   home.homeDirectory = userHome;
