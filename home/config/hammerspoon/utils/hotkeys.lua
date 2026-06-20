@@ -3,6 +3,8 @@ local chooser = require("utils.chooser")
 
 local M = {}
 
+local raycastKeybindsPath = os.getenv("HOME") .. "/.dots/raycast/raycast-keybinds-keybinds.json"
+
 local function formatMods(mods)
 	local labels = {
 		cmd = "cmd",
@@ -24,33 +26,78 @@ end
 
 function M.bindAll(hotkeys)
 	for _, hotkey in ipairs(hotkeys) do
-		hs.hotkey.bind(hotkey.mods, hotkey.key, hotkey.fn, nil, hotkey.repeatFn)
+		if hotkey.fn then
+			hs.hotkey.bind(hotkey.mods, hotkey.key, hotkey.fn, nil, hotkey.repeatFn)
+		end
 	end
+end
+
+local function loadRaycastKeybinds()
+	if not hs.fs.attributes(raycastKeybindsPath) then
+		return {}
+	end
+
+	local file = io.open(raycastKeybindsPath, "r")
+	if not file then
+		return {}
+	end
+
+	local contents = file:read("*a")
+	file:close()
+
+	local keybinds = hs.json.decode(contents)
+	if type(keybinds) ~= "table" then
+		return {}
+	end
+
+	local entries = {}
+	for description, bind in pairs(keybinds) do
+		if type(description) == "string" and type(bind) == "string" then
+			table.insert(entries, {
+				description = "Raycast: " .. description,
+				bind = bind,
+			})
+		end
+	end
+
+	table.sort(entries, function(left, right)
+		return left.description:lower() < right.description:lower()
+	end)
+
+	return entries
 end
 
 function M.createPickerBinding(hotkeys)
 	local hotkeyChoiceMap = {}
 
-	local function buildHotkeyChoices(query)
+	local function buildHotkeyChoices(query, raycastKeybinds)
 		local normalizedQuery = query and query:lower() or ""
 		local choices = {}
 		hotkeyChoiceMap = {}
 
-		for index, hotkey in ipairs(hotkeys) do
-			local bind = formatBind(hotkey.mods, hotkey.key)
-			local haystack = (bind .. " " .. hotkey.description):lower()
+		local function addChoice(entry, uuid)
+			local bind = entry.bind or formatBind(entry.mods, entry.key)
+			local haystack = (bind .. " " .. entry.description):lower()
 
 			if normalizedQuery == "" or haystack:find(normalizedQuery, 1, true) then
-				local uuid = tostring(index)
-				hotkeyChoiceMap[uuid] = hotkey
-				table.insert(choices, chooser.createStyledChoice(hotkey.description, bind, { uuid = uuid }))
+				hotkeyChoiceMap[uuid] = entry
+				table.insert(choices, chooser.createStyledChoice(entry.description, bind, { uuid = uuid }))
 			end
+		end
+
+		for index, hotkey in ipairs(hotkeys) do
+			addChoice(hotkey, "hotkey-" .. index)
+		end
+
+		for index, raycastKeybind in ipairs(raycastKeybinds) do
+			addChoice(raycastKeybind, "raycast-" .. index)
 		end
 
 		return choices
 	end
 
 	local function showHotkeyPicker()
+		local raycastKeybinds = loadRaycastKeybinds()
 		local picker
 		picker = hs.chooser.new(function(choice)
 			if not choice then
@@ -60,17 +107,19 @@ function M.createPickerBinding(hotkeys)
 			local hotkey = hotkeyChoiceMap[choice.uuid]
 			if hotkey then
 				picker:hide()
-				hs.timer.doAfter(0.1, hotkey.fn)
+				if hotkey.fn then
+					hs.timer.doAfter(0.1, hotkey.fn)
+				end
 			end
 		end)
 
-		picker:choices(buildHotkeyChoices(""))
+		picker:choices(buildHotkeyChoices("", raycastKeybinds))
 		picker:queryChangedCallback(function(query)
-			picker:choices(buildHotkeyChoices(query))
+			picker:choices(buildHotkeyChoices(query, raycastKeybinds))
 		end)
 		picker:searchSubText(false)
 		picker:placeholderText("search hotkeys by bind or description")
-		picker:rows(math.min(#hotkeys, 8))
+		picker:rows(math.min(#hotkeys + #raycastKeybinds, 8))
 		picker:width(30)
 		picker:show()
 	end
