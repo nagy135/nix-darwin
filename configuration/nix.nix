@@ -2,7 +2,7 @@
   # Necessary for using flakes on this system.
   nix = {
     linux-builder = {
-      enable = true;
+      enable = false;
       ephemeral = true;
       maxJobs = 4;
       config = {
