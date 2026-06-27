@@ -85,6 +85,13 @@
       action = "<cmd>lua NvfDiffviewFileHistory()<CR>";
     }
     {
+      key = "<leader>gdi";
+      mode = "n";
+      silent = true;
+      desc = "Git Diff Inline";
+      action = "<cmd>lua MiniDiff.toggle_overlay()<CR>";
+    }
+    {
       key = "<leader>gdt";
       mode = "n";
       silent = true;
