@@ -178,6 +178,14 @@ in {
     envExtra = ''
       export EDITOR=nvim
       export HISTFILE=$HOME/.zsh_history
+      if [[ -x /opt/homebrew/bin/brew ]]; then
+        export HOMEBREW_PREFIX=/opt/homebrew
+        export HOMEBREW_CELLAR=/opt/homebrew/Cellar
+        export HOMEBREW_REPOSITORY=/opt/homebrew
+        export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
+        export MANPATH=/opt/homebrew/share/man:''${MANPATH:-}
+        export INFOPATH=/opt/homebrew/share/info:''${INFOPATH:-}
+      fi
       export PATH=$PATH:$HOME/.scripts
       export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
     '';
