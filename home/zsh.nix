@@ -100,6 +100,23 @@
     		[ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
     	fi
     }
+
+    run-k9s() {
+    	if [[ -z "$1" || -z "$2" ]]; then
+    		echo "usage: run-k9s <context> <namespace>" >&2
+    		return 1
+    	fi
+
+    	kubectl config use-context "$1" --namespace="$2" && k9s
+    }
+
+    prod-hdplus-k9s() {
+    	run-k9s aks-green-engine-prod-weu hdplus
+    }
+
+    dev-hdplus-k9s() {
+    	run-k9s aks-green-engine-dev-weu hdplus
+    }
   '';
 in {
   home.packages = with pkgs; [
