@@ -52,7 +52,9 @@ function M.openPrompt(config)
 		local btn, query = hs.dialog.textPrompt(config.title, config.message, "", config.confirm, "Cancel")
 		if btn == config.confirm and query and query ~= "" then
 			config.onConfirm(query)
-			restoreWindowIfHammerspoonFrontmost(focusedWindow)
+			if config.restoreFocus ~= false then
+				restoreWindowIfHammerspoonFrontmost(focusedWindow)
+			end
 			return
 		end
 

@@ -1,4 +1,5 @@
 local hs = hs
+local kitty = require("utils.kitty")
 local prompt = require("utils.prompt")
 
 local function openUrlPrompt(title, message, confirm, buildUrl)
@@ -12,6 +13,21 @@ local function openUrlPrompt(title, message, confirm, buildUrl)
 			end,
 		})
 	end
+end
+
+local function correctGermanWithPi()
+	local germanCorrectionPrefix =
+		"You will correct my German sentence. Reply in plain text only, with no Markdown and no labels. The first line must be only the corrected sentence. Then break down every mistake in English. Afterwards give me a more idiomatic version if such exists. Sentence follows:"
+
+	prompt.openPrompt({
+		title = "German correction",
+		message = "Sentence",
+		confirm = "Correct",
+		restoreFocus = false,
+		onConfirm = function(sentence)
+			kitty.openPiPrompt(germanCorrectionPrefix .. "\n\n" .. sentence)
+		end,
+	})
 end
 
 return {
@@ -46,5 +62,11 @@ return {
 		fn = openUrlPrompt("Translate (konjugation)", "dictionary", "Translate", function(query)
 			return "https://www.verbformen.de/konjugation/?w=" .. query
 		end),
+	},
+	{
+		mods = { "cmd", "alt" },
+		key = "t",
+		description = "Correct German sentence with pi",
+		fn = correctGermanWithPi,
 	},
 }
