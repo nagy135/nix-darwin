@@ -64,6 +64,7 @@
     yt-dlp
     python3
     vi-mongo
+    mongodb-tools
     postgresql
   ];
 
