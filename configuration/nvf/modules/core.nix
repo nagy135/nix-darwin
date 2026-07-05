@@ -14,6 +14,13 @@
       action = "<C-\\><C-n>";
     }
     {
+      key = "<M-BS>";
+      mode = "i";
+      silent = true;
+      desc = "Delete word to the left";
+      action = "<C-w>";
+    }
+    {
       key = "]d";
       mode = "n";
       silent = true;
