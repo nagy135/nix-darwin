@@ -17,7 +17,7 @@ end
 
 local function correctGermanWithPi()
 	local germanCorrectionPrefix =
-		"You will correct my German sentence. Reply in plain text only, with no Markdown and no labels. The first line must be only the corrected sentence. Then break down every mistake in English. Afterwards give me a more idiomatic version if such exists. Sentence follows:"
+		"You will correct my German sentence. Reply in plain text only, with no Markdown and no labels. The first line must be only the corrected sentence. Then break down every mistake in English. Afterwards give me a more idiomatic version if such exists. Keep casing and style of the sentence, dont capitalize, dont add dot at the end, just fix the words (you can add commas, capitalize nouns etc just make sure it fits still in the sentence it was taken out of). Sentence follows:"
 
 	prompt.openPrompt({
 		title = "German correction",
