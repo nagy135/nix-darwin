@@ -49,6 +49,7 @@
 
     keybindings = {
       "kitty_mod+s" = "goto_session";
+      "opt+cmd+s" = "no_op"; # remove annoying security swallow all events mode
     };
 
     extraConfig = ''
