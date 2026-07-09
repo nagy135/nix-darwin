@@ -24,13 +24,14 @@
     dust
     figlet
     nodejs_latest
+    typescript
     bun
     pnpm
     pqiv
     portal
     yq
     alacritty
-    audacity
+    # audacity
     go
     zig
     ripgrep

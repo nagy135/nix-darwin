@@ -19,48 +19,6 @@ vim.diagnostic.config({
   },
 })
 
-do
-  local default_register = vim.lsp.handlers["client/registerCapability"]
-
-  vim.lsp.handlers["client/registerCapability"] = function(err, result, ctx, config)
-    local client = ctx and vim.lsp.get_client_by_id(ctx.client_id)
-    if client and (client.name == "typescript-go" or client.name == "tsgo") then
-      local registrations = result and result.registrations
-      if registrations then
-        local filtered = {}
-
-        for _, registration in ipairs(registrations) do
-          local drop = false
-
-          if registration.method == "workspace/didChangeWatchedFiles" then
-            local watchers = registration.registerOptions and registration.registerOptions.watchers or {}
-
-            for _, watcher in ipairs(watchers) do
-              local glob = watcher.globPattern
-              if type(glob) == "string" and glob:match("^bundled://") then
-                drop = true
-                break
-              end
-            end
-          end
-
-          if not drop then
-            filtered[#filtered + 1] = registration
-          end
-        end
-
-        if #filtered == 0 then
-          return vim.NIL
-        end
-
-        result = vim.tbl_extend("force", result, { registrations = filtered })
-      end
-    end
-
-    return default_register(err, result, ctx, config)
-  end
-end
-
 local lsp_keymaps = {
   { "gd", "n" },
   { "gr", "n" },
