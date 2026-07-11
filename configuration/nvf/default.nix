@@ -20,7 +20,8 @@ in
       ./modules/tools.nix
       ./modules/claudecode.nix
       ./modules/debugger.nix
-      ./modules/typescript.nix
+      ./modules/languages/go.nix
+      ./modules/languages/typescript.nix
       ./modules/notes.nix
     ];
   }
