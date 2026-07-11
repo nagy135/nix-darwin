@@ -14,6 +14,9 @@
       _FXShowPosixPathInTitle = true;
       FXPreferredViewStyle = "Nlsv";
     };
+    CustomUserPreferences."com.apple.finder".NSUserKeyEquivalents = {
+      "Go to Folder…" = "@l";
+    };
     NSGlobalDomain.KeyRepeat = 2;
     NSGlobalDomain.NSWindowShouldDragOnGesture = true;
   };
