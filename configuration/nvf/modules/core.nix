@@ -25,28 +25,28 @@
       mode = "n";
       silent = true;
       desc = "Go to next diagnostic";
-      action = "<cmd>lua vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR, wrap = true })<CR>";
+      action = "<cmd>lua vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR, wrap = true, float = true })<CR>";
     }
     {
       key = "[d";
       mode = "n";
       silent = true;
       desc = "Go to previous diagnostic";
-      action = "<cmd>lua vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR, wrap = true })<CR>";
+      action = "<cmd>lua vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR, wrap = true, float = true })<CR>";
     }
     {
       key = "]D";
       mode = "n";
       silent = true;
       desc = "Go to next diagnostic";
-      action = "<cmd>lua vim.diagnostic.jump({ count = 1 })<CR>";
+      action = "<cmd>lua vim.diagnostic.jump({ count = 1, float = true })<CR>";
     }
     {
       key = "[D";
       mode = "n";
       silent = true;
       desc = "Go to previous diagnostic";
-      action = "<cmd>lua vim.diagnostic.jump({ count = -1 })<CR>";
+      action = "<cmd>lua vim.diagnostic.jump({ count = -1, float = true })<CR>";
     }
     {
       key = "<leader>q";
