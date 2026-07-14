@@ -208,6 +208,7 @@ in {
     '';
     initContent = ''
       source ${functionsScripts}
+      any-nix-shell zsh --info-right | source /dev/stdin
 
       [ -f ~/.zshenv_secret ] && source ~/.zshenv_secret
 

@@ -67,6 +67,7 @@
     vi-mongo
     mongodb-tools
     postgresql
+    any-nix-shell
   ];
 
   sensoryPackages = with pkgs; [
