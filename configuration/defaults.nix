@@ -17,6 +17,9 @@
     CustomUserPreferences."com.apple.finder".NSUserKeyEquivalents = {
       "Go to Folder…" = "@l";
     };
+    CustomUserPreferences.NSGlobalDomain = {
+      TSMLanguageIndicatorEnabled = false;
+    };
     NSGlobalDomain.KeyRepeat = 2;
     NSGlobalDomain.NSWindowShouldDragOnGesture = true;
   };
