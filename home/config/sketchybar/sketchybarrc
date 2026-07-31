@@ -34,11 +34,7 @@ default=(
 )
 sketchybar --default "${default[@]}"
 
-sketchybar --add item wifi left \
-	--set wifi update_freq=5 script="$PLUGIN_DIR/wifi.sh" \
-	--subscribe wifi wifi_change mouse.clicked \
-	\
-	--add item apple left \
+sketchybar --add item apple left \
 	--set apple icon= label.drawing=off icon.font.size=25 y_offset=3
 
 sketchybar --add event aerospace_workspace_change
@@ -99,15 +95,6 @@ sketchybar --add item display left \
 sketchybar --add item clock right \
 	--set clock update_freq=10 icon=🕒 script="$PLUGIN_DIR/clock.sh" \
 	\
-	--add item temperature right \
-	--set temperature icon=🌡 \
-	\
-	--add item cpu_usage right \
-	--set cpu_usage icon= \
-	\
-	--add item ram_usage right \
-	--set ram_usage icon= \
-	\
 	--add item volume right \
 	--set volume script="$PLUGIN_DIR/volume.sh" \
 	--subscribe volume volume_change \
@@ -118,7 +105,20 @@ sketchybar --add item clock right \
 	\
 	--add item battery right \
 	--set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
-	--subscribe battery system_woke power_source_change
+	--subscribe battery system_woke power_source_change \
+	\
+	--add item temperature right \
+	--set temperature icon=🌡 \
+	\
+	--add item cpu_usage right \
+	--set cpu_usage icon= \
+	\
+	--add item ram_usage right \
+	--set ram_usage icon= \
+	\
+	--add item wifi right \
+	--set wifi update_freq=5 script="$PLUGIN_DIR/wifi.sh" \
+	--subscribe wifi wifi_change mouse.clicked
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
