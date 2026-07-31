@@ -5,6 +5,7 @@
   ...
 }: let
   neovimPackage = (import ./nvf {inherit pkgs nvf;}).neovim;
+  latestMacmon = pkgs.callPackage ./macmon.nix {};
   sharedPackages = with pkgs; [
     home-manager
     git-crypt
@@ -68,6 +69,7 @@
     mongodb-tools
     postgresql
     any-nix-shell
+    latestMacmon
   ];
 
   sensoryPackages = with pkgs; [
