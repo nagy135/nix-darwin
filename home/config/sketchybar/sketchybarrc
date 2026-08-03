@@ -1,9 +1,11 @@
+#!/bin/zsh
+
 # This is a demo config to showcase some of the most important commands.
 # It is meant to be changed and configured, as it is intentionally kept sparse.
 # For a (much) more advanced configuration example see my dotfiles:
 # https://github.com/FelixKratz/dotfiles
 
-CONFIG_DIR='~/.config/sketchybar'
+CONFIG_DIR="$HOME/.config/sketchybar"
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
 ##### Bar Appearance #####
@@ -117,8 +119,10 @@ sketchybar --add item clock right \
 	--set ram_usage icon= \
 	\
 	--add item wifi right \
-	--set wifi update_freq=5 script="$PLUGIN_DIR/wifi.sh" \
+	--set wifi position=right update_freq=5 script="$PLUGIN_DIR/wifi.sh" \
 	--subscribe wifi wifi_change mouse.clicked
+
+sketchybar --reorder clock volume brightness battery temperature cpu_usage ram_usage wifi
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
