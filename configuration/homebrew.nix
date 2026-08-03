@@ -9,6 +9,7 @@
     casks = [
       # "aerospace"
       "homerow"
+      "folx"
       "chatgpt"
       "spotify"
       "claude-code"
