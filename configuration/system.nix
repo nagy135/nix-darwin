@@ -3,9 +3,9 @@
   username,
   ...
 }: {
-  system.keyboard.enableKeyMapping = true;
-  system.keyboard.nonUS.remapTilde = true;
-  system.keyboard.remapCapsLockToEscape = true;
+  # system.keyboard.enableKeyMapping = true;
+  # system.keyboard.nonUS.remapTilde = true;
+  # system.keyboard.remapCapsLockToEscape = true;
 
   system.startup.chime = false;
 

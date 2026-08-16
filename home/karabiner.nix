@@ -8,8 +8,28 @@
           name = "Default profile";
           selected = true;
           virtual_hid_keyboard.keyboard_type_v2 = "ansi";
-          # Hardware-level key mappings are managed by system.keyboard.
           complex_modifications.rules = [
+            {
+              description = "Remap Caps Lock to Escape and ISO section to grave";
+              manipulators = [
+                {
+                  type = "basic";
+                  from = {
+                    key_code = "caps_lock";
+                    modifiers.optional = ["any"];
+                  };
+                  to = [{key_code = "escape";}];
+                }
+                {
+                  type = "basic";
+                  from = {
+                    key_code = "non_us_backslash";
+                    modifiers.optional = ["any"];
+                  };
+                  to = [{key_code = "grave_accent_and_tilde";}];
+                }
+              ];
+            }
             {
               description = "Change option+Tab to command+Tab";
               manipulators = [
