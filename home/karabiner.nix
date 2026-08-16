@@ -8,16 +8,7 @@
           name = "Default profile";
           selected = true;
           virtual_hid_keyboard.keyboard_type_v2 = "ansi";
-          simple_modifications = [
-            {
-              from.key_code = "caps_lock";
-              to = [{key_code = "escape";}];
-            }
-            {
-              from.key_code = "non_us_backslash";
-              to = [{key_code = "grave_accent_and_tilde";}];
-            }
-          ];
+          # Hardware-level key mappings are managed by system.keyboard.
           complex_modifications.rules = [
             {
               description = "Change option+Tab to command+Tab";
