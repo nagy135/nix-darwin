@@ -18,6 +18,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    neru = {
+      url = "github:y3owk1n/neru";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -49,6 +54,8 @@
           nvf = inputs.nvf;
         };
         modules = [
+          inputs.neru.darwinModules.default
+          {nixpkgs.overlays = [inputs.neru.overlays.default];}
           ./configuration
           home-manager.darwinModules.home-manager
           {

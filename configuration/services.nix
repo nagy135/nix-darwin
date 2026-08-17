@@ -46,6 +46,11 @@
 
   services.sketchybar.enable = true;
 
+  services.neru = {
+    enable = true;
+    configFile = ./neru/config.toml;
+  };
+
   # Direct log output to $XDG_DATA_HOME/postgresql for debugging.
   launchd.user.agents.postgresql.serviceConfig = {
     StandardErrorPath = "${userHome}/.local/share/postgresql/postgres.error.log";

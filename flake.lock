@@ -51,6 +51,26 @@
         "type": "github"
       }
     },
+    "neru": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1786684255,
+        "narHash": "sha256-caL6Pz56Z3RFMlYDSuvAuV2E3poihf7o/L6jk2WFHoI=",
+        "owner": "y3owk1n",
+        "repo": "neru",
+        "rev": "2211bbe860c70443873760776b603e61b6df2362",
+        "type": "github"
+      },
+      "original": {
+        "owner": "y3owk1n",
+        "repo": "neru",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -112,6 +132,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "neru": "neru",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
         "nvf": "nvf"
