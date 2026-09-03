@@ -22,6 +22,13 @@
       action = "<cmd>lua Snacks.picker.grep()<CR>";
     }
     {
+      key = "<leader>i/";
+      mode = "n";
+      silent = true;
+      desc = "Grep (Including Ignored)";
+      action = "<cmd>lua Snacks.picker.grep({ ignored = true; hidden = true })<CR>";
+    }
+    {
       key = "<leader>:";
       mode = "n";
       silent = true;
@@ -62,6 +69,13 @@
       silent = true;
       desc = "Find Files";
       action = "<cmd>lua Snacks.picker.files()<CR>";
+    }
+    {
+      key = "<leader>iff";
+      mode = "n";
+      silent = true;
+      desc = "Find Files (Including Ignored)";
+      action = "<cmd>lua Snacks.picker.files({ ignored = true; hidden = true })<CR>";
     }
     {
       key = "<leader>fF";
