@@ -30,5 +30,10 @@ require("mini.files").setup({
 	},
 })
 
-require("mini.diff").setup()
+require("mini.diff").setup({
+	mappings = {
+		goto_first = "",
+		goto_last = "",
+	},
+})
 require("mini.pick").setup()

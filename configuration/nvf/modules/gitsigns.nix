@@ -15,6 +15,20 @@
       action = "<cmd>Gitsigns prev_hunk<CR>";
     }
     {
+      key = "]H";
+      mode = "n";
+      silent = true;
+      desc = "Next staged Git hunk";
+      action = "<cmd>lua require('gitsigns').nav_hunk('next', { target = 'staged' })<CR>";
+    }
+    {
+      key = "[H";
+      mode = "n";
+      silent = true;
+      desc = "Previous staged Git hunk";
+      action = "<cmd>lua require('gitsigns').nav_hunk('prev', { target = 'staged' })<CR>";
+    }
+    {
       key = "ghs";
       mode = "n";
       silent = true;
