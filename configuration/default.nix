@@ -41,10 +41,6 @@
           changelog = "https://github.com/microsoft/TypeScript/releases/tag/v${finalAttrs.version}";
         };
       });
-
-      typescript-language-server = prev.typescript-language-server.override {
-        typescript = final.typescript;
-      };
     })
   ];
 }
