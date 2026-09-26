@@ -63,6 +63,13 @@
       action = "<cmd>lua vim.diagnostic.open_float()<CR>";
     }
     {
+      key = "<leader>clt";
+      mode = "n";
+      silent = true;
+      desc = "Toggle buffer diagnostics";
+      action = "<cmd>lua vim.diagnostic.enable(not vim.diagnostic.is_enabled({ bufnr = 0 }), { bufnr = 0 })<CR>";
+    }
+    {
       key = ";";
       mode = "n";
       action = ":";
