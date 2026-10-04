@@ -199,7 +199,7 @@ in {
         export HOMEBREW_PREFIX=/opt/homebrew
         export HOMEBREW_CELLAR=/opt/homebrew/Cellar
         export HOMEBREW_REPOSITORY=/opt/homebrew
-        export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
+        export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$HOME/Code/glab-pipelines/bin:$PATH
         export MANPATH=/opt/homebrew/share/man:''${MANPATH:-}
         export INFOPATH=/opt/homebrew/share/info:''${INFOPATH:-}
       fi
@@ -208,6 +208,12 @@ in {
     '';
     initContent = ''
       source ${functionsScripts}
+
+      # Record selected SSH connections in shell history when the wrapper is available.
+      if [[ -f "$HOME/.scripts/resources/ssh-fzf.zsh" && -r "$HOME/.scripts/resources/ssh-fzf.zsh" ]]; then
+        source "$HOME/.scripts/resources/ssh-fzf.zsh"
+      fi
+
       any-nix-shell zsh --info-right | source /dev/stdin
 
       [ -f ~/.zshenv_secret ] && source ~/.zshenv_secret
