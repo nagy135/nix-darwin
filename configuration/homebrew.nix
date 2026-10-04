@@ -1,23 +1,53 @@
 {...}: {
   homebrew = {
     taps = [
-      # "homebrew/cask-fonts"
+      "darrylmorley/whatcable"
+      "drewzemke/tap"
+      "fcoury/tap"
+      "jackielii/tap"
+      "modem-dev/tap"
+      "normen/tap"
+      "riii111/sabiql"
+      "y3owk1n/tap"
     ];
     enable = false;
     onActivation.autoUpdate = true;
     onActivation.upgrade = true;
+    brews = [
+      "cocoapods"
+      "difftastic"
+      "drewzemke/tap/tongo"
+      "e2fsprogs"
+      "fcoury/tap/tsql"
+      "glab"
+      "glow"
+      "graphviz"
+      "herdr"
+      "jackielii/tap/skhd-zig"
+      "k9s"
+      "mermaid-cli"
+      "modem-dev/tap/hunk"
+      "mongosh"
+      "mtools"
+      "normen/tap/whatscli"
+      "opencode"
+      "sabiql"
+      "superfile"
+      "terminal-notifier"
+      "u-boot-tools"
+    ];
     casks = [
       # "aerospace"
       "homerow"
       "folx"
       "chatgpt"
       "spotify"
-      "claude-code"
+      "claude-code@latest"
       "codex"
       "discord"
       "raycast"
       "bambu-studio"
-      # "blender"
+      "blender"
       # "vlc"
       # "folx"
       # "forklift"
@@ -41,9 +71,6 @@
       # "wezterm"
       "zed"
       "zen"
-      "glow"
-      "k9s"
-      "mermaid-cli"
       # "zen-browser"
       # "font-monaspace-nerd-font"
       "font-monaspice-nerd-font"
@@ -54,11 +81,12 @@
       "orbstack"
       # "oso-cloud"
       "zulu@17"
-      "modem-dev/tap/hunk"
-      "fcoury/tap/tsql"
-      "graphviz"
       "insomnia"
       "slack"
+      "steam"
+      "t3-code@nightly"
+      "darrylmorley/whatcable/whatcable"
+      "y3owk1n/tap/neru-nightly"
     ];
   };
 }
