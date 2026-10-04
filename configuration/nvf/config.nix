@@ -149,7 +149,6 @@ in {
       html.enable = true;
       json.enable = true;
       lua.enable = true;
-      markdown.enable = false;
       nix.enable = true;
       python.enable = true;
       yaml.enable = true;
