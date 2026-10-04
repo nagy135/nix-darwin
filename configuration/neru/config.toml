@@ -38,7 +38,7 @@ text = "#d8a657"
 [hotkeys]
 # "Primary+Shift+F" = "hints"
 "Primary+Shift+F" = ["monitor_select", "action wait_for_mode_exit --bail", "grid"]
-"Primary+Shift+G" = "grid"
+"Primary+Shift+G" = "__disabled__"
 "Primary+Shift+C" = "recursive_grid"
 "Primary+Shift+S" = "scroll"
 
@@ -63,23 +63,23 @@ include_pip_hints = false
 include_screen_capture_hints = false
 detect_mission_control = false
 clickable_roles = [
-    "AXButton",
-    "AXMenuButton",
-    "AXComboBox",
-    "AXCheckBox",
-    "AXRadioButton",
-    "AXLink",
-    "AXPopUpButton",
-    "AXTextField",
-    "AXSlider",
-    "AXTabButton",
-    "AXSwitch",
-    "AXDisclosureTriangle",
-    "AXTextArea",
-    "AXMenuItem",
-    "AXCell",
-    "AXRow",
-    "AXGenericElement",
+    "button",
+    "menu_button",
+    "combo_box",
+    "checkbox",
+    "radio",
+    "link",
+    "popup_button",
+    "text_field",
+    "slider",
+    "tab",
+    "switch",
+    "disclosure",
+    "text_area",
+    "menu_item",
+    "cell",
+    "row",
+    "ax:AXGenericElement",
 ]
 ignore_clickable_check = false
 visible_check_enabled = false
@@ -287,19 +287,27 @@ invert_scroll = false                       # Invert scroll direction (for tools
 "Shift+I" = "action mouse_down"
 "Shift+U" = "action mouse_up"
 
+# slow movement arrows or Shift
 "Up" = "action move_mouse_relative --dx=0 --dy=-10"
 "Down" = "action move_mouse_relative --dx=0 --dy=10"
 "Left" = "action move_mouse_relative --dx=-10 --dy=0"
 "Right" = "action move_mouse_relative --dx=10 --dy=0"
-
 "Shift+k" = "action move_mouse_relative --dx=0 --dy=-10"
 "Shift+j" = "action move_mouse_relative --dx=0 --dy=10"
 "Shift+h" = "action move_mouse_relative --dx=-10 --dy=0"
 "Shift+l" = "action move_mouse_relative --dx=10 --dy=0"
-"k" = "action move_mouse_relative --dx=0 --dy=-40"
-"j" = "action move_mouse_relative --dx=0 --dy=40"
-"h" = "action move_mouse_relative --dx=-40 --dy=0"
-"l" = "action move_mouse_relative --dx=40 --dy=0"
+
+# hjkl fast movement
+"k" = "action move_mouse_relative --dx=0 --dy=-80"
+"j" = "action move_mouse_relative --dx=0 --dy=80"
+"h" = "action move_mouse_relative --dx=-80 --dy=0"
+"l" = "action move_mouse_relative --dx=80 --dy=0"
+
+# option hjkl half the speed
+"Option+k" = "action move_mouse_relative --dx=0 --dy=-40"
+"Option+j" = "action move_mouse_relative --dx=0 --dy=40"
+"Option+h" = "action move_mouse_relative --dx=-40 --dy=0"
+"Option+l" = "action move_mouse_relative --dx=40 --dy=0"
 
 "Tab" = "action move_monitor"
 
