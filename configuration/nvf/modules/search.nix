@@ -274,6 +274,20 @@
       action = "<cmd>lua Snacks.picker.lsp_workspace_symbols()<CR>";
     }
     {
+      key = "<leader>wf";
+      mode = "n";
+      silent = true;
+      desc = "[W]iki [F]iles";
+      action = "<cmd>lua NvfWikiFiles()<CR>";
+    }
+    {
+      key = "<leader>w/";
+      mode = "n";
+      silent = true;
+      desc = "[W]iki grep";
+      action = "<cmd>lua NvfWikiGrep()<CR>";
+    }
+    {
       key = "<leader>ww";
       mode = "n";
       silent = true;

@@ -20,6 +20,7 @@
     gh
     tmux
     fx
+    csvlens
     bat
     deno
     dust
