@@ -3,6 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    # Keep Azure CLI on the cached package before the Invoke 3 incompatibility.
+    nixpkgs-azure.url = "github:NixOS/nixpkgs/34ca302a9572963c02e385c056be37c85ff51b77";
 
     nix-darwin = {
       url = "github:LnL7/nix-darwin";

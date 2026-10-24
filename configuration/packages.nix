@@ -1,11 +1,13 @@
 {
   pkgs,
+  self,
   nvf,
   hostname,
   ...
 }: let
   neovimPackage = (import ./nvf {inherit pkgs nvf;}).neovim;
   latestMacmon = pkgs.callPackage ./macmon.nix {};
+  azureCli = self.inputs.nixpkgs-azure.legacyPackages.${pkgs.stdenv.hostPlatform.system}.azure-cli;
   sharedPackages = with pkgs; [
     home-manager
     git-crypt
@@ -74,7 +76,7 @@
   ];
 
   sensoryPackages = with pkgs; [
-    azure-cli
+    azureCli
     kubectl
     kubelogin
     lens
