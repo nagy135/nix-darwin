@@ -16,6 +16,7 @@
     ./kitty.nix
     ./eza.nix
     ./tmux.nix
+    ./tuios.nix
     ./sesh.nix
     ./karabiner.nix
   ];
