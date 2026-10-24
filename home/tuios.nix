@@ -38,7 +38,7 @@ in {
       hide_window_buttons = true;
       window_title_style = "plain";
       window_title_align = "left";
-      dockbar_position = "bottom";
+      dockbar_position = "top";
       dock_compact = true;
       dock_pill_caps = false;
       show_clock = false;
@@ -48,6 +48,18 @@ in {
       new_window_inherit_cwd = true;
       # Keep the prefix armed so prefix + HJKL can be repeated, like tmux bind -r.
       prefix_repeat_time = 500;
+    };
+    dock = {
+      # The default regions, plus the session name so it shows with the rail folded.
+      # tuios draws only text cells and minimized windows in the center, not mode or workspaces.
+      left = ["mode" "workspaces" "trail" "tape"];
+      center = ["session" "windows"];
+      right = ["transfers" "notifications" "copy-help" "cpu" "ram" "clock" "session-controls"];
+      session = {
+        format = "{session}";
+        fg = "#a9b665";
+        bold = true;
+      };
     };
     keybindings = {
       leader_key = "`";
