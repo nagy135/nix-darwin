@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   ...
@@ -8,8 +9,15 @@
     if pkgs.stdenv.hostPlatform.isDarwin
     then "Library/Application Support/tuios"
     else ".config/tuios";
+
+  tuiosSesh = pkgs.writeShellApplication {
+    name = "tuios-sesh";
+    runtimeInputs = with pkgs; [tuios jq fzf zoxide eza coreutils gawk];
+    runtimeEnv.TUIOS_SESH_CONFIG = pkgs.writeText "sesh.json" (builtins.toJSON config.programs.sesh.settings);
+    text = builtins.readFile ./config/tuios-sesh.sh;
+  };
 in {
-  home.packages = [pkgs.tuios];
+  home.packages = [pkgs.tuios tuiosSesh];
 
   home.activation.reloadTuios = lib.hm.dag.entryAfter ["linkGeneration"] ''
     # Keybindings live in the attached clients, not the daemon's config apply.
@@ -84,7 +92,8 @@ in {
         prefix_layout = ["y"];
         last_session = ["Q"];
         last_workspace = ["q"];
-        prefix_session_switcher = ["f" "S"];
+        # f opens tuios-sesh below; S keeps the built-in switcher.
+        prefix_session_switcher = ["S"];
         switch_workspace_1 = ["1"];
         switch_workspace_2 = ["2"];
         switch_workspace_3 = ["3" "g"];
@@ -121,6 +130,17 @@ in {
         prefix_select_8 = [];
         prefix_select_9 = [];
       };
+      command = [
+        {
+          key = "prefix+f";
+          type = "popup";
+          # The profile path stays valid across rebuilds, so attached clients need no reload.
+          command = "${config.home.profileDirectory}/bin/tuios-sesh";
+          description = "Sessions: tuios, sesh and zoxide";
+          width = "60%";
+          height = "60%";
+        }
+      ];
     };
     # This path remembers the source pane before switching workspaces.
     workspaces.new_window_when_empty = true;
