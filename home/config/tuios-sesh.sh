@@ -37,7 +37,7 @@ rows() {
   while IFS=$'\t' read -r name info; do
     printf '%s%s%s  %s%s%s\ttuios\t%s\t\n' "$running" "$name" "$reset" "$dim" "$info" "$reset" "$name"
   done < <(jq -r --arg current "$current" \
-    '.[] | select(.name != $current) | [.name, "\(.window_count) win\(if .branch then " · \(.branch)" else "" end)"] | @tsv' \
+    '.[] | select(.name != $current) | [.name, "\(.window_count) win"] | @tsv' \
     <<<"$sessions_json")
 
   while IFS=$'\t' read -r name path; do
