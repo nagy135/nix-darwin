@@ -38,7 +38,7 @@ function M.openPiPrompt(piPrompt)
 		"--directory=" .. os.getenv("HOME") .. "/Code/nix-darwin",
 		"zsh",
 		"-ic",
-		"echo 'Correcting German sentence…'; echo; p \"$1\" | tee >(sed -n '1p' | pbcopy); echo; exec zsh -i",
+		"echo 'Correcting German sentence…'; echo; p --model openai-codex/gpt-6.1-sol \"$1\" | tee >(sed -n '1p' | pbcopy); echo; exec zsh -i",
 		"pi-prompt",
 		piPrompt,
 	})
