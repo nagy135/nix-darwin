@@ -71,6 +71,8 @@ in {
     };
     keybindings = {
       leader_key = "`";
+      # Leave Ctrl+P available to terminal applications (history and list navigation).
+      global.command_palette = ["ctrl+super+p"];
       prefix_mode = {
         # tmux windows correspond to tuios's workspace tabs in the dock.
         new_workspace = ["c"];
