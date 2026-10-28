@@ -77,7 +77,7 @@ in {
         # tmux windows correspond to tuios's workspace tabs in the dock.
         new_workspace = ["c"];
         next_workspace = ["n"];
-        prev_workspace = ["N" "p"];
+        prev_workspace = ["N"];
         close_workspace = ["x"];
         kill_session_next = ["X"];
         prefix_split_vertical = ["v" "|" "\\"];
@@ -102,7 +102,7 @@ in {
         switch_workspace_4 = ["4"];
         switch_workspace_5 = ["5"];
         switch_workspace_6 = ["6"];
-        switch_workspace_7 = ["7"];
+        switch_workspace_7 = ["7" "p"];
         switch_workspace_8 = ["8"];
         switch_workspace_9 = ["9"];
 
