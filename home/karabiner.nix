@@ -10,6 +10,24 @@
           virtual_hid_keyboard.keyboard_type_v2 = "ansi";
           complex_modifications.rules = [
             {
+              description = "Remap Fn to Command+Option+Shift";
+              manipulators = [
+                {
+                  type = "basic";
+                  from = {
+                    key_code = "fn";
+                    modifiers.optional = ["any"];
+                  };
+                  to = [
+                    {
+                      key_code = "left_shift";
+                      modifiers = ["left_command" "left_option"];
+                    }
+                  ];
+                }
+              ];
+            }
+            {
               description = "Remap Caps Lock to Escape and ISO section to grave";
               manipulators = [
                 {
