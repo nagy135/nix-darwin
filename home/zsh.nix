@@ -1,8 +1,10 @@
 {
+  inputs,
   pkgs,
   lib,
   ...
 }: let
+  atuinPackage = inputs.nixpkgs-atuin.legacyPackages.${pkgs.stdenv.hostPlatform.system}.atuin;
   functionsScripts = pkgs.writeShellScript "zshfunctions" ''
     fzfvim(){
     # find file in $1, open it with vim and put it into clipboard
@@ -121,11 +123,12 @@
 in {
   home.packages = with pkgs; [
     zsh-powerlevel10k
-    atuin
+    atuinPackage
   ];
 
   programs.atuin = {
     enable = true;
+    package = atuinPackage;
     enableZshIntegration = true;
     flags = [
       "--disable-up-arrow"

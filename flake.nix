@@ -5,6 +5,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     # Keep Azure CLI on the cached package before the Invoke 3 incompatibility.
     nixpkgs-azure.url = "github:NixOS/nixpkgs/34ca302a9572963c02e385c056be37c85ff51b77";
+    # Keep Atuin on 18.23.0 while 18.24.4's AI session tests fail on Darwin.
+    nixpkgs-atuin.url = "github:NixOS/nixpkgs/5adc50831c259f87faeb09ddf930d43597197473";
 
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
