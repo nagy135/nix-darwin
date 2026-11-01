@@ -120,9 +120,13 @@ sketchybar --add item clock right \
 	\
 	--add item wifi right \
 	--set wifi position=right update_freq=5 script="$PLUGIN_DIR/wifi.sh" \
-	--subscribe wifi wifi_change mouse.clicked
+	--subscribe wifi wifi_change mouse.clicked \
+	\
+	--add item uptime right \
+	--set uptime update_freq=60 script="$PLUGIN_DIR/uptime.sh" \
+	--subscribe uptime system_woke
 
-sketchybar --reorder clock volume brightness battery temperature cpu_usage ram_usage wifi
+sketchybar --reorder clock volume brightness battery temperature cpu_usage ram_usage wifi uptime
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
