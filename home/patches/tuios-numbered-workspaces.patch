@@ -1,0 +1,45 @@
+--- a/internal/app/workspace.go
++++ b/internal/app/workspace.go
+@@ -62,7 +62,10 @@
+ // than on 5 until the daemon renumbers it, keeps a pane opened right after the
+ // switch on the workspace the user sees.
+ func (m *OS) newWorkspaceSlot(workspace int) int {
+-	if !m.IsDaemonSession || session.IsScratchWorkspace(workspace) {
++	// With automatic panes, numbered shortcuts name the requested workspace,
++	// even when intermediate workspaces have never held a pane.
++	if !m.IsDaemonSession || session.IsScratchWorkspace(workspace) ||
++		(m.UserConfig != nil && m.UserConfig.Workspaces.NewWindowWhenEmpty) {
+ 		return workspace
+ 	}
+ 	last := 0
+--- /dev/null
++++ b/internal/app/workspace_numbered_shortcuts_test.go
+@@ -0,0 +1,28 @@
++package app
++
++import (
++	"testing"
++
++	"github.com/Gaurav-Gosain/tuios/internal/config"
++	"github.com/Gaurav-Gosain/tuios/internal/terminal"
++)
++
++func TestNumberedWorkspaceSkipsMissingSlotsWithAutomaticPanes(t *testing.T) {
++	m := &OS{
++		IsDaemonSession:  true,
++		NumWorkspaces:    9,
++		CurrentWorkspace: 1,
++		Windows:          []*terminal.Window{{Workspace: 1}},
++		UserConfig:       &config.UserConfig{},
++	}
++	m.UserConfig.Workspaces.NewWindowWhenEmpty = true
++	for _, target := range []int{3, 7, 9} {
++		if got := m.newWorkspaceSlot(target); got != target {
++			t.Errorf("shortcut to %d lands on %d", target, got)
++		}
++	}
++	m.UserConfig.Workspaces.NewWindowWhenEmpty = false
++	if got := m.newWorkspaceSlot(3); got != 2 {
++		t.Errorf("without automatic panes: got %d, want next slot 2", got)
++	}
++}

@@ -5,6 +5,18 @@
   ...
 }: let
   toml = pkgs.formats.toml {};
+  # 0.12 clamps numbered jumps to the next occupied slot. With automatic
+  # panes enabled, let prefix+g/p create workspace 3/7 directly.
+  tuios = pkgs.tuios.overrideAttrs (old: {
+    patches = (old.patches or []) ++ [./patches/tuios-numbered-workspaces.patch];
+    # Exercise the changed behavior without the unrelated web/PTY integration
+    # suite, which cannot allocate another PTY on this host.
+    checkPhase = ''
+      runHook preCheck
+      go test -p "$NIX_BUILD_CORES" ./internal/app -run '^TestNumberedWorkspaceSkipsMissingSlotsWithAutomaticPanes$'
+      runHook postCheck
+    '';
+  });
   configDir =
     if pkgs.stdenv.hostPlatform.isDarwin
     then "Library/Application Support/tuios"
@@ -12,19 +24,19 @@
 
   tuiosSesh = pkgs.writeShellApplication {
     name = "tuios-sesh";
-    runtimeInputs = with pkgs; [tuios jq fzf zoxide eza coreutils gawk];
+    runtimeInputs = [tuios] ++ (with pkgs; [jq fzf zoxide eza coreutils gawk]);
     runtimeEnv.TUIOS_SESH_CONFIG = pkgs.writeText "sesh.json" (builtins.toJSON config.programs.sesh.settings);
     text = builtins.readFile ./config/tuios-sesh.sh;
   };
 in {
-  home.packages = [pkgs.tuios tuiosSesh];
+  home.packages = [tuios tuiosSesh];
 
   home.activation.reloadTuios = lib.hm.dag.entryAfter ["linkGeneration"] ''
     # Keybindings live in the attached clients, not the daemon's config apply.
     # Detached sessions load the config when attached; never start a stopped server.
-    if tuiosSessions="$(${pkgs.tuios}/bin/tuios ls --json 2>/dev/null)"; then
+    if tuiosSessions="$(${tuios}/bin/tuios ls --json 2>/dev/null)"; then
       while IFS= read -r tuiosSession; do
-        if ! run ${pkgs.tuios}/bin/tuios run-command --session "$tuiosSession" Action reload_config; then
+        if ! run ${tuios}/bin/tuios run-command --session "$tuiosSession" Action reload_config; then
           warnEcho "Could not reload tuios session '$tuiosSession'; use Reload config in tuios."
         fi
       done < <(printf '%s\n' "$tuiosSessions" | ${pkgs.jq}/bin/jq -r '.[] | select(.attached) | .name')
