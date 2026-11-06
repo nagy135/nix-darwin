@@ -449,6 +449,14 @@ in {
       vim.g.mapleader = " "
       vim.g.maplocalleader = " "
       vim.g.have_nerd_font = true
+
+      -- Some shared repositories use the nonstandard max_line_length = null.
+      -- Treat it as "off", keeping all other EditorConfig handling intact.
+      local editorconfig = require("editorconfig")
+      local max_line_length = editorconfig.properties.max_line_length
+      editorconfig.properties.max_line_length = function(bufnr, value, opts)
+        max_line_length(bufnr, value == "null" and "off" or value, opts)
+      end
     '';
 
     luaConfigRC = {
