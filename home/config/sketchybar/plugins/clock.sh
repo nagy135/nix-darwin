@@ -4,7 +4,7 @@
 # the item invoking this script:
 # https://felixkratz.github.io/SketchyBar/config/events#events-and-scripting
 
-sketchybar --set "$NAME" label="$(date '+%A %d/%m %H:%M')"
+sketchybar --set "$NAME" label="$(date '+%a %d/%m %H:%M')"
 
 METRICS="$(macmon pipe --samples 1 --interval 500 2>/dev/null)" || exit 0
 
